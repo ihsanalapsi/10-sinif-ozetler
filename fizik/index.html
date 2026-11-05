@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="ar" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sabit Hız ve İvme · 10. Sınıf Fizik</title>
+<meta name="description" content="FİZ.10.1.1 ve FİZ.10.1.2 için etkileşimli çalışma özeti: sabit hızlı hareket, ivme ve hız değişimi. Arapça + Türkçe.">
+<meta name="theme-color" content="#141B2D">
+<link rel="icon" type="image/png" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+
+</head>
+<body>
+<style>
+/* Layout: one 920px reading column on faint graph paper; each simulation is a full-width "bench" card.
+   Every physical quantity keeps one colour everywhere — position blue, velocity orange, acceleration magenta. */
+:root {
+  --bg: #F6F7FA; --surface: #FFFFFF; --ink: #141B2D; --muted: #5A6478; --line: #DCE1EA; --soft: #EEF1F6;
+  --grid: rgba(20, 27, 45, .045);
+  --cx: #2160C4; --cx-soft: #E5EEFB;
+  --cv: #D9700B; --cv-soft: #FCEEDD;
+  --ca: #A8318F; --ca-soft: #F7E4F2;
+  --good: #1D8556; --good-soft: #E1F3EA; --bad: #C2412D; --bad-soft: #FBE7E3;
+  --note: #6B4E00; --note-soft: #FFF5D6;
+  --display: "Readex Pro", "Noto Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --body: "Readex Pro", "Noto Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1320; --surface: #161D2C; --ink: #E6EBF4; --muted: #9AA5BB; --line: #2A3448; --soft: #1C2436;
+    --grid: rgba(230, 235, 244, .05);
+    --cx: #6FA3F4; --cx-soft: #17284A; --cv: #F4A04B; --cv-soft: #3A2712; --ca: #E27BCF; --ca-soft: #3A1834;
+    --good: #4FC88E; --good-soft: #14301F; --bad: #F08A78; --bad-soft: #3B1C17; --note: #F2D27A; --note-soft: #33290D;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1320; --surface: #161D2C; --ink: #E6EBF4; --muted: #9AA5BB; --line: #2A3448; --soft: #1C2436;
+  --grid: rgba(230, 235, 244, .05);
+  --cx: #6FA3F4; --cx-soft: #17284A; --cv: #F4A04B; --cv-soft: #3A2712; --ca: #E27BCF; --ca-soft: #3A1834;
+  --good: #4FC88E; --good-soft: #14301F; --bad: #F08A78; --bad-soft: #3B1C17; --note: #F2D27A; --note-soft: #33290D;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16.5px; line-height: 1.6;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px; -webkit-text-size-adjust: 100%;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--surface); }
+[hidden] { display: none !important; }
+.lang[dir="rtl"] { font-size: 17px; line-height: 1.85; }
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.25; margin: 0; text-wrap: balance; }
+p { margin: 0 0 12px; }
+strong { font-weight: 600; }
+sub, sup { font-size: 70%; line-height: 0; }
+a { color: var(--cx); }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2.5px solid var(--cv); outline-offset: 2px; }
+
+/* ---- top bar ---- */
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  padding-block: 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.topbar .in { max-width: 920px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.brand { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cv); box-shadow: 14px 0 0 var(--cv), 34px 0 0 var(--cv); margin-inline-end: 38px; }
+.brand small { color: var(--muted); font-weight: 400; }
+.switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin-inline-start: auto; background: var(--surface); }
+.switch button { border: 0; background: transparent; padding: 6px 14px; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.secnav { display: flex; gap: 6px; width: 100%; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.secnav::-webkit-scrollbar { display: none; }
+.secnav a { flex: none; font-size: 13.5px; text-decoration: none; color: var(--ink); background: var(--soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; }
+.secnav a:hover { border-color: var(--cv); }
+
+/* ---- page ---- */
+main { padding-block: 26px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.lang { max-width: 920px; margin: 0 auto; }
+
+/* hero */
+.hero { padding-block: 6px 18px; }
+.eyebrow { font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.lang[dir="rtl"] .eyebrow { font-family: var(--body); letter-spacing: 0; text-transform: none; font-size: 14px; }
+.hero h1 { font-size: clamp(30px, 6vw, 48px); font-weight: 600; letter-spacing: -.02em; margin: 8px 0 10px; }
+.lang[dir="rtl"] .hero h1 { letter-spacing: 0; font-weight: 600; }
+.hero .lede { font-size: 18px; color: var(--muted); max-width: 62ch; }
+.outcomes { display: grid; gap: 10px; margin: 18px 0; }
+.oc { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; }
+.oc .code { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--cv); }
+.oc.acc .code { color: var(--ca); }
+.oc .name { font-weight: 600; }
+.oc ol { margin: 4px 0 0; padding-inline-start: 22px; font-size: 14.5px; color: var(--muted); }
+.oc ol li::marker { font-family: var(--mono); }
+
+.strobe { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px 8px; margin: 14px 0 6px; }
+.strobe .row { display: grid; grid-template-columns: minmax(110px, 26%) 1fr; gap: 10px; align-items: center; }
+.strobe .row + .row { border-top: 1px dashed var(--line); margin-top: 6px; padding-top: 6px; }
+.strobe .lab { font-size: 14px; font-weight: 600; }
+.strobe .lab small { display: block; font-weight: 400; color: var(--muted); font-size: 12.5px; }
+.strobe svg { width: 100%; height: auto; display: block; }
+.strobe .cap { font-size: 13px; color: var(--muted); margin-top: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .strobe .d { animation: pop .5s ease-out backwards; }
+}
+@keyframes pop { from { opacity: .15; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+
+.howto { background: var(--note-soft); border-radius: 12px; padding: 12px 14px; font-size: 15px; margin-top: 14px; }
+
+/* sections */
+.section { margin-top: 44px; scroll-margin-top: 120px; }
+.sec-head { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: end; padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 18px; }
+.sec-head .num { grid-row: span 2; font-family: var(--mono); font-size: 44px; font-weight: 600; line-height: 1; color: var(--cv); }
+.sec-head.acc .num { color: var(--ca); }
+.sec-head.q .num, .sec-head.g .num { color: var(--muted); }
+.sec-head .code { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.sec-head h2 { font-size: clamp(22px, 4vw, 30px); font-weight: 600; }
+h3 { font-size: 20px; font-weight: 600; margin: 28px 0 10px; display: flex; gap: 10px; align-items: baseline; }
+h3 .n { font-family: var(--mono); font-size: 13px; color: var(--muted); font-weight: 500; flex: none; }
+h4 { font-size: 16.5px; font-weight: 600; margin: 14px 0 6px; }
+ul, ol { padding-inline-start: 22px; margin: 0 0 12px; }
+li { margin-bottom: 4px; }
+
+/* quantity colour chips */
+.qx { color: var(--cx); font-weight: 600; } .qv { color: var(--cv); font-weight: 600; } .qa { color: var(--ca); font-weight: 600; }
+.tr { color: var(--good); font-weight: 600; font-size: 94%; unicode-bidi: isolate; }
+.lang[dir="rtl"] .tr { direction: ltr; display: inline-block; }
+.m, .eqn { font-family: var(--mono); unicode-bidi: isolate; direction: ltr; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
+.eqn { display: block; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin: 12px 0; font-size: 17px; }
+.eqn small { display: block; font-family: var(--body); font-size: 13.5px; color: var(--muted); margin-top: 4px; direction: inherit; }
+.lang[dir="rtl"] .eqn small { direction: rtl; }
+.eqrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.eqrow .eqn { margin: 0; }
+
+/* boxes */
+.box { border-radius: 12px; padding: 12px 14px; margin: 14px 0; border: 1px solid var(--line); background: var(--surface); }
+.box > .t { display: block; font-weight: 600; font-size: 14.5px; margin-bottom: 4px; }
+.box p:last-child, .box ul:last-child, .box ol:last-child { margin-bottom: 0; }
+.box.think { background: var(--note-soft); border-color: transparent; }
+.box.think > .t { color: var(--note); }
+.box.warn { background: var(--bad-soft); border-color: transparent; }
+.box.warn > .t { color: var(--bad); }
+.box.sum { background: var(--good-soft); border-color: transparent; }
+.box.easy { background: var(--cx-soft); border-color: transparent; }
+.box.easy > .t { color: var(--cx); }
+.oc .sub-easy { font-size: 14.5px; color: var(--ink); background: var(--soft); border-radius: 8px; padding: 4px 8px; margin-top: 4px; justify-self: start; }
+.box.sum > .t { color: var(--good); }
+.box.turk { background: var(--soft); direction: ltr; text-align: left; font-size: 15px; }
+.box.turk > .t { direction: rtl; text-align: right; color: var(--muted); }
+.steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 8px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; margin: 0; }
+.steps li::before { content: counter(s); width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: var(--surface); font-family: var(--mono); font-size: 13px; font-weight: 600; display: grid; place-items: center; }
+
+/* tables */
+.tw { overflow-x: auto; margin: 12px 0; }
+table.t { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 10px; overflow: hidden; font-size: 15px; }
+table.t th, table.t td { border: 1px solid var(--line); padding: 7px 10px; text-align: start; vertical-align: top; }
+table.t th { background: var(--soft); font-weight: 600; }
+table.t td.n, table.t th.n { font-family: var(--mono); text-align: center; font-variant-numeric: tabular-nums; }
+table.t .hl { background: var(--cv-soft); }
+table.t .hla { background: var(--ca-soft); }
+
+/* figures */
+.fig { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px; margin: 14px 0; }
+.fig canvas, .fig svg { display: block; width: 100%; }
+.fig .cap { font-size: 13.5px; color: var(--muted); padding: 8px 4px 2px; }
+.fig .cap b { color: var(--ink); }
+.figs2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.figs2 > * { min-width: 0; margin: 0; }
+.signs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 14px 0; }
+.sg { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; display: grid; gap: 4px; }
+.sg .ar { display: grid; grid-template-columns: 22px 1fr; align-items: center; gap: 6px; direction: ltr; font-family: var(--mono); font-size: 14px; }
+.sg .res { font-weight: 600; }
+.sg.up .res { color: var(--good); } .sg.down .res { color: var(--bad); }
+.arw { display: inline-block; height: 12px; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 12' preserveAspectRatio='none'%3E%3Cpath d='M0 4.5h48v-4.5l12 6-12 6v-4.5H0z'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 12' preserveAspectRatio='none'%3E%3Cpath d='M0 4.5h48v-4.5l12 6-12 6v-4.5H0z'/%3E%3C/svg%3E") no-repeat center / 100% 100%; }
+.arw.l { transform: scaleX(-1); }
+.arw.v { color: var(--cv); } .arw.a { color: var(--ca); }
+.arw.w1 { width: 40px; } .arw.w2 { width: 64px; } .arw.w3 { width: 96px; }
+
+/* worked examples */
+details.ex { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin: 10px 0; }
+details.ex > summary { cursor: pointer; list-style: none; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: baseline; }
+details.ex > summary::-webkit-details-marker { display: none; }
+details.ex > summary .k { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--surface); background: var(--ink); border-radius: 6px; padding: 2px 7px; }
+details.ex > summary .open { font-size: 13px; color: var(--cx); font-weight: 600; white-space: nowrap; }
+details.ex[open] > summary .open { color: var(--muted); }
+details.ex .sol { border-top: 1px dashed var(--line); padding: 10px 14px 12px; }
+details.ex .sol ol { margin: 0; }
+details.ex .sol .res { font-weight: 600; margin-top: 6px; }
+
+/* ---- simulation bench ---- */
+.sim { background: var(--surface); border: 1.5px solid var(--ink); border-radius: 16px; margin: 18px 0; overflow: hidden; }
+.sim .sh { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--soft); }
+.sim .sh h4 { margin: 0; font-size: 17px; }
+.sim .sh .tag { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.sim .hint { font-size: 14px; color: var(--muted); padding: 10px 14px 0; margin: 0; }
+.sim .track { width: 100%; height: 150px; display: block; touch-action: pan-y; }
+.sim .ctrl { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px 18px; padding: 10px 14px; border-top: 1px solid var(--line); }
+.sim .sl { display: grid; gap: 2px; }
+.sim .sl label { font-size: 14px; display: flex; justify-content: space-between; gap: 8px; }
+.sim .sl output { font-family: var(--mono); font-weight: 600; direction: ltr; unicode-bidi: isolate; }
+.sim .sl.v output { color: var(--cv); } .sim .sl.x output { color: var(--cx); } .sim .sl.a output { color: var(--ca); }
+.sim input[type=range] { width: 100%; direction: ltr; height: 30px; accent-color: var(--ink); }
+.sim .sl.v input { accent-color: var(--cv); } .sim .sl.x input { accent-color: var(--cx); } .sim .sl.a input { accent-color: var(--ca); }
+.sim .btns { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 14px 12px; align-items: center; }
+.btn { border: 1.5px solid var(--ink); background: var(--surface); border-radius: 999px; padding: 7px 16px; font-weight: 600; font-size: 15px; cursor: pointer; min-height: 40px; }
+.btn.primary { background: var(--ink); color: var(--surface); }
+.btn:disabled { opacity: .45; cursor: default; }
+.clock { margin-inline-start: auto; font-family: var(--mono); font-size: 15px; font-weight: 600; direction: ltr; }
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; border-radius: 999px; padding: 4px 12px; background: var(--soft); }
+.status.up { background: var(--good-soft); color: var(--good); }
+.status.down { background: var(--bad-soft); color: var(--bad); }
+.status.flat { background: var(--cv-soft); color: var(--cv); }
+.sim .graphs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); }
+.sim .graphs > div { min-width: 0; padding: 10px 12px 6px; }
+.sim .graphs > div + div { border-inline-start: 1px solid var(--line); }
+.sim .graphs h5 { margin: 0 0 4px; font-size: 14px; font-weight: 600; }
+.sim .graphs canvas { width: 100%; height: 210px; display: block; }
+.sim .gnote { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 2px; }
+.sim .gnote .m { color: var(--ink); font-weight: 600; }
+.sim .data { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 12px; padding: 12px 14px 14px; border-top: 1px solid var(--line); align-items: start; }
+.sim .data table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13.5px; direction: ltr; font-variant-numeric: tabular-nums; }
+.sim .data th, .sim .data td { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: center; }
+.sim .data th { color: var(--muted); font-weight: 500; position: sticky; top: 0; background: var(--surface); }
+.sim .data td.d { color: var(--cv); font-weight: 600; }
+.sim .data.acc td.d { color: var(--ca); }
+.sim .data .tbl { max-height: 250px; overflow-y: auto; }
+.sim .gen { display: grid; gap: 8px; font-size: 14.5px; }
+.sim .gen .eq { font-family: var(--mono); background: var(--soft); border-radius: 10px; padding: 8px 10px; direction: ltr; unicode-bidi: isolate; text-align: left; font-size: 14.5px; overflow-x: auto; }
+.sim .gen .obs { color: var(--muted); }
+.sim .gen .obs b { color: var(--ink); }
+
+/* small widgets */
+.mini { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 14px 0; }
+.mini .ctrl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px 18px; }
+.mini .sl { display: grid; gap: 2px; }
+.mini .sl label { font-size: 14px; display: flex; justify-content: space-between; gap: 8px; }
+.mini .sl output { font-family: var(--mono); font-weight: 600; direction: ltr; unicode-bidi: isolate; }
+.mini input[type=range] { width: 100%; direction: ltr; height: 30px; accent-color: var(--cv); }
+.mini canvas { width: 100%; height: 150px; display: block; margin-top: 6px; }
+.mini .out { font-family: var(--mono); font-size: 15px; direction: ltr; text-align: center; padding: 8px; background: var(--soft); border-radius: 10px; margin-top: 8px; unicode-bidi: isolate; }
+.mini .out b { font-size: 18px; }
+.mini .warnline { text-align: center; color: var(--bad); font-weight: 600; font-size: 14px; margin-top: 6px; }
+
+/* quiz */
+.quiz { display: grid; gap: 14px; }
+.qcard { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.qcard .qh { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
+.qcard .qn { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--surface); background: var(--ink); border-radius: 6px; padding: 2px 7px; flex: none; }
+.qcard .qc { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-inline-start: auto; flex: none; }
+.qcard .qt { font-weight: 500; }
+.qcard canvas { width: 100%; max-width: 420px; height: 170px; display: block; margin: 8px auto; }
+.qcard .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.qcard .opts button { text-align: start; border: 1.5px solid var(--line); background: var(--surface); border-radius: 10px; padding: 9px 12px; cursor: pointer; font-size: 15px; display: flex; gap: 8px; align-items: baseline; min-height: 44px; }
+.qcard .opts button b { font-family: var(--mono); color: var(--muted); }
+.qcard .opts button:hover:not(:disabled) { border-color: var(--ink); }
+.qcard .opts button.ok { border-color: var(--good); background: var(--good-soft); }
+.qcard .opts button.no { border-color: var(--bad); background: var(--bad-soft); }
+.qcard .opts button:disabled { cursor: default; }
+.qcard .why { margin-top: 10px; font-size: 15px; border-radius: 10px; padding: 10px 12px; background: var(--soft); }
+.qcard .why b.ok { color: var(--good); } .qcard .why b.no { color: var(--bad); }
+.score { position: sticky; bottom: max(12px, env(safe-area-inset-bottom, 0px)); z-index: 5; justify-self: center; background: var(--ink); color: var(--surface); border-radius: 999px; padding: 8px 18px; font-weight: 600; font-size: 15px; box-shadow: 0 6px 20px rgba(0,0,0,.18); display: flex; gap: 12px; align-items: center; }
+.score button { border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 999px; padding: 2px 10px; font-size: 13px; cursor: pointer; }
+
+/* formula card + glossary */
+.fcard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+.fcard > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.fcard .eqn { margin: 6px 0 0; font-size: 16px; padding: 8px; }
+.fcard h4 { margin: 0; font-size: 15px; }
+table.gl { width: 100%; border-collapse: collapse; background: var(--surface); font-size: 15px; }
+table.gl th, table.gl td { border-bottom: 1px solid var(--line); padding: 7px 10px; text-align: start; vertical-align: top; }
+table.gl th { background: var(--soft); }
+table.gl td.term { font-weight: 600; color: var(--good); white-space: nowrap; direction: ltr; text-align: left; }
+
+footer.foot { max-width: 920px; margin: 40px auto 0; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+
+@media (max-width: 560px) {
+  table.t.stack, table.t.stack tbody, table.t.stack tr, table.t.stack td { display: block; width: 100%; }
+  table.t.stack { background: transparent; }
+  table.t.stack tr:first-child { display: none; }
+  table.t.stack tr { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  table.t.stack td { border: 0; border-bottom: 1px solid var(--line); }
+  table.t.stack td:last-child { border-bottom: 0; color: var(--muted); }
+  table.t.stack td:first-child { background: var(--soft); }
+}
+@media (max-width: 720px) {
+  .sim .graphs, .sim .data, .figs2 { grid-template-columns: 1fr; }
+  .sim .graphs > div + div { border-inline-start: 0; border-top: 1px solid var(--line); }
+  .qcard .opts { grid-template-columns: 1fr; }
+  .qcard .qc { display: none; }
+  .signs { grid-template-columns: 1fr; }
+  .strobe .row { grid-template-columns: 1fr; gap: 2px; }
+  .brand small { display: none; }
+  .brand .dot { display: none; }
+  .brand { font-size: 13.5px; }
+  .switch button { padding: 5px 10px; font-size: 13px; }
+  .topbar .in { gap: 6px 8px; }
+  .home .t { display: none; }
+  .sec-head .num { font-size: 34px; }
+  body { font-size: 16px; }
+  .lang[dir="rtl"] { font-size: 16.5px; }
+  table.gl td.term { white-space: normal; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+.home { font-size: 13px; font-weight: 600; text-decoration: none; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--surface); }
+</style>
+<header class="topbar"><div class="in">
+  <a class="home" href="../" aria-label="Ana sayfa / الرئيسية">‹<span class="t"> 10. Sınıf</span></a>
+  <div class="brand"><span class="dot" aria-hidden="true"></span>10. Sınıf Fizik <small>· FİZ.10.1.1 – 10.1.2</small></div>
+  <div class="switch" role="group" aria-label="Dil / اللغة">
+    <button type="button" data-lang="ar" aria-pressed="true">عربي + تركي</button>
+    <button type="button" data-lang="tr" aria-pressed="false">Türkçe</button>
+  </div>
+  <nav class="secnav" data-lang="ar" dir="rtl"><a href="#ar-s1">1 · السرعة الثابتة</a><a href="#ar-s2">2 · التسارع</a><a href="#ar-s3">3 · اختبري نفسك</a><a href="#ar-s4">4 · القوانين والمصطلحات</a></nav>
+  <nav class="secnav" data-lang="tr" hidden><a href="#tr-s1">1 · Sabit hız</a><a href="#tr-s2">2 · İvme</a><a href="#tr-s3">3 · Kendini sına</a><a href="#tr-s4">4 · Formüller ve terimler</a></nav>
+</div></header>
+<main>
+  <div class="lang" id="ar" lang="ar" dir="rtl">
+<section class="hero" id="ar-top">
+  <div class="eyebrow">فيزياء الصف العاشر <span class="tr"><bdi dir="ltr">10. Sınıf Fizik</bdi></span> · الوحدة <bdi dir="ltr">1</bdi>: القوة والحركة <span class="tr">Kuvvet ve Hareket</span> · ملخص تفاعلي</div>
+  <h1>السرعة الثابتة والتسارع</h1>
+  <p class="lede">هل تقطع السيارة مسافات متساوية في أزمنة متساوية، أم مسافة أكبر في كل ثانية؟ في هذه الصفحة ستلاحظين أولًا، ثم تكتبين البيانات في جدول ومنحنى، ثم تكتشفين النمط وتعمّمينه. هذا بالضبط هو <strong>الاستدلال الاستقرائي</strong> (<span class="tr">tümevarımsal akıl yürütme</span>) المطلوب في الهدفين.</p>
+  <div class="strobe">
+    <div class="row"><div class="lab">حركة بسرعة ثابتة<small><span class="tr">Sabit hızlı hareket</span> · المسافة نفسها كل <bdi dir="ltr">1 s</bdi></small></div><svg-slot></svg-slot></div>
+    <div class="row"><div class="lab">حركة بتسارع ثابت (تتزايد سرعتها)<small><span class="tr">Sabit ivmeli hareket</span> · المسافة تكبر كل ثانية</small></div><svg-slot></svg-slot></div>
+    <div class="cap">النقاط هي موضع سيارة متحركة كل <bdi dir="ltr">1</bdi> ثانية (صورة ستروبوسكوب)، والأرقام تحتها هي الثواني.</div>
+  </div>
+  <div class="outcomes">
+    <div class="oc"><span class="code"><bdi dir="ltr">FİZ.10.1.1</bdi></span><span class="name">الاستدلال الاستقرائي حول الحركة الأفقية بسرعة ثابتة</span>
+      <span class="tr" style="font-weight:500">Yatay doğrultuda sabit hızlı hareket ile ilgili tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>يُجري ملاحظات حول الموضع والإزاحة والسرعة والزمن.</li><li>يستخرج من منحنيات الحركة النموذج الرياضي للسرعة والمسافة والإزاحة.</li><li>يعمّم هذه النماذج الرياضية.</li></ol></div>
+    <div class="oc acc"><span class="code"><bdi dir="ltr">FİZ.10.1.2</bdi></span><span class="name">الاستدلال الاستقرائي حول العلاقة بين التسارع وتغيّر السرعة</span>
+      <span class="tr" style="font-weight:500">İvme ve hız değişimi arasındaki ilişkiye yönelik tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>يكتشف العلاقة بين التسارع وتغيّر السرعة.</li><li>يعمّم هذه العلاقة.</li></ol></div>
+  </div>
+  <div class="howto"><strong>كيف تدرسين من هذه الصفحة؟</strong> في كل قسم شغّلي المختبر أولًا وانظري إلى الجدول، ثم اقرئي الشرح. في الأمثلة المحلولة حاولي الحل بنفسك قبل الضغط على «اعرض الحل». المصطلح التركي مكتوب بالأخضر بجانب كل فكرة لأنه ما سيأتي في الامتحان. الألوان ثابتة في كل الصفحة: <span class="qx">الموضع x</span>، <span class="qv">السرعة v</span>، <span class="qa">التسارع a</span>.</div>
+</section>
+
+<!-- ======================= 1 ======================= -->
+<section class="section" id="ar-s1">
+  <div class="sec-head"><span class="num"><bdi dir="ltr">1</bdi></span><span class="code"><bdi dir="ltr">FİZ.10.1.1</bdi></span><h2>الحركة الأفقية بسرعة ثابتة <span class="tr">Sabit hızlı hareket</span></h2></div>
+
+  <h3><span class="n"><bdi dir="ltr">1.1</bdi></span>المفاهيم التي تصف الحركة</h3>
+  <p>لكي نحدد مكان جسم نختار أولًا <strong>نقطة مرجعية</strong> (<span class="tr">referans noktası</span>)، أي نقطة الصفر. البعد الموجّه للجسم عن هذه النقطة هو <span class="qx">الموضع x</span> (<span class="tr">konum</span>). على طريق أفقي نعتبر يمين النقطة المرجعية (+) ويسارها (−).</p>
+  <ul>
+    <li><strong>الإزاحة <bdi dir="ltr">Δx</bdi></strong> (<span class="tr">yer değiştirme</span>): الفرق بين الموضع النهائي والموضع الابتدائي: <span class="m"><bdi dir="ltr">Δx = x</bdi><sub>son</sub> − x<sub>ilk</sub></span>. لها اتجاه (متجهة <span class="tr">vektörel</span>)، وتعتمد فقط على نقطتي البداية والنهاية.</li>
+    <li><strong>المسافة المقطوعة</strong> (<span class="tr">alınan yol</span>): الطول الكلي للمسار الذي سلكه الجسم. ليس لها اتجاه (قياسية <span class="tr">skaler</span>) وهي موجبة دائمًا.</li>
+    <li><strong>السرعة المتجهة v</strong> (<span class="tr">hız</span>): الإزاحة في وحدة الزمن، <span class="m"><bdi dir="ltr">v = Δx / Δt</bdi></span>. متجهة.</li>
+    <li><strong>السرعة القياسية</strong> (<span class="tr">sürat</span>): المسافة المقطوعة في وحدة الزمن، <span class="m"><bdi dir="ltr">sürat = yol / Δt</bdi></span>. قياسية.</li>
+  </ul>
+  <div class="fig" data-fig="walk"><canvas style="height:150px"></canvas>
+    <div class="cap"><b>الشكل <bdi dir="ltr">1</bdi>.</b> طالبة تمشي من النقطة <bdi dir="ltr">0</bdi> إلى <bdi dir="ltr">+8 m</bdi>، ثم ترجع <bdi dir="ltr">5 m</bdi> وتقف عند <bdi dir="ltr">+3 m</bdi>. المسافة المقطوعة <span class="ltr"><bdi dir="ltr">= 8 + 5 =</bdi> <b><bdi dir="ltr">13 m</bdi></b></span>، والإزاحة <span class="ltr"><bdi dir="ltr">Δx = 3 − 0 =</bdi> <b class="qx"><bdi dir="ltr">+3 m</bdi></b></span>. إذا لم يتغير اتجاه الحركة يكون الاثنان متساويين.</div></div>
+  <div class="tw"><table class="t">
+    <tr><th>كميات قياسية <span class="tr">skaler</span> (عدد + وحدة)</th><th>كميات متجهة <span class="tr">vektörel</span> (عدد + وحدة + اتجاه)</th></tr>
+    <tr><td>الزمن، المسافة المقطوعة، السرعة القياسية <span class="tr">sürat</span></td><td>الموضع، الإزاحة، السرعة <span class="tr">hız</span>، التسارع <span class="tr">ivme</span></td></tr>
+  </table></div>
+
+  <h3><span class="n"><bdi dir="ltr">1.2</bdi></span>من الملاحظة إلى التعميم: الاستقراء</h3>
+  <p><strong>الاستدلال الاستقرائي</strong> (<span class="tr">tümevarımsal akıl yürütme</span>) يعني الوصول إلى قاعدة عامة انطلاقًا من ملاحظات مفردة. في الفيزياء نسير بهذا الترتيب:</p>
+  <ol class="steps">
+    <li><span><strong>الملاحظة</strong> (<span class="tr">gözlem</span>): قيسي موضع الجسم في أزمنة محددة.</span></li>
+    <li><span><strong>الجدول</strong> (<span class="tr">tablo</span>): سجّلي t و x، و<bdi dir="ltr">Δx</bdi> في كل فترة.</span></li>
+    <li><span><strong>المنحنى</strong> (<span class="tr">grafik</span>): ارسمي منحنيي x–t و v–t.</span></li>
+    <li><span><strong>النمط</strong> (<span class="tr">örüntü</span>): مثل «<bdi dir="ltr">Δx</bdi> متساوية في كل ثانية».</span></li>
+    <li><span><strong>التعميم</strong> (<span class="tr">genelleme</span>): حوّلي النمط إلى علاقة: <span class="m"><bdi dir="ltr">x = x₀ + v·t</bdi></span>.</span></li>
+  </ol>
+  <div class="sim" data-sim="cv"></div>
+  <div class="box think"><span class="t">جرّبي في المختبر وفكّري</span>
+    <ul>
+      <li>اجعلي السرعة <bdi dir="ltr">+5 m/s</bdi>: هل المسافة بين النقاط متساوية كل ثانية؟ ماذا يقول عمود <bdi dir="ltr">Δx</bdi> في الجدول؟</li>
+      <li>اجعلي السرعة <bdi dir="ltr">−5 m/s</bdi>: كيف تغيّر منحنى x–t؟ هل المساحة في منحنى v–t فوق محور الزمن أم تحته؟</li>
+      <li>غيّري موضع البداية: هل يتغير ميل منحنى x–t؟ (لا يتغير؛ الميل يعتمد على السرعة فقط.)</li>
+      <li>اجعلي السرعة <bdi dir="ltr">0</bdi>: أيّ منحنى يصبح خطًا أفقيًا؟</li>
+    </ul></div>
+
+  <h3><span class="n"><bdi dir="ltr">1.3</bdi></span>منحنى الموضع–الزمن <span class="tr">Konum–zaman grafiği</span></h3>
+  <div class="fig" data-fig="xt4"><canvas style="height:260px"></canvas>
+    <div class="cap"><b>الشكل <bdi dir="ltr">2</bdi>.</b> منحنيات x–t لأربعة أجسام. كلها خطوط مستقيمة، إذن كلها بسرعة ثابتة. الميل (<span class="tr">eğim</span>) يعطي السرعة: <b class="qx">A</b> ‎<bdi dir="ltr">+5 m/s</bdi>، <b class="qv">B</b> ‎<bdi dir="ltr">+2 m/s</bdi>، <b>C</b> <bdi dir="ltr">0 (</bdi>ساكن)، <b class="qa">D</b> ‎<bdi dir="ltr">−5 m/s</bdi>.</div></div>
+  <ul>
+    <li>منحنى x–t للحركة بسرعة ثابتة <strong>خط مستقيم مائل</strong>.</li>
+    <li><strong>الميل <bdi dir="ltr">=</bdi> السرعة</strong> (<span class="tr"><bdi dir="ltr">eğim = hız</bdi></span>): <span class="m"><bdi dir="ltr">v = Δx / Δt</bdi></span>. كلما كان الخط أشد انحدارًا كانت السرعة أكبر (A أسرع من B).</li>
+    <li>خط صاعد: حركة بالاتجاه (+). خط نازل (D): حركة بالاتجاه (−).</li>
+    <li>خط أفقي (C): الموضع لا يتغير، الجسم <strong>ساكن</strong> (<span class="tr">durgun</span>).</li>
+    <li>نقطة تقاطع خطين هي اللحظة التي يكون فيها الجسمان <strong>في الموضع نفسه</strong> (يلتقيان، <span class="tr">karşılaşma</span>).</li>
+  </ul>
+
+  <h3><span class="n"><bdi dir="ltr">1.4</bdi></span>منحنى السرعة–الزمن <span class="tr">Hız–zaman grafiği</span></h3>
+  <div class="fig" data-fig="vtarea"><canvas style="height:240px"></canvas>
+    <div class="cap"><b>الشكل <bdi dir="ltr">3</bdi>.</b> جسم يسير <bdi dir="ltr">4 s</bdi> بسرعة <bdi dir="ltr">+6 m/s</bdi> ثم <bdi dir="ltr">4 s</bdi> بسرعة <bdi dir="ltr">−3 m/s</bdi>. الإزاحة الكلية <span class="ltr"><bdi dir="ltr">= 24 + (−12) =</bdi> <b class="qx"><bdi dir="ltr">+12 m</bdi></b></span>، والمسافة المقطوعة <span class="ltr"><bdi dir="ltr">= 24 + 12 =</bdi> <b><bdi dir="ltr">36 m</bdi></b></span>.</div></div>
+  <ul>
+    <li>منحنى v–t للحركة بسرعة ثابتة <strong>خط موازٍ لمحور الزمن</strong>.</li>
+    <li><strong>المساحة تحت المنحنى <bdi dir="ltr">=</bdi> الإزاحة</strong> (<span class="tr"><bdi dir="ltr">alan = yer değiştirme</bdi></span>): <span class="m"><bdi dir="ltr">Δx = v·Δt</bdi></span> (مساحة مستطيل).</li>
+    <li>المساحة فوق المحور إزاحة (+)، وتحته إزاحة (−). للمسافة المقطوعة نجمع مقادير المساحات.</li>
+  </ul>
+
+  <h3><span class="n"><bdi dir="ltr">1.5</bdi></span>النموذج الرياضي (التعميم) <span class="tr">Matematiksel model</span></h3>
+  <div class="eqrow">
+    <div class="eqn"><span class="qv">v</span> <bdi dir="ltr">= Δ</bdi><span class="qx">x</span> <bdi dir="ltr">/ Δt</bdi><small>السرعة <bdi dir="ltr">=</bdi> الإزاحة ÷ الزمن</small></div>
+    <div class="eqn"><span class="qx">x</span> <bdi dir="ltr">= x₀ +</bdi> <span class="qv">v</span>·t<small>الموضع في أي لحظة</small></div>
+    <div class="eqn"><bdi dir="ltr">sürat = yol / Δt</bdi><small>المسافة <bdi dir="ltr">=</bdi> السرعة القياسية × الزمن</small></div>
+  </div>
+  <p>في الحركة بسرعة ثابتة لا يتغير مقدار السرعة ولا اتجاهها، ولذلك <span class="qa">التسارع صفر</span>. وبما أن الاتجاه لا يتغير، فالمسافة المقطوعة تساوي مقدار الإزاحة، والسرعة القياسية تساوي مقدار السرعة المتجهة.</p>
+  <div class="mini" data-mini="kmh"></div>
+  <p style="font-size:15px;color:var(--muted)">لماذا <bdi dir="ltr">3,6</bdi>؟ لأن <bdi dir="ltr">1 km/h = 1000 m ÷ 3600 s = 1/3,6 m/s</bdi>. للتحويل من km/h إلى m/s نقسم على <bdi dir="ltr">3,6</bdi>، ومن m/s إلى km/h نضرب في <bdi dir="ltr">3,6</bdi>.</p>
+  <div class="box turk"><span class="t">بالتركي — جمل جاهزة للامتحان</span>
+    <p>• Sabit hızlı harekette cisim eşit zaman aralıklarında eşit yer değiştirme yapar. • Konum–zaman grafiğinin eğimi hızı verir. • Hız–zaman grafiğinin altındaki alan yer değiştirmeyi verir. • <bdi dir="ltr">x = x₀ + v·t</bdi> • Sabit hızlı harekette ivme sıfırdır.</p></div>
+
+  <h3><span class="n"><bdi dir="ltr">1.6</bdi></span>أمثلة محلولة <span class="tr">Çözümlü örnekler</span></h3>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö1</bdi></span><span>جسم على طريق مستقيم كان عند <bdi dir="ltr">20 m</bdi> في الثانية <bdi dir="ltr">5</bdi>، وعند <bdi dir="ltr">60 m</bdi> في الثانية <bdi dir="ltr">15</bdi>. كم سرعته؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><bdi dir="ltr">Δx = 60 − 20 = 40 m</bdi></li><li><bdi dir="ltr">Δt = 15 − 5 = 10 s</bdi></li><li><bdi dir="ltr">v = Δx / Δt = 40 ÷ 10</bdi></li></ol><div class="res"><span class="ltr m"><bdi dir="ltr">v =</bdi> <span class="qv"><bdi dir="ltr">+4 m/s</bdi></span></span></div></div></details>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö2</bdi></span><span>منحنى السرعة–الزمن لسيارة خط أفقي عند <bdi dir="ltr">15 m/s</bdi>. كم إزاحتها بين <bdi dir="ltr">0</bdi> و <bdi dir="ltr">4 s</bdi>؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>الإزاحة <bdi dir="ltr">=</bdi> المساحة تحت المنحنى.</li><li>المساحة <bdi dir="ltr">= v·Δt = 15 · 4</bdi></li></ol><div class="res"><span class="ltr m"><bdi dir="ltr">Δx =</bdi> <span class="qx"><bdi dir="ltr">60 m</bdi></span></span></div></div></details>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö3</bdi></span><span>سيارة تسير بسرعة ثابتة <bdi dir="ltr">108 km/h</bdi>. كم مترًا تقطع في دقيقتين؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><bdi dir="ltr">v = 108 ÷ 3,6 = 30 m/s</bdi></li><li><bdi dir="ltr">t = 2 min = 120 s</bdi></li><li>المسافة <bdi dir="ltr">= v·t = 30 · 120</bdi></li></ol><div class="res"><span class="m"><bdi dir="ltr">3600 m</bdi></span> (أي <bdi dir="ltr">3,6 km</bdi>)</div></div></details>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö4</bdi></span><span>تنطلق السيارة A من <bdi dir="ltr">x = 0</bdi> بسرعة <bdi dir="ltr">+10 m/s</bdi>، وفي اللحظة نفسها تنطلق B من <bdi dir="ltr">x = 120 m</bdi> بسرعة <bdi dir="ltr">−5 m/s</bdi>. متى وأين تلتقيان؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>علاقتا الموضع: <span class="ltr">x<sub>A</sub> <bdi dir="ltr">= 0 + 10t</bdi></span> و <span class="ltr">x<sub>B</sub> <bdi dir="ltr">= 120 − 5t</bdi></span></li><li>عند الالتقاء يتساوى الموضعان: <span class="ltr"><bdi dir="ltr">10t = 120 − 5t → 15t = 120</bdi></span></li><li><span class="ltr"><bdi dir="ltr">t = 8 s, x = 10 · 8 = 80 m</bdi></span></li></ol><div class="res">تلتقيان بعد <bdi dir="ltr">8</bdi> ثوانٍ عند <bdi dir="ltr">x = 80 m (</bdi>نقطة تقاطع منحنيي x–t).</div></div></details>
+
+  <div class="box warn"><span class="t">أخطاء شائعة <span class="tr">Sık yapılan hatalar</span></span>
+    <ul>
+      <li><strong>السرعة المتجهة <span class="tr">hız</span> ≠ السرعة القياسية <span class="tr">sürat</span>.</strong> الأولى لها اتجاه والثانية لا.</li>
+      <li><strong>الإزاحة ≠ المسافة المقطوعة.</strong> إذا كان هناك رجوع تكون المسافة أكبر من الإزاحة.</li>
+      <li>في منحنى x–t السرعة يعطيها <strong>الميل</strong>، وفي منحنى v–t الإزاحة تعطيها <strong>المساحة</strong>. لا تخلطي بينهما.</li>
+      <li>ارتفاع الخط في منحنى x–t لا يعني أن الجسم أسرع؛ يعني أن موضعه أكبر. السرعة يحددها الميل.</li>
+      <li>وحّدي الوحدات قبل الحساب: لا نستخدم km/h مع الثانية معًا.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">باختصار · القسم <bdi dir="ltr">1</bdi> <span class="tr">Kısaca</span></span>
+    <ul>
+      <li>في الحركة بسرعة ثابتة يُزاح الجسم مسافات متساوية في أزمنة متساوية، والتسارع صفر.</li>
+      <li>منحنى x–t خط مائل وميله السرعة. منحنى v–t خط أفقي والمساحة تحته الإزاحة.</li>
+      <li>التعميم: <span class="m"><bdi dir="ltr">v = Δx / Δt</bdi></span> و <span class="m"><bdi dir="ltr">x = x₀ + v·t</bdi></span>.</li>
+      <li>إذا لم يتغير الاتجاه: المسافة <bdi dir="ltr">= |Δx|</bdi> و <bdi dir="ltr">sürat = |v|</bdi>.</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 2 ======================= -->
+<section class="section" id="ar-s2">
+  <div class="sec-head acc"><span class="num"><bdi dir="ltr">2</bdi></span><span class="code"><bdi dir="ltr">FİZ.10.1.2</bdi></span><h2>التسارع وتغيّر السرعة <span class="tr">İvme ve hız değişimi</span></h2></div>
+
+  <h3><span class="n"><bdi dir="ltr">2.1</bdi></span>تغيّر السرعة <bdi dir="ltr">Δv</bdi> <span class="tr">Hız değişimi</span></h3>
+  <p>إذا تغيّرت سرعة جسم نحسب التغيّر بطرح السرعة الابتدائية من النهائية: <span class="m"><bdi dir="ltr">Δv = v</bdi><sub>son</sub> − v<sub>ilk</sub></span>. وبما أن السرعة متجهة <strong>يجب أخذ الإشارات (الاتجاهات) في الحساب</strong>. الجسم الذي يعكس اتجاهه قد يبقى مقدار سرعته نفسه، لكن سرعته المتجهة تكون قد تغيّرت.</p>
+  <div class="tw"><table class="t">
+    <tr><th class="n">v<sub>ilk</sub></th><th class="n">v<sub>son</sub></th><th class="n"><bdi dir="ltr">Δv</bdi></th><th>ماذا حدث؟</th></tr>
+    <tr><td class="n"><bdi dir="ltr">+10</bdi></td><td class="n"><bdi dir="ltr">+30</bdi></td><td class="n hla"><bdi dir="ltr">+20</bdi></td><td>زادت سرعته بالاتجاه (+)</td></tr>
+    <tr><td class="n"><bdi dir="ltr">+30</bdi></td><td class="n"><bdi dir="ltr">+10</bdi></td><td class="n hla"><bdi dir="ltr">−20</bdi></td><td>نقصت سرعته بالاتجاه (+)</td></tr>
+    <tr><td class="n"><bdi dir="ltr">+10</bdi></td><td class="n"><bdi dir="ltr">−10</bdi></td><td class="n hla"><bdi dir="ltr">−20</bdi></td><td>عكس اتجاهه: المقدار نفسه لكن السرعة تغيّرت <bdi dir="ltr">20 m/s</bdi></td></tr>
+  </table></div>
+  <div class="mini" data-mini="dv"></div>
+
+  <h3><span class="n"><bdi dir="ltr">2.2</bdi></span>التسارع: تغيّر السرعة في وحدة الزمن <span class="tr">İvme</span></h3>
+  <p>لا يكفي أن نعرف أن السرعة تغيّرت؛ المهم أيضًا <em>في كم من الوقت</em>. دراجة تصل من <bdi dir="ltr">0</bdi> إلى <bdi dir="ltr">10 m/s</bdi> في <bdi dir="ltr">5 s</bdi> تختلف كثيرًا عن سيارة سباق تصل إليها في <bdi dir="ltr">1 s</bdi>. هذا الفرق نعبّر عنه بـ <span class="qa">التسارع a</span> (<span class="tr">ivme</span>):</p>
+  <div class="eqn"><span class="qa">a</span> <bdi dir="ltr">= Δ</bdi><span class="qv">v</span> <bdi dir="ltr">/ Δt = (v</bdi><sub>son</sub> − v<sub>ilk</sub><bdi dir="ltr">) / Δt</bdi><small>الوحدة: <bdi dir="ltr">(m/s) ÷ s = m/s² ·</bdi> كمية متجهة · اتجاهها دائمًا اتجاه <bdi dir="ltr">Δv</bdi></small></div>
+  <p><strong>مثال على الاستقراء.</strong> نقيس سرعة سيارة كل ثانية ونسجلها في جدول:</p>
+  <div class="tw"><table class="t">
+    <tr><th>t (s)</th><td class="n"><bdi dir="ltr">0</bdi></td><td class="n"><bdi dir="ltr">1</bdi></td><td class="n"><bdi dir="ltr">2</bdi></td><td class="n"><bdi dir="ltr">3</bdi></td><td class="n"><bdi dir="ltr">4</bdi></td></tr>
+    <tr><th>v (m/s)</th><td class="n"><bdi dir="ltr">2</bdi></td><td class="n"><bdi dir="ltr">5</bdi></td><td class="n"><bdi dir="ltr">8</bdi></td><td class="n"><bdi dir="ltr">11</bdi></td><td class="n"><bdi dir="ltr">14</bdi></td></tr>
+    <tr><th><bdi dir="ltr">Δv / 1 s</bdi></th><td class="n">—</td><td class="n hla"><bdi dir="ltr">+3</bdi></td><td class="n hla"><bdi dir="ltr">+3</bdi></td><td class="n hla"><bdi dir="ltr">+3</bdi></td><td class="n hla"><bdi dir="ltr">+3</bdi></td></tr>
+  </table></div>
+  <p><strong>النمط:</strong> السرعة تزيد بالمقدار نفسه كل ثانية، <bdi dir="ltr">3 m/s</bdi>. <strong>التعميم:</strong> هذه الزيادة الثابتة هي التسارع: <bdi dir="ltr">a = 3 m/s²</bdi>. أي أن قول «تسارعه <bdi dir="ltr">3 m/s²</bdi>» يعني «سرعته تتغير <bdi dir="ltr">3 m/s</bdi> في كل ثانية». وإذا كان التسارع ثابتًا تتغير السرعة بانتظام:</p>
+  <div class="eqn"><span class="qv">v</span> <bdi dir="ltr">= v₀ +</bdi> <span class="qa">a</span>·t<small>إعادة ترتيب العلاقة <bdi dir="ltr">a = Δv/Δt (</bdi>حيث v₀ السرعة الابتدائية)</small></div>
+
+  <h3><span class="n"><bdi dir="ltr">2.3</bdi></span>مختبر التسارع</h3>
+  <div class="sim" data-sim="acc"></div>
+  <div class="box think"><span class="t">جرّبي في المختبر وفكّري</span>
+    <ul>
+      <li>اجعلي <bdi dir="ltr">v₀ = +2</bdi> و <bdi dir="ltr">a = +3</bdi>. هل عمود <bdi dir="ltr">Δv</bdi> في الجدول ثابت؟ كم ميل منحنى v–t؟</li>
+      <li>اجعلي <bdi dir="ltr">v₀ = +8</bdi> و <bdi dir="ltr">a = −2</bdi>. ماذا تفعل السيارة في الثانية <bdi dir="ltr">4</bdi>؟ وفي أي اتجاه تتحرك بعدها؟ ماذا تقول لافتة الحالة؟</li>
+      <li>اجعلي <bdi dir="ltr">v₀ = −6</bdi> و <bdi dir="ltr">a = −2</bdi>. التسارع سالب، فهل السيارة تتباطأ أم تتسارع؟</li>
+      <li>قارني المساحة الملونة في منحنى a–t بالفرق بين السرعة الأخيرة والأولى في الجدول.</li>
+    </ul></div>
+
+  <h3><span class="n"><bdi dir="ltr">2.4</bdi></span>هل تزيد السرعة أم تنقص؟ <span class="tr">Hızlanma / yavaşlama</span></h3>
+  <p>لا نحكم من إشارة التسارع وحدها؛ <strong>نقارن اتجاه السرعة باتجاه التسارع</strong>.</p>
+  <div class="signs">
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">تزيد السرعة <span class="tr">hızlanır</span></div><small class="m">v (+), a (+)</small></div>
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">تزيد السرعة <span class="tr">hızlanır</span></div><small class="m">v (−), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">تنقص السرعة <span class="tr">yavaşlar</span></div><small class="m">v (+), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">تنقص السرعة <span class="tr">yavaşlar</span></div><small class="m">v (−), a (+)</small></div>
+  </div>
+  <p><strong>القاعدة:</strong> إذا كان v و a بالاتجاه نفسه (الإشارة نفسها) تزيد سرعة الجسم، وإذا كانا متعاكسين تنقص. وإذا كان <bdi dir="ltr">a = 0</bdi> فالسرعة ثابتة. الجسم الذي تتناقص سرعته يتوقف لحظة <bdi dir="ltr">(v = 0)</bdi>، وإذا استمر التسارع يبدأ بالتسارع في الاتجاه المعاكس.</p>
+
+  <h3><span class="n"><bdi dir="ltr">2.5</bdi></span>التسارع وتغيّر السرعة في المنحنيات</h3>
+  <div class="figs2">
+    <div class="fig" data-fig="vtslope"><canvas style="height:220px"></canvas><div class="cap"><b>الشكل <bdi dir="ltr">4</bdi>.</b> <b>ميل</b> منحنى v–t يعطي <b>التسارع</b>: <bdi dir="ltr">a = Δv/Δt</bdi>. منحنى v–t مستقيم ← تسارع ثابت.</div></div>
+    <div class="fig" data-fig="atarea"><canvas style="height:220px"></canvas><div class="cap"><b>الشكل <bdi dir="ltr">5</bdi>.</b> <b>المساحة</b> تحت منحنى a–t تعطي <b>تغيّر السرعة</b>: <bdi dir="ltr">Δv = a·Δt</bdi>.</div></div>
+  </div>
+  <ul>
+    <li>في الحركة بتسارع ثابت: منحنى v–t خط مائل، ومنحنى a–t خط موازٍ لمحور الزمن.</li>
+    <li>إذا صعد منحنى v–t فإن a (+)، وإذا نزل فإن a (−)، وإذا كان أفقيًا فإن <bdi dir="ltr">a = 0</bdi>.</li>
+    <li>المساحة تحت منحنى v–t تبقى الإزاحة (يتوسع هذا في الهدف التالي <bdi dir="ltr">FİZ.10.1.3</bdi>).</li>
+  </ul>
+  <div class="box turk"><span class="t">بالتركي — جمل جاهزة للامتحان</span>
+    <p>• İvme, birim zamandaki hız değişimidir: <bdi dir="ltr">a = Δv / Δt, birimi m/s²</bdi>. • İvmenin yönü hız değişiminin yönüdür. • Hız ve ivme aynı yönlü ise cisim hızlanır, zıt yönlü ise yavaşlar. • Hız–zaman grafiğinin eğimi ivmeyi verir. • İvme–zaman grafiğinin altındaki alan hız değişimini verir. • <bdi dir="ltr">v = v₀ + a·t</bdi></p></div>
+
+  <h3><span class="n"><bdi dir="ltr">2.6</bdi></span>أمثلة محلولة <span class="tr">Çözümlü örnekler</span></h3>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö5</bdi></span><span>دراجة نارية تبدأ من السكون وتزيد سرعتها بانتظام لتصل إلى <bdi dir="ltr">20 m/s</bdi> خلال <bdi dir="ltr">4 s</bdi>. كم تسارعها؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><span class="ltr">v<sub>ilk</sub> <bdi dir="ltr">= 0, v</bdi><sub>son</sub> <bdi dir="ltr">= 20 m/s, Δt = 4 s</bdi></span></li><li><bdi dir="ltr">Δv = 20 − 0 = 20 m/s</bdi></li><li><bdi dir="ltr">a = 20 ÷ 4</bdi></li></ol><div class="res"><span class="ltr m"><bdi dir="ltr">a =</bdi> <span class="qa"><bdi dir="ltr">5 m/s²</bdi></span></span>: تزيد السرعة <bdi dir="ltr">5 m/s</bdi> كل ثانية.</div></div></details>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö6</bdi></span><span>شاحنة سرعتها <bdi dir="ltr">30 m/s</bdi> تضغط على المكابح فتصبح سرعتها <bdi dir="ltr">10 m/s</bdi> خلال <bdi dir="ltr">5 s</bdi>. كم تسارعها؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><bdi dir="ltr">Δv = 10 − 30 = −20 m/s</bdi></li><li><bdi dir="ltr">a = −20 ÷ 5 = −4 m/s²</bdi></li><li>v (+) و a (−): متعاكسان ← تنقص السرعة.</li></ol><div class="res"><span class="ltr m"><bdi dir="ltr">a =</bdi> <span class="qa"><bdi dir="ltr">−4 m/s²</bdi></span></span>، حركة متباطئة بانتظام (<span class="tr">düzgün yavaşlayan</span>).</div></div></details>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö7</bdi></span><span>سيارة تسير غربًا بسرعة <bdi dir="ltr">15 m/s</bdi> وتصل خلال <bdi dir="ltr">3 s</bdi> إلى <bdi dir="ltr">30 m/s</bdi> بالاتجاه نفسه. إذا كان الغرب (−) فكم التسارع؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><span class="ltr">v<sub>ilk</sub> <bdi dir="ltr">= −15 m/s, v</bdi><sub>son</sub> <bdi dir="ltr">= −30 m/s</bdi></span></li><li><bdi dir="ltr">Δv = (−30) − (−15) = −15 m/s</bdi></li><li><bdi dir="ltr">a = −15 ÷ 3 = −5 m/s²</bdi></li></ol><div class="res"><span class="ltr m"><bdi dir="ltr">a =</bdi> <span class="qa"><bdi dir="ltr">−5 m/s²</bdi></span></span> (نحو الغرب). التسارع سالب لكن السيارة <strong>تزيد سرعتها</strong> لأن v و a بالاتجاه نفسه.</div></div></details>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö8</bdi></span><span>سيارة فيها <bdi dir="ltr">v₀ = +12 m/s</bdi> و <bdi dir="ltr">a = −3 m/s²</bdi>. بعد كم ثانية تتوقف؟ وكم سرعتها في الثانية <bdi dir="ltr">6</bdi>؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><span class="ltr"><bdi dir="ltr">v = v₀ + a·t → 0 = 12 + (−3)·t → t = 4 s</bdi></span></li><li><span class="ltr"><bdi dir="ltr">t = 6 s</bdi>: <bdi dir="ltr">v = 12 + (−3)·6 = −6 m/s</bdi></span></li></ol><div class="res">تتوقف في الثانية <bdi dir="ltr">4</bdi>؛ وفي الثانية <bdi dir="ltr">6</bdi> تسير بالاتجاه المعاكس بسرعة <span class="qv m"><bdi dir="ltr">−6 m/s</bdi></span> (وأصبحت سرعتها تزيد).</div></div></details>
+  <details class="ex"><summary><span class="k"><bdi dir="ltr">Ö9</bdi></span><span>منحنى a–t يبين <bdi dir="ltr">a = 2 m/s²</bdi> بين <bdi dir="ltr">0</bdi> و <bdi dir="ltr">5 s</bdi>. إذا كانت السرعة الابتدائية <bdi dir="ltr">3 m/s</bdi> فكم السرعة عند <bdi dir="ltr">5 s</bdi>؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>المساحة <bdi dir="ltr">= Δv = 2 · 5 = 10 m/s</bdi></li><li><bdi dir="ltr">v = v₀ + Δv = 3 + 10</bdi></li></ol><div class="res"><span class="ltr m"><bdi dir="ltr">v =</bdi> <span class="qv"><bdi dir="ltr">13 m/s</bdi></span></span></div></div></details>
+
+  <div class="box warn"><span class="t">أخطاء شائعة <span class="tr">Sık yapılan hatalar</span></span>
+    <ul>
+      <li><strong>«إذا كانت السرعة كبيرة فالتسارع كبير»: خطأ.</strong> طائرة تسير بسرعة ثابتة <bdi dir="ltr">900 km/h</bdi> تسارعها صفر.</li>
+      <li><strong>«التسارع السالب يعني تباطؤًا»: ليس دائمًا.</strong> الجسم الذي تزيد سرعته بالاتجاه (−) تسارعه (−) أيضًا. قارني v مع a.</li>
+      <li><strong>«إذا كان <bdi dir="ltr">v = 0</bdi> فإن <bdi dir="ltr">a = 0</bdi>»: خطأ.</strong> الجسم الذي يعكس اتجاهه يقف لحظة لكن تسارعه ليس صفرًا.</li>
+      <li>لا تنسي الإشارات عند حساب <bdi dir="ltr">Δv</bdi>: الانتقال من <bdi dir="ltr">+10</bdi> إلى <bdi dir="ltr">−10</bdi> يعطي <bdi dir="ltr">Δv = −20 m/s</bdi> وليس صفرًا.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">باختصار · القسم <bdi dir="ltr">2</bdi> <span class="tr">Kısaca</span></span>
+    <ul>
+      <li>تغيّر السرعة <span class="ltr m"><bdi dir="ltr">Δv = v</bdi><sub>son</sub> − v<sub>ilk</sub></span> (متجه). التسارع هو تغيّر السرعة في وحدة الزمن: <bdi dir="ltr">a = Δv/Δt</bdi> بوحدة m/s².</li>
+      <li>اتجاه التسارع هو اتجاه <bdi dir="ltr">Δv</bdi>. في التسارع الثابت تتغير السرعة بمقدار a كل ثانية: <bdi dir="ltr">v = v₀ + a·t</bdi>.</li>
+      <li>v و a بالاتجاه نفسه ← تزيد السرعة؛ متعاكسان ← تنقص؛ <bdi dir="ltr">a = 0</bdi> ← سرعة ثابتة.</li>
+      <li>ميل منحنى v–t هو التسارع، والمساحة تحت منحنى a–t هي تغيّر السرعة.</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 3 ======================= -->
+<section class="section" id="ar-s3">
+  <div class="sec-head q"><span class="num"><bdi dir="ltr">3</bdi></span><span class="code">TEKRAR</span><h2>اختبري نفسك <span class="tr">Kendini sına</span></h2></div>
+  <p>اضغطي على خيار؛ يظهر الجواب وشرحه فورًا. النتيجة في الأسفل.</p>
+  <div class="quiz" data-quiz></div>
+</section>
+
+<!-- ======================= 4 ======================= -->
+<section class="section" id="ar-s4">
+  <div class="sec-head g"><span class="num"><bdi dir="ltr">4</bdi></span><span class="code">ÖZET KART</span><h2>بطاقة القوانين والمصطلحات</h2></div>
+  <div class="fcard">
+    <div><h4>حركة بسرعة ثابتة <bdi dir="ltr">(a = 0)</bdi></h4><div class="eqn"><bdi dir="ltr">v = Δx / Δt</bdi></div><div class="eqn"><bdi dir="ltr">x = x₀ + v·t</bdi></div></div>
+    <div><h4>المنحنيات</h4><div class="eqn">x–<bdi dir="ltr">t eğimi = v</bdi></div><div class="eqn">v–<bdi dir="ltr">t alanı = Δx</bdi></div></div>
+    <div><h4>تغيّر السرعة والتسارع</h4><div class="eqn"><bdi dir="ltr">Δv = v</bdi><sub>son</sub> − v<sub>ilk</sub></div><div class="eqn"><bdi dir="ltr">a = Δv / Δt</bdi></div></div>
+    <div><h4>تسارع ثابت</h4><div class="eqn"><bdi dir="ltr">v = v₀ + a·t</bdi></div><div class="eqn">v–<bdi dir="ltr">t eğimi = a · a</bdi>–<bdi dir="ltr">t alanı = Δv</bdi></div></div>
+  </div>
+  <h3>قاموس المصطلحات تركي ↔ عربي</h3>
+  <div class="tw"><table class="gl">
+    <tr><th>Terim (تركي)</th><th>المعنى</th><th>الشرح</th></tr>
+    <tr><td class="term">Referans noktası</td><td>النقطة المرجعية</td><td>نقطة الصفر التي يُقاس منها الموضع.</td></tr>
+    <tr><td class="term">Konum (x)</td><td>الموضع</td><td>البعد الموجّه للجسم عن النقطة المرجعية.</td></tr>
+    <tr><td class="term"><bdi dir="ltr">Yer değiştirme (Δx)</bdi></td><td>الإزاحة</td><td>الموضع النهائي − الموضع الابتدائي؛ متجهة.</td></tr>
+    <tr><td class="term">Alınan yol</td><td>المسافة المقطوعة</td><td>طول المسار كله؛ قياسية.</td></tr>
+    <tr><td class="term">Hız (v)</td><td>السرعة المتجهة</td><td>الإزاحة في وحدة الزمن؛ m/s.</td></tr>
+    <tr><td class="term">Sürat</td><td>السرعة القياسية</td><td>المسافة المقطوعة في وحدة الزمن؛ m/s.</td></tr>
+    <tr><td class="term">Sabit hızlı hareket</td><td>حركة بسرعة ثابتة</td><td>إزاحات متساوية في أزمنة متساوية؛ التسارع صفر.</td></tr>
+    <tr><td class="term">Skaler / vektörel</td><td>قياسية / متجهة</td><td>بلا اتجاه / لها اتجاه.</td></tr>
+    <tr><td class="term">Eğim</td><td>الميل</td><td>نسبة التغير العمودي إلى الأفقي في المنحنى.</td></tr>
+    <tr><td class="term">Alan</td><td>المساحة</td><td>المساحة بين المنحنى ومحور الزمن.</td></tr>
+    <tr><td class="term"><bdi dir="ltr">Hız değişimi (Δv)</bdi></td><td>تغيّر السرعة</td><td>السرعة النهائية − الابتدائية؛ متجه.</td></tr>
+    <tr><td class="term">İvme (a)</td><td>التسارع</td><td>تغيّر السرعة في وحدة الزمن؛ m/s².</td></tr>
+    <tr><td class="term">Hızlanan hareket</td><td>حركة متسارعة (تزيد سرعتها)</td><td>v و a بالاتجاه نفسه.</td></tr>
+    <tr><td class="term">Yavaşlayan hareket</td><td>حركة متباطئة (تنقص سرعتها)</td><td>v و a متعاكسان.</td></tr>
+    <tr><td class="term">Durgun</td><td>ساكن</td><td><bdi dir="ltr">v = 0</bdi> ولا يتغير موضعه.</td></tr>
+    <tr><td class="term">Tümevarımsal akıl yürütme</td><td>الاستدلال الاستقرائي</td><td>الوصول من الملاحظات والبيانات إلى قاعدة عامة.</td></tr>
+    <tr><td class="term">Gözlem · Örüntü · Genelleme</td><td>ملاحظة · نمط · تعميم</td><td>مراحل الاستقراء.</td></tr>
+  </table></div>
+</section>
+<footer class="foot">فيزياء الصف العاشر · نموذج المعارف <span class="tr">Türkiye Yüzyılı Maarif Modeli</span> · ملخص للهدفين <bdi dir="ltr">FİZ.10.1.1</bdi> و <bdi dir="ltr">FİZ.10.1.2</bdi>. المختبرات في الصفحة نماذج مبسطة لتكتشفي العلاقات بنفسك.</footer>
+
+  </div>
+  <div class="lang" id="tr" lang="tr" dir="ltr" hidden>
+<section class="hero" id="tr-top">
+  <div class="eyebrow">10. Sınıf Fizik · 1. Tema: Kuvvet ve Hareket · Kolay anlatım</div>
+  <h1>Sabit Hız ve İvme</h1>
+  <p class="lede">Bir araba her saniye aynı yolu mu gidiyor, yoksa her saniye biraz daha fazla mı? Bu sayfada bunu birlikte bulacağız. Önce bakacağız, sonra not alacağız, sonra kuralı kendimiz çıkaracağız.</p>
+  <div class="strobe">
+    <div class="row"><div class="lab">Sabit hızlı hareket<small>her saniye aynı aralık</small></div><svg-slot></svg-slot></div>
+    <div class="row"><div class="lab">Hızlanan hareket<small>aralık her saniye büyüyor</small></div><svg-slot></svg-slot></div>
+    <div class="cap">Her nokta, arabanın 1 saniyede bir çekilmiş fotoğrafı gibi. Altındaki sayı kaçıncı saniye olduğunu gösterir.</div>
+  </div>
+  <div class="outcomes">
+    <div class="oc"><span class="code">FİZ.10.1.1</span><span class="name">Yatay doğrultuda sabit hızlı hareket ile ilgili tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>Sabit hızla giden bir cismin konumunu, yer değiştirmesini, hızını ve zamanı gözlemler.</li><li>Grafiklerden hız, sürat, yer değiştirme ve yol için formülü bulur.</li><li>Bu formülleri genelleştirir.</li></ol>
+      <span class="sub-easy"><b>Yani:</b> “Aynı hızla giden bir şeyi izle, not al, kuralı bul.”</span></div>
+    <div class="oc acc"><span class="code">FİZ.10.1.2</span><span class="name">İvme ve hız değişimi arasındaki ilişkiye yönelik tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>İvme ile hız değişimi arasındaki ilişkiyi keşfeder.</li><li>Bu ilişkiyi genelleştirir.</li></ol>
+      <span class="sub-easy"><b>Yani:</b> “Hız değişiyorsa, ne kadar çabuk değiştiğini bul.”</span></div>
+  </div>
+  <div class="howto"><strong>Nasıl çalışmalı?</strong> Her bölümde önce “laboratuvar”daki arabayı çalıştır, sonra okumaya geç. Mavi <b>Basitçe</b> kutuları konuyu en kısa haliyle anlatır. Çözümlü örneklerde önce kendin dene, sonra “Çözümü göster”e bas. Renkler hep aynı: <span class="qx">konum x</span>, <span class="qv">hız v</span>, <span class="qa">ivme a</span>.</div>
+</section>
+
+<!-- ======================= 1 ======================= -->
+<section class="section" id="tr-s1">
+  <div class="sec-head"><span class="num">1</span><span class="code">FİZ.10.1.1</span><h2>Sabit hızlı hareket</h2></div>
+
+  <h3><span class="n">1.1</span>Önce kelimeleri tanıyalım</h3>
+  <p>“Araba nerede?” diye sorsam, “okulun kapısından 30 metre sağda” dersin. Burada okulun kapısı <strong>referans noktası</strong>dır, yani ölçmeye başladığımız yer (0 noktası). Arabanın bu noktaya göre yeri de <span class="qx">konum (x)</span>dur. Sağ taraf (+), sol taraf (−) olur.</p>
+  <div class="tw"><table class="t stack">
+    <tr><th>Kelime</th><th>Ne demek?</th><th>Günlük hayattan</th></tr>
+    <tr><td><strong>Yer değiştirme (Δx)</strong></td><td>Nereden başladın, nerede bittin? Aradaki fark: <span class="m">Δx = x<sub>son</sub> − x<sub>ilk</sub></span>. Yönü vardır.</td><td>Evden bakkala gidip geri döndün: yer değiştirmen <b>0</b>.</td></tr>
+    <tr><td><strong>Alınan yol</strong></td><td>Toplam kaç metre yürüdün? Yönü yoktur, hep pozitiftir.</td><td>Bakkal 200 m uzaktaysa gidiş-dönüş yolun <b>400 m</b>.</td></tr>
+    <tr><td><strong>Sürat</strong></td><td>Ne kadar hızlı? (Yön yok.)</td><td>Arabanın göstergesindeki sayı: “60 km/h”.</td></tr>
+    <tr><td><strong>Hız (v)</strong></td><td>Ne kadar hızlı ve <b>hangi yöne</b>?</td><td>“Doğuya doğru 60 km/h”.</td></tr>
+  </table></div>
+  <div class="fig" data-fig="walk"><canvas style="height:150px"></canvas>
+    <div class="cap"><b>Şekil 1.</b> Bir öğrenci 0’dan +8 m’ye yürüyor, sonra 5 m geri dönüp +3 m’de duruyor. Toplam yürüdüğü yol = 8 + 5 = <b>13 m</b>. Ama başladığı yere göre sadece <b class="qx">3 m</b> ileride: yer değiştirmesi <b class="qx">+3 m</b>.</div></div>
+  <div class="box easy"><span class="t">Basitçe</span><p><b>Yol</b> = ne kadar yürüdüğün. <b>Yer değiştirme</b> = başladığın yerden ne kadar uzaklaştığın. Hiç geri dönmezsen ikisi aynı olur. <b>Skaler</b> = sadece sayı (zaman, yol, sürat). <b>Vektörel</b> = sayı + yön (konum, yer değiştirme, hız, ivme).</p></div>
+
+  <h3><span class="n">1.2</span>Bak, yaz, kuralı bul (tümevarım)</h3>
+  <p><strong>Tümevarımsal akıl yürütme</strong> zor bir isim ama yaptığımız şey basit: birkaç örneğe bakıp ortak kuralı bulmak. Bir dedektif gibi düşün:</p>
+  <ol class="steps">
+    <li><span><strong>Bak (gözlem):</strong> arabanın her saniye nerede olduğunu gör.</span></li>
+    <li><span><strong>Yaz (tablo):</strong> zamanı (t) ve konumu (x) bir tabloya yaz.</span></li>
+    <li><span><strong>Çiz (grafik):</strong> bu sayıları bir grafiğe koy.</span></li>
+    <li><span><strong>Fark et (örüntü):</strong> “Her saniye hep 5 metre gidiyor!”</span></li>
+    <li><span><strong>Kuralı yaz (genelleme):</strong> <span class="m">x = x₀ + v·t</span>.</span></li>
+  </ol>
+  <div class="sim" data-sim="cv"></div>
+  <div class="box think"><span class="t">Dene ve düşün</span>
+    <ul>
+      <li>Hızı +5 yap ve başlat. Noktalar arası mesafe hep aynı mı? Tablodaki Δx sütununa bak.</li>
+      <li>Hızı −5 yap. Araba hangi yöne gitti? Grafik nasıl değişti?</li>
+      <li>Başlangıç yerini değiştir. Çizginin dikliği değişti mi? (Değişmez! Diklik sadece hıza bağlı.)</li>
+      <li>Hızı 0 yap. Hangi grafik düz yatay çizgi oldu?</li>
+    </ul></div>
+  <div class="box easy"><span class="t">Basitçe</span><p>Hız sabitleyici açık bir otobüs düşün: <b>her saniye aynı mesafeyi</b> gider. İşte buna <b>sabit hızlı hareket</b> denir. Hızı hiç değişmediği için <span class="qa">ivmesi sıfırdır</span>.</p></div>
+
+  <h3><span class="n">1.3</span>Konum–zaman (x–t) grafiği</h3>
+  <div class="fig" data-fig="xt4"><canvas style="height:260px"></canvas>
+    <div class="cap"><b>Şekil 2.</b> Dört arabanın x–t grafiği. Hepsi düz çizgi, yani hepsi sabit hızla gidiyor. Çizgi ne kadar dikse araba o kadar hızlı: <b class="qx">A</b> +5 m/s, <b class="qv">B</b> +2 m/s, <b>C</b> 0 (duruyor), <b class="qa">D</b> −5 m/s.</div></div>
+  <ul>
+    <li>Sabit hızda x–t grafiği <strong>düz, eğik bir çizgidir</strong>.</li>
+    <li><strong>Çizginin eğimi (dikliği) = hız.</strong> Hesabı: <span class="m">v = Δx / Δt</span> (“kaç metre gitti ÷ kaç saniyede”).</li>
+    <li>Daha dik çizgi = daha hızlı. A, B’den hızlıdır.</li>
+    <li>Yukarı çıkan çizgi: (+) yöne gidiyor. Aşağı inen (D): (−) yöne gidiyor.</li>
+    <li>Yatay çizgi (C): yeri hiç değişmiyor, araba <strong>duruyor</strong>.</li>
+    <li>İki çizgi kesişiyorsa, o anda iki araba <strong>aynı yerde</strong>dir (karşılaşırlar).</li>
+  </ul>
+
+  <h3><span class="n">1.4</span>Hız–zaman (v–t) grafiği</h3>
+  <div class="fig" data-fig="vtarea"><canvas style="height:240px"></canvas>
+    <div class="cap"><b>Şekil 3.</b> Araba 4 s boyunca +6 m/s ile ileri, sonra 4 s boyunca −3 m/s ile geri gidiyor. Yer değiştirme = 24 − 12 = <b class="qx">+12 m</b>. Toplam yol = 24 + 12 = <b>36 m</b>.</div></div>
+  <ul>
+    <li>Sabit hızda v–t grafiği <strong>yatay düz bir çizgidir</strong> (hız değişmiyor ki).</li>
+    <li><strong>Çizginin altındaki alan = yer değiştirme.</strong> Bu bir dikdörtgen: alan = en × boy = <span class="m">v × t</span>.</li>
+    <li>Alan eksenin üstündeyse (+), altındaysa (−) yöne gitmiştir. Toplam yol için hepsini pozitif alıp toplarız.</li>
+  </ul>
+  <div class="box easy"><span class="t">Basitçe</span><p>İki sihirli cümle: <b>x–t grafiğinde eğime bak → hızı bulursun.</b> <b>v–t grafiğinde alana bak → yer değiştirmeyi bulursun.</b></p></div>
+
+  <h3><span class="n">1.5</span>Kural (formül)</h3>
+  <div class="eqrow">
+    <div class="eqn"><span class="qv">v</span> = Δ<span class="qx">x</span> / Δt<small>hız = gidilen yer ÷ geçen süre</small></div>
+    <div class="eqn"><span class="qx">x</span> = x₀ + <span class="qv">v</span>·t<small>şimdiki yer = başlangıç + hız × süre</small></div>
+    <div class="eqn">sürat = yol / Δt<small>yol = sürat × süre</small></div>
+  </div>
+  <p><b>Örnek:</b> Araba −20 m’den başladı, hızı +5 m/s. 6 saniye sonra nerede? x = −20 + 5·6 = <b>10 m</b>.</p>
+  <p><b>Birim çevirme:</b> km/h’i m/s’ye çevirmek için <b>3,6’ya böl</b>. Tersi için 3,6 ile çarp. Kaydırıcıyla dene:</p>
+  <div class="mini" data-mini="kmh"></div>
+  <p class="muted" style="font-size:14.5px">Neden 3,6? Çünkü 1 saatte 3600 saniye, 1 km’de 1000 metre var: 3600 ÷ 1000 = 3,6.</p>
+
+  <h3><span class="n">1.6</span>Çözümlü örnekler</h3>
+  <details class="ex"><summary><span class="k">Ö1</span><span>Bir araba 5. saniyede 20 m’de, 15. saniyede 60 m’de. Hızı kaç m/s?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Kaç metre gitti? Δx = 60 − 20 = 40 m</li><li>Kaç saniyede? Δt = 15 − 5 = 10 s</li><li>Hız = 40 ÷ 10</li></ol><div class="res">v = <span class="qv">+4 m/s</span></div></div></details>
+  <details class="ex"><summary><span class="k">Ö2</span><span>v–t grafiği 15 m/s’de yatay. 0–4 s arasında araba kaç metre yer değiştirdi?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Yer değiştirme = altta kalan dikdörtgenin alanı.</li><li>Alan = 15 × 4</li></ol><div class="res">Δx = <span class="qx">60 m</span></div></div></details>
+  <details class="ex"><summary><span class="k">Ö3</span><span>108 km/h sabit hızla giden araba 2 dakikada kaç metre gider?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Önce m/s’ye çevir: 108 ÷ 3,6 = 30 m/s</li><li>2 dakika = 120 saniye</li><li>Yol = 30 × 120</li></ol><div class="res">3600 m (3,6 km)</div></div></details>
+  <details class="ex"><summary><span class="k">Ö4</span><span>A arabası 0’dan +10 m/s ile, B arabası aynı anda 120 m’den −5 m/s ile yola çıkıyor (birbirlerine doğru). Ne zaman, nerede karşılaşırlar?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>A’nın yeri: x = 10t. B’nin yeri: x = 120 − 5t</li><li>Karşılaşınca aynı yerdeler: 10t = 120 − 5t → 15t = 120</li><li>t = 8 s, yer: 10 × 8 = 80 m</li></ol><div class="res">8. saniyede, 80 m’de karşılaşırlar.</div></div></details>
+
+  <div class="box warn"><span class="t">Dikkat! Sık yapılan hatalar</span>
+    <ul>
+      <li><b>Hız ve sürat aynı şey değil.</b> Hızın yönü var, süratin yok.</li>
+      <li><b>Yol ve yer değiştirme aynı şey değil.</b> Geri dönersen yol daha büyük olur.</li>
+      <li>x–t grafiğinde <b>eğim</b>, v–t grafiğinde <b>alan</b> kullanılır. Karıştırma!</li>
+      <li>x–t grafiğinde çizginin <b>yukarıda</b> olması hızlı demek değil, <b>uzakta</b> demek. Hızı <b>diklik</b> söyler.</li>
+      <li>Hesaptan önce birimleri aynı yap: km/h ile saniyeyi birlikte kullanma.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">Kısaca · Bölüm 1</span>
+    <ul>
+      <li>Sabit hızda araba her saniye aynı mesafeyi gider; ivmesi sıfırdır.</li>
+      <li>x–t grafiği eğik düz çizgi → eğimi hız. v–t grafiği yatay çizgi → alanı yer değiştirme.</li>
+      <li>Formüller: <span class="m">v = Δx / Δt</span> ve <span class="m">x = x₀ + v·t</span>.</li>
+      <li>Geri dönüş yoksa: yol = yer değiştirme, sürat = hız (büyüklük olarak).</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 2 ======================= -->
+<section class="section" id="tr-s2">
+  <div class="sec-head acc"><span class="num">2</span><span class="code">FİZ.10.1.2</span><h2>İvme ve hız değişimi</h2></div>
+
+  <h3><span class="n">2.1</span>Hız ne kadar değişti? (Δv)</h3>
+  <p>Hız değişimini bulmak kolay: <b>son hızdan ilk hızı çıkar.</b> <span class="m">Δv = v<sub>son</sub> − v<sub>ilk</sub></span>. Tek dikkat edeceğin şey <b>işaretler</b>, çünkü hızın yönü var.</p>
+  <div class="tw"><table class="t">
+    <tr><th class="n">ilk hız</th><th class="n">son hız</th><th class="n">Δv</th><th>Ne oldu?</th></tr>
+    <tr><td class="n">+10</td><td class="n">+30</td><td class="n hla">+20</td><td>İleri giderken hızlandı.</td></tr>
+    <tr><td class="n">+30</td><td class="n">+10</td><td class="n hla">−20</td><td>İleri giderken yavaşladı.</td></tr>
+    <tr><td class="n">+10</td><td class="n">−10</td><td class="n hla">−20</td><td>Geri döndü! Sürat aynı (10) ama hız 20 m/s değişti.</td></tr>
+  </table></div>
+  <p>Kaydırıcılarla kendin dene. Özellikle bir hızı (+), diğerini (−) yap:</p>
+  <div class="mini" data-mini="dv"></div>
+
+  <h3><span class="n">2.2</span>İvme nedir?</h3>
+  <p>Bisikletle 0’dan 10 m/s’ye çıkmak 5 saniye sürsün. Bir yarış arabası aynı şeyi 1 saniyede yapsın. İkisinin de hızı 10 m/s değişti, ama yarış arabası <b>çok daha çabuk</b> değiştirdi. İşte <span class="qa">ivme (a)</span> bu “çabukluğu” ölçer:</p>
+  <div class="eqn"><span class="qa">a</span> = Δ<span class="qv">v</span> / Δt<small>ivme = hız değişimi ÷ geçen süre · birimi m/s² · yönü vardır</small></div>
+  <div class="box easy"><span class="t">Basitçe</span><p><b>İvme = her saniye hız ne kadar değişiyor?</b> “İvme 3 m/s²” demek, “hız her saniye 3 m/s artıyor” demek. Gaza bastığında da, frene bastığında da ivme vardır. Hız hiç değişmiyorsa ivme sıfırdır.</p></div>
+  <p><b>Kuralı kendimiz bulalım.</b> Bir arabanın hızını her saniye ölçtük:</p>
+  <div class="tw"><table class="t">
+    <tr><th>t (s)</th><td class="n">0</td><td class="n">1</td><td class="n">2</td><td class="n">3</td><td class="n">4</td></tr>
+    <tr><th>v (m/s)</th><td class="n">2</td><td class="n">5</td><td class="n">8</td><td class="n">11</td><td class="n">14</td></tr>
+    <tr><th>her saniye artış</th><td class="n">—</td><td class="n hla">+3</td><td class="n hla">+3</td><td class="n hla">+3</td><td class="n hla">+3</td></tr>
+  </table></div>
+  <p><b>Fark ettin mi?</b> Hız her saniye hep 3 artıyor. Bu sabit artış ivmedir: <b>a = 3 m/s²</b>. O zaman hızı her an bulabiliriz: başlangıç hızına, her saniye için 3 ekle:</p>
+  <div class="eqn"><span class="qv">v</span> = v₀ + <span class="qa">a</span>·t<small>şimdiki hız = ilk hız + ivme × süre</small></div>
+  <p>Örnek: 4. saniyede v = 2 + 3·4 = <b>14 m/s</b>. Tablodaki sayıyla aynı!</p>
+
+  <h3><span class="n">2.3</span>İvme laboratuvarı</h3>
+  <div class="sim" data-sim="acc"></div>
+  <div class="box think"><span class="t">Dene ve düşün</span>
+    <ul>
+      <li>İlk hız +2, ivme +3 yap. Tablodaki Δv hep aynı mı?</li>
+      <li>İlk hız +8, ivme −2 yap. Araba 4. saniyede ne yapıyor? Sonra hangi yöne gidiyor?</li>
+      <li>İlk hız −6, ivme −2 yap. İvme eksi ama araba yavaşlıyor mu, hızlanıyor mu? (İpucu: okların yönüne bak.)</li>
+    </ul></div>
+
+  <h3><span class="n">2.4</span>Hızlanıyor mu, yavaşlıyor mu? (Ok kuralı)</h3>
+  <p>Sadece ivmenin işaretine bakıp karar verme! <b>Hız okuna ve ivme okuna birlikte bak.</b></p>
+  <div class="signs">
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">Aynı yön → Hızlanır</div><small class="m">v (+), a (+)</small></div>
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">Aynı yön → Hızlanır</div><small class="m">v (−), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">Zıt yön → Yavaşlar</div><small class="m">v (+), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">Zıt yön → Yavaşlar</div><small class="m">v (−), a (+)</small></div>
+  </div>
+  <div class="box easy"><span class="t">Basitçe</span><p>İvme oku arabayı <b>ittiği yöne</b> götürmeye çalışır. Ok, arabanın gittiği yöndeyse arabayı iter → <b>hızlanır</b>. Ok ters yöndeyse fren gibi çalışır → <b>yavaşlar</b>. Yavaşlayan araba bir an durur; ok hâlâ ters yöndeyse geri gitmeye başlar.</p></div>
+
+  <h3><span class="n">2.5</span>Grafiklerde ivme</h3>
+  <div class="figs2">
+    <div class="fig" data-fig="vtslope"><canvas style="height:220px"></canvas><div class="cap"><b>Şekil 4.</b> v–t grafiğinin <b>eğimi = ivme</b>. 4 saniyede hız 4’ten 16’ya çıktı: a = 12 ÷ 4 = 3 m/s².</div></div>
+    <div class="fig" data-fig="atarea"><canvas style="height:220px"></canvas><div class="cap"><b>Şekil 5.</b> a–t grafiğinin <b>altındaki alan = hız değişimi</b>: Δv = 3 × 4 = 12 m/s.</div></div>
+  </div>
+  <ul>
+    <li>v–t grafiği yukarı çıkıyorsa a (+), aşağı iniyorsa a (−), yataysa a = 0.</li>
+    <li>Sabit ivmede v–t grafiği eğik düz çizgi, a–t grafiği yatay düz çizgidir.</li>
+  </ul>
+  <div class="box easy"><span class="t">Basitçe</span><p>Bölüm 1’deki sihirli cümleler burada da çalışır, sadece bir basamak yukarıda: <b>v–t grafiğinde eğim → ivme.</b> <b>a–t grafiğinde alan → hız değişimi.</b></p></div>
+
+  <h3><span class="n">2.6</span>Çözümlü örnekler</h3>
+  <details class="ex"><summary><span class="k">Ö5</span><span>Duran bir motosiklet 4 saniyede 20 m/s hıza çıkıyor. İvmesi kaç?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Hız ne kadar değişti? 20 − 0 = 20 m/s</li><li>Kaç saniyede? 4 s</li><li>a = 20 ÷ 4</li></ol><div class="res">a = <span class="qa">5 m/s²</span>: hız her saniye 5 m/s artıyor.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö6</span><span>30 m/s ile giden kamyon frene basıyor ve 5 saniyede 10 m/s’ye iniyor. İvmesi kaç?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Δv = 10 − 30 = −20 m/s</li><li>a = −20 ÷ 5 = −4 m/s²</li><li>Hız (+), ivme (−): zıt yön → yavaşlıyor.</li></ol><div class="res">a = <span class="qa">−4 m/s²</span>, yavaşlayan hareket.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö7</span><span>Batıya (−) 15 m/s ile giden araba, 3 saniyede yine batıya 30 m/s’ye çıkıyor. İvmesi?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>ilk hız = −15, son hız = −30</li><li>Δv = (−30) − (−15) = −15 m/s</li><li>a = −15 ÷ 3 = −5 m/s²</li></ol><div class="res">a = <span class="qa">−5 m/s²</span>. İvme eksi ama araba <b>hızlanıyor</b>: hız da ivme de batıya, yani aynı yönde.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö8</span><span>İlk hızı +12 m/s, ivmesi −3 m/s² olan araba kaçıncı saniyede durur? 6. saniyede hızı ne olur?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Her saniye hız 3 azalıyor: 12 → 9 → 6 → 3 → 0. Yani 4. saniyede durur.</li><li>Formülle: v = 12 + (−3)·6 = −6 m/s</li></ol><div class="res">4. saniyede durur; 6. saniyede <span class="qv">−6 m/s</span> ile geri gider (artık geri yönde hızlanıyor).</div></div></details>
+  <details class="ex"><summary><span class="k">Ö9</span><span>a–t grafiğinde 0–5 s arası a = 2 m/s². İlk hız 3 m/s. 5. saniyede hız kaç?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Alan = hız değişimi = 2 × 5 = 10 m/s</li><li>Yeni hız = 3 + 10</li></ol><div class="res">v = <span class="qv">13 m/s</span></div></div></details>
+
+  <div class="box warn"><span class="t">Dikkat! Sık yapılan hatalar</span>
+    <ul>
+      <li><b>“Hızlı giden şeyin ivmesi büyüktür”: yanlış.</b> 900 km/h sabit hızla uçan uçağın ivmesi sıfırdır, çünkü hızı değişmiyor.</li>
+      <li><b>“İvme eksi ise yavaşlar”: her zaman değil.</b> Okları karşılaştır: aynı yöndelerse hızlanır.</li>
+      <li><b>“Durduysa ivmesi sıfırdır”: yanlış.</b> Geri dönen araba bir an durur ama ivmesi devam eder.</li>
+      <li>Δv’de işaretleri unutma: +10’dan −10’a geçişte Δv = −20 m/s, sıfır değil.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">Kısaca · Bölüm 2</span>
+    <ul>
+      <li>Hız değişimi: Δv = son hız − ilk hız (işaretlere dikkat).</li>
+      <li>İvme: her saniyedeki hız değişimi, a = Δv / Δt, birimi m/s².</li>
+      <li>Sabit ivmede hız her saniye a kadar değişir: v = v₀ + a·t.</li>
+      <li>Hız ve ivme aynı yöndeyse hızlanır, zıt yöndeyse yavaşlar, ivme sıfırsa hız sabit.</li>
+      <li>v–t grafiğinin eğimi ivme, a–t grafiğinin alanı hız değişimidir.</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 3 ======================= -->
+<section class="section" id="tr-s3">
+  <div class="sec-head q"><span class="num">3</span><span class="code">TEKRAR</span><h2>Kendini sına</h2></div>
+  <p>Bir şıkka dokun, cevap ve açıklama hemen çıkar. Puanın en altta.</p>
+  <div class="quiz" data-quiz></div>
+</section>
+
+<!-- ======================= 4 ======================= -->
+<section class="section" id="tr-s4">
+  <div class="sec-head g"><span class="num">4</span><span class="code">ÖZET KART</span><h2>Formüller ve kelimeler</h2></div>
+  <div class="fcard">
+    <div><h4>Sabit hız (ivme = 0)</h4><div class="eqn">v = Δx / Δt</div><div class="eqn">x = x₀ + v·t</div></div>
+    <div><h4>Grafikler</h4><div class="eqn">x–t eğimi = v</div><div class="eqn">v–t alanı = Δx</div></div>
+    <div><h4>Hız değişimi ve ivme</h4><div class="eqn">Δv = v<sub>son</sub> − v<sub>ilk</sub></div><div class="eqn">a = Δv / Δt</div></div>
+    <div><h4>Sabit ivme</h4><div class="eqn">v = v₀ + a·t</div><div class="eqn">v–t eğimi = a · a–t alanı = Δv</div></div>
+  </div>
+  <h3>Kelimeler</h3>
+  <div class="tw"><table class="gl">
+    <tr><th>Kelime</th><th>Kısaca anlamı</th></tr>
+    <tr><td class="term">Referans noktası</td><td>Ölçmeye başladığımız yer (0 noktası).</td></tr>
+    <tr><td class="term">Konum (x)</td><td>Bir şeyin referans noktasına göre yeri.</td></tr>
+    <tr><td class="term">Yer değiştirme (Δx)</td><td>Son yer − ilk yer. Yönü var.</td></tr>
+    <tr><td class="term">Alınan yol</td><td>Toplam kaç metre gidildiği. Yönü yok.</td></tr>
+    <tr><td class="term">Hız (v)</td><td>Ne kadar hızlı ve hangi yöne. Birimi m/s.</td></tr>
+    <tr><td class="term">Sürat</td><td>Sadece ne kadar hızlı (yön yok). Birimi m/s.</td></tr>
+    <tr><td class="term">Skaler / vektörel</td><td>Sadece sayı / sayı + yön.</td></tr>
+    <tr><td class="term">Sabit hızlı hareket</td><td>Her saniye aynı mesafe; ivme sıfır.</td></tr>
+    <tr><td class="term">Eğim</td><td>Grafikteki çizginin dikliği.</td></tr>
+    <tr><td class="term">Hız değişimi (Δv)</td><td>Son hız − ilk hız.</td></tr>
+    <tr><td class="term">İvme (a)</td><td>Her saniye hızın ne kadar değiştiği. Birimi m/s².</td></tr>
+    <tr><td class="term">Hızlanan hareket</td><td>Hız ve ivme aynı yönde.</td></tr>
+    <tr><td class="term">Yavaşlayan hareket</td><td>Hız ve ivme zıt yönde.</td></tr>
+    <tr><td class="term">Tümevarımsal akıl yürütme</td><td>Örneklere bakıp genel kuralı bulmak.</td></tr>
+  </table></div>
+</section>
+<footer class="foot">10. Sınıf Fizik · Maarif Modeli · FİZ.10.1.1 ve FİZ.10.1.2 için kolay anlatımlı çalışma özeti. Laboratuvarlar, kuralları kendin keşfetmen için yapılmış basit modellerdir.</footer>
+
+  </div>
+</main>
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------ */
+  /* text used inside the interactive parts                              */
+  /* ------------------------------------------------------------------ */
+  var T = {
+    tr: {
+      play: '▶ Başlat', pause: 'Durdur', resume: '▶ Devam', again: '▶ Tekrar', reset: 'Sıfırla', step: '+1 s',
+      cv: {
+        title: 'Sabit hız laboratuvarı', tag: 'FİZ.10.1.1 · a–b–c',
+        hint: 'Hızı ve başlangıç yerini seç, sonra ▶ Başlat’a bas. Araba her saniye yola bir nokta bırakır. Noktalar arası mesafe hep aynı mı? Tabloya da bak.',
+        v: 'Hız v', x0: 'Başlangıç konumu x₀', xt: 'Konum–zaman (x–t) grafiği', vt: 'Hız–zaman (v–t) grafiği', col: 'Δx (son 1 s)',
+        wait: 'Gözlem: tablo dolsun, en az 3 saniye izle.',
+        obs: function (d) { return 'Gözlem: her saniye <b class="m">Δx = ' + d + ' m</b>. Her saniye aynı mesafe → <b>hız sabit</b>.'; },
+        rest: 'Gözlem: araba hiç kıpırdamıyor → <b>v = 0</b>, duruyor. x–t grafiği yatay bir çizgi.',
+        model: 'Kural (genelleme)'
+      },
+      acc: {
+        title: 'İvme laboratuvarı', tag: 'FİZ.10.1.2 · a–b',
+        hint: 'İlk hızı ve ivmeyi seç, sonra ▶ Başlat’a bas. Turuncu ok hızı, mor ok ivmeyi gösterir. Her saniye hız ne kadar değişiyor? Tabloya bak.',
+        v0: 'İlk hız v₀', a: 'İvme a', vt: 'Hız–zaman (v–t) grafiği', at: 'İvme–zaman (a–t) grafiği', col: 'Δv (son 1 s)',
+        wait: 'Gözlem: tablo dolsun, en az 3 saniye izle.',
+        obs: function (d) { return 'Gözlem: hız her saniye <b class="m">' + d + ' m/s</b> değişiyor. Bu sayı ivmenin ta kendisi!'; },
+        zero: 'Gözlem: hız hiç değişmiyor → <b>a = 0</b>, yani sabit hızlı hareket.',
+        model: 'Kural (genelleme)',
+        st: { up: 'Hızlanıyor · v ve a aynı yönde', down: 'Yavaşlıyor · v ve a zıt yönde', flat: 'Sabit hız · a = 0', stop: 'Anlık durdu · yön değiştirecek', rest: 'Durgun · v = 0, a = 0' }
+      },
+      slope: 'eğim', area: 'alan',
+      dv: { title: 'Hız değişimi ve ivme hesaplayıcı', vi: 'İlk hız v<sub>ilk</sub>', vs: 'Son hız v<sub>son</sub>', dt: 'Süre Δt', turn: 'Yön değişti! Sürat aynı kalsa bile hız değişti.' },
+      kmh: { title: 'Birim çevirici', l: 'Hız (km/h)' },
+      quiz: { score: 'Puan', done: 'Cevaplanan', reset: 'Baştan', ok: 'Doğru!', no: 'Yanlış.', right: 'Doğru cevap: ' }
+    },
+    ar: {
+      play: '▶ تشغيل', pause: 'إيقاف', resume: '▶ متابعة', again: '▶ من جديد', reset: 'إعادة', step: '+1 s',
+      cv: {
+        title: 'مختبر السرعة الثابتة', tag: 'FİZ.10.1.1 · a–b–c',
+        hint: 'اختاري السرعة وموضع البداية ثم اضغطي ▶ تشغيل. السيارة تترك أثرًا (نقطة) على الطريق كل ثانية. انظري إلى المسافات بين النقاط وإلى الجدول: هل الإزاحة متساوية في أزمنة متساوية؟',
+        v: 'السرعة v', x0: 'موضع البداية x₀', xt: 'منحنى الموضع–الزمن (konum–zaman)', vt: 'منحنى السرعة–الزمن (hız–zaman)', col: 'Δx / 1 s',
+        wait: 'الملاحظة: انتظري حتى يمتلئ الجدول، 3 ثوانٍ على الأقل.',
+        obs: function (d) { return 'الملاحظة: في كل <bdi>1 s</bdi> تكون <b class="m">Δx = ' + d + ' m</b>. إزاحات متساوية في أزمنة متساوية ← <b>السرعة ثابتة</b>.'; },
+        rest: 'الملاحظة: السيارة لا تتحرك ← <b>v = 0</b>، الجسم ساكن، ومنحنى x–t خط أفقي.',
+        model: 'التعميم (النموذج الرياضي)'
+      },
+      acc: {
+        title: 'مختبر التسارع', tag: 'FİZ.10.1.2 · a–b',
+        hint: 'اختاري السرعة الابتدائية والتسارع ثم اضغطي ▶ تشغيل. السهم البرتقالي يمثل السرعة والبنفسجي يمثل التسارع. كم تتغير السرعة في كل ثانية؟ قارني الجدول بميل منحنى v–t.',
+        v0: 'السرعة الابتدائية v₀', a: 'التسارع a', vt: 'منحنى السرعة–الزمن (hız–zaman)', at: 'منحنى التسارع–الزمن (ivme–zaman)', col: 'Δv / 1 s',
+        wait: 'الملاحظة: انتظري حتى يمتلئ الجدول، 3 ثوانٍ على الأقل.',
+        obs: function (d) { return 'الملاحظة: السرعة تتغير بمقدار <b class="m">' + d + ' m/s</b> في كل <bdi>1 s</bdi>. هذا التغير الثابت هو التسارع نفسه.'; },
+        zero: 'الملاحظة: السرعة لا تتغير ← <b>a = 0</b>، هذه حركة بسرعة ثابتة.',
+        model: 'التعميم (النموذج الرياضي)',
+        st: { up: 'تتزايد السرعة <bdi>(hızlanıyor)</bdi>: <bdi>v</bdi> و <bdi>a</bdi> بالاتجاه نفسه', down: 'تتناقص السرعة <bdi>(yavaşlıyor)</bdi>: <bdi>v</bdi> و <bdi>a</bdi> متعاكسان', flat: 'سرعة ثابتة: <bdi>a = 0</bdi>', stop: 'توقفت لحظيًا وستعكس اتجاهها', rest: 'ساكن: <bdi>v = 0</bdi> و <bdi>a = 0</bdi>' }
+      },
+      slope: 'الميل', area: 'المساحة',
+      dv: { title: 'حاسبة تغيّر السرعة والتسارع', vi: 'السرعة الابتدائية v<sub>ilk</sub>', vs: 'السرعة النهائية v<sub>son</sub>', dt: 'المدة Δt', turn: 'تغيّر الاتجاه! Δv ليست الفرق بين مقداري السرعتين.' },
+      kmh: { title: 'محوّل الوحدات', l: 'السرعة (km/h)' },
+      quiz: { score: 'النتيجة', done: 'تمت الإجابة', reset: 'من جديد', ok: 'صحيح!', no: 'خطأ.', right: 'الجواب الصحيح: ' }
+    }
+  };
+
+  /* ------------------------------------------------------------------ */
+  /* helpers                                                             */
+  /* ------------------------------------------------------------------ */
+  function fmt(n, d) {
+    if (d === undefined) d = 1;
+    var s = (Math.round(n * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d);
+    if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+    if (s === '-0') s = '0';
+    return s.replace('.', ',').replace('-', '−');
+  }
+  function sg(n, d) { return (n > 0 ? '+' : '') + fmt(n, d); }
+  function par(n, d) { return n < 0 ? '(' + fmt(n, d) + ')' : fmt(n, d); }
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }
+  var colCache = null;
+  function C() {
+    if (colCache) return colCache;
+    var s = getComputedStyle(document.documentElement);
+    var g = function (n) { return s.getPropertyValue(n).trim(); };
+    colCache = { ink: g('--ink'), muted: g('--muted'), line: g('--line'), soft: g('--soft'), surface: g('--surface'),
+      cx: g('--cx'), cv: g('--cv'), ca: g('--ca'), good: g('--good'), bad: g('--bad') };
+    return colCache;
+  }
+  function alpha(hex, a) {
+    var h = hex.replace('#', '');
+    if (h.length === 3) h = h.split('').map(function (c) { return c + c; }).join('');
+    var r = parseInt(h.substr(0, 2), 16), g = parseInt(h.substr(2, 2), 16), b = parseInt(h.substr(4, 2), 16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+  var MONO = '"JetBrains Mono", Menlo, Consolas, monospace';
+  function prep(cv) {
+    var r = cv.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4) return null;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    var W = Math.round(r.width * dpr), H = Math.round(r.height * dpr);
+    if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+    var ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.direction = 'ltr';
+    ctx.clearRect(0, 0, r.width, r.height);
+    return { ctx: ctx, w: r.width, h: r.height };
+  }
+  function niceStep(range, target) {
+    var raw = range / target, mag = Math.pow(10, Math.floor(Math.log10(raw))), n = raw / mag;
+    return (n < 1.5 ? 1 : n < 3 ? 2 : n < 7 ? 5 : 10) * mag;
+  }
+  function arrow(ctx, x1, y, x2, color, lw, head) {
+    head = head || 8; lw = lw || 3;
+    if (Math.abs(x2 - x1) < 1) return;
+    var d = x2 > x1 ? 1 : -1;
+    var hx = Math.abs(x2 - x1) < head + 2 ? x1 : x2 - d * head;
+    ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = lw; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(hx, y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x2, y); ctx.lineTo(x2 - d * head, y - head * 0.62); ctx.lineTo(x2 - d * head, y + head * 0.62); ctx.closePath(); ctx.fill();
+  }
+  function text(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = (o.weight || 500) + ' ' + (o.size || 11) + 'px ' + (o.font || MONO);
+    ctx.fillStyle = o.color || C().muted; ctx.textAlign = o.align || 'left'; ctx.textBaseline = o.base || 'alphabetic';
+    if (o.halo) { ctx.lineWidth = 4; ctx.strokeStyle = C().surface; ctx.lineJoin = 'round'; ctx.strokeText(s, x, y); }
+    ctx.fillText(s, x, y);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* generic graph                                                       */
+  /* o = { tmax, tstep, ymin, ymax, ystep, ylab, color, segs:[[t0,y0,t1,y1]] | f(t),       */
+  /*       tNow, area, tri:{t1,t2,label}, labels:[{t,y,s,color,align}], dot }               */
+  /* ------------------------------------------------------------------ */
+  function plot(cv, o) {
+    var P = prep(cv); if (!P) return;
+    var ctx = P.ctx, w = P.w, h = P.h, c = C();
+    var m = { l: 44, r: 34, t: 24, b: 24 };
+    var tmin = 0, tmax = o.tmax;
+    var X = function (t) { return m.l + (t - tmin) / (tmax - tmin) * (w - m.l - m.r); };
+    var Y = function (y) { return m.t + (o.ymax - y) / (o.ymax - o.ymin) * (h - m.t - m.b); };
+    var ts = o.tstep || niceStep(tmax, w < 340 ? 4 : 6), ys = o.ystep || niceStep(o.ymax - o.ymin, 5);
+    ctx.lineWidth = 1; ctx.strokeStyle = c.line;
+    for (var t = 0; t <= tmax + 1e-9; t += ts) { ctx.beginPath(); ctx.moveTo(X(t) + .5, m.t); ctx.lineTo(X(t) + .5, h - m.b); ctx.stroke(); }
+    for (var y = Math.ceil(o.ymin / ys) * ys; y <= o.ymax + 1e-9; y += ys) { ctx.beginPath(); ctx.moveTo(m.l, Math.round(Y(y)) + .5); ctx.lineTo(w - m.r, Math.round(Y(y)) + .5); ctx.stroke(); }
+    // axes
+    var y0 = Y(Math.max(o.ymin, Math.min(o.ymax, 0)));
+    ctx.strokeStyle = c.ink; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(m.l, h - m.b + 2); ctx.lineTo(m.l, m.t - 10); ctx.stroke();
+    arrow(ctx, m.l, y0, w - m.r + 14, c.ink, 1.4, 6);
+    ctx.beginPath(); ctx.moveTo(m.l, m.t - 14); ctx.lineTo(m.l - 4, m.t - 7); ctx.lineTo(m.l + 4, m.t - 7); ctx.closePath(); ctx.fillStyle = c.ink; ctx.fill();
+    text(ctx, o.ylab, m.l + 8, m.t - 9, { color: c.ink, weight: 600, size: 11.5 });
+    text(ctx, 't (s)', w - m.r + 14, y0 - 7, { color: c.ink, weight: 600, size: 11.5, align: 'right' });
+    for (t = 0; t <= tmax + 1e-9; t += ts) if (t > 0) text(ctx, fmt(t, 1), X(t), h - m.b + 15, { align: 'center' });
+    for (y = Math.ceil(o.ymin / ys) * ys; y <= o.ymax + 1e-9; y += ys) text(ctx, fmt(y, 1), m.l - 6, Y(y) + 4, { align: 'right' });
+    var col = o.color;
+    var tEnd = (o.tNow === undefined) ? tmax : Math.min(o.tNow, tmax);
+    // build polyline points
+    var pts = [];
+    if (o.segs) {
+      o.segs.forEach(function (s) {
+        if (s[0] > tEnd) return;
+        var t1 = Math.min(s[2], tEnd), y1 = s[1] + (s[3] - s[1]) * ((t1 - s[0]) / ((s[2] - s[0]) || 1));
+        pts.push([s[0], s[1], t1, y1]);
+      });
+    } else if (o.f) {
+      var N = 160, prev = null;
+      for (var i = 0; i <= N; i++) { var tt = tEnd * i / N, yy = o.f(tt); if (prev) pts.push([prev[0], prev[1], tt, yy]); prev = [tt, yy]; }
+    }
+    if (o.area && pts.length) {
+      ctx.fillStyle = alpha(col, 0.18);
+      pts.forEach(function (p) {
+        ctx.beginPath(); ctx.moveTo(X(p[0]), Y(0)); ctx.lineTo(X(p[0]), Y(p[1])); ctx.lineTo(X(p[2]), Y(p[3])); ctx.lineTo(X(p[2]), Y(0)); ctx.closePath(); ctx.fill();
+      });
+    }
+    ctx.strokeStyle = col; ctx.lineWidth = 2.6; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    pts.forEach(function (p, k) {
+      ctx.beginPath(); ctx.moveTo(X(p[0]), Y(p[1])); ctx.lineTo(X(p[2]), Y(p[3])); ctx.stroke();
+    });
+    if (o.tri && tEnd >= o.tri.t2 - 1e-9) {
+      var fy = o.f || function (tq) { var r = 0; o.segs.forEach(function (s) { if (tq >= s[0] && tq <= s[2]) r = s[1] + (s[3] - s[1]) * (tq - s[0]) / ((s[2] - s[0]) || 1); }); return r; };
+      var a1 = fy(o.tri.t1), a2 = fy(o.tri.t2);
+      ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5; ctx.strokeStyle = c.ink;
+      ctx.beginPath(); ctx.moveTo(X(o.tri.t1), Y(a1)); ctx.lineTo(X(o.tri.t2), Y(a1)); ctx.lineTo(X(o.tri.t2), Y(a2)); ctx.stroke(); ctx.setLineDash([]);
+      if (o.tri.dt) text(ctx, o.tri.dt, (X(o.tri.t1) + X(o.tri.t2)) / 2, Y(a1) + (a2 >= a1 ? 14 : -6), { align: 'center', color: c.ink, halo: true });
+      if (o.tri.dy) text(ctx, o.tri.dy, X(o.tri.t2) + 5, (Y(a1) + Y(a2)) / 2 + 4, { align: 'left', color: c.ink, halo: true });
+    }
+    if (o.labels) o.labels.forEach(function (L) {
+      text(ctx, L.s, X(L.t) + (L.dx || 0), Y(L.y) + (L.dy || 0), { align: L.align || 'center', color: L.color || c.ink, weight: 600, size: L.size || 12, halo: true });
+    });
+    if (o.dots) o.dots.forEach(function (d) { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(X(d[0]), Y(d[1]), 3.5, 0, Math.PI * 2); ctx.fill(); });
+    if (o.tNow !== undefined && pts.length) {
+      var last = pts[pts.length - 1];
+      ctx.fillStyle = c.surface; ctx.strokeStyle = col; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(X(last[2]), Y(last[3]), 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+    return { X: X, Y: Y };
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* track (number line + car)                                           */
+  /* ------------------------------------------------------------------ */
+  function drawCar(ctx, x, road, dir, c) {
+    ctx.save(); ctx.translate(x, road); ctx.scale(dir < 0 ? -1 : 1, 1);
+    ctx.fillStyle = c.ink;
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-20, -19, 40, 12, 4) : ctx.rect(-20, -19, 40, 12); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-11, -19); ctx.lineTo(-6, -28); ctx.lineTo(8, -28); ctx.lineTo(14, -19); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = c.surface;
+    ctx.beginPath(); ctx.moveTo(-5, -26); ctx.lineTo(0, -26); ctx.lineTo(0, -20); ctx.lineTo(-8.5, -20); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(2, -26); ctx.lineTo(7.5, -26); ctx.lineTo(11, -20); ctx.lineTo(2, -20); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = c.cv; ctx.fillRect(16, -16, 4, 3);
+    ctx.fillStyle = c.ink; ctx.strokeStyle = c.surface; ctx.lineWidth = 2;
+    [-11, 11].forEach(function (wx) { ctx.beginPath(); ctx.arc(wx, -5, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); });
+    ctx.restore();
+  }
+  function track(cv, o) {
+    // o = {xmin,xmax, x, dir, strobe:[x...], v, a, vScale, aScale}
+    var P = prep(cv); if (!P) return;
+    var ctx = P.ctx, w = P.w, h = P.h, c = C();
+    var pad = 26, X = function (x) { return pad + (x - o.xmin) / (o.xmax - o.xmin) * (w - 2 * pad); };
+    var road = h - 58, ruler = h - 22;
+    // road
+    ctx.fillStyle = c.soft; ctx.fillRect(0, road, w, 14);
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(0, road + .5); ctx.lineTo(w, road + .5); ctx.stroke();
+    // ruler
+    var st = niceStep(o.xmax - o.xmin, w < 420 ? 5 : 10), lblEvery = (X(st) - X(0) < 30) ? 2 : 1;
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pad - 10, ruler); ctx.lineTo(w - pad + 10, ruler); ctx.stroke();
+    var k = 0;
+    for (var x = Math.ceil(o.xmin / st) * st; x <= o.xmax + 1e-9; x += st, k++) {
+      var big = Math.abs(x) < 1e-9;
+      ctx.strokeStyle = big ? c.ink : c.muted; ctx.lineWidth = big ? 2 : 1;
+      ctx.beginPath(); ctx.moveTo(X(x), ruler - (big ? 7 : 4)); ctx.lineTo(X(x), ruler + (big ? 7 : 4)); ctx.stroke();
+      if (big || (Math.round(x / st) % lblEvery === 0)) text(ctx, fmt(x, 0), X(x), ruler + 16, { align: 'center', color: big ? c.ink : c.muted, weight: big ? 700 : 500 });
+    }
+    text(ctx, 'x (m)', w - 4, ruler - 8, { align: 'right', color: c.muted, size: 10.5 });
+    text(ctx, '+', w - 8, ruler + 16, { align: 'right', color: c.ink, weight: 700, size: 12 });
+    text(ctx, '−', 8, ruler + 16, { align: 'left', color: c.ink, weight: 700, size: 12 });
+    // strobe dots
+    var placed = [[], []];
+    (o.strobe || []).forEach(function (sx, i) {
+      var px = X(sx);
+      ctx.fillStyle = o.dotColor || c.cv; ctx.beginPath(); ctx.arc(px, road + 7, 4, 0, Math.PI * 2); ctx.fill();
+      for (var r = 0; r < 2; r++) {
+        var free = placed[r].every(function (q) { return Math.abs(q - px) >= 15; });
+        if (free) { text(ctx, String(i), px, r === 0 ? road + 27 : road - 3, { align: 'center', size: 10, color: c.muted, halo: r === 1 }); placed[r].push(px); break; }
+      }
+    });
+    // car
+    var cx = X(o.x);
+    drawCar(ctx, cx, road, o.dir, c);
+    // arrows
+    if (o.v !== undefined && Math.abs(o.v) > 1e-6) {
+      var lenV = Math.max(-0.42 * w, Math.min(0.42 * w, o.v * o.vScale));
+      arrow(ctx, cx, road - 38, cx + lenV, c.cv, 3.2, 9);
+      text(ctx, 'v', cx + lenV + (lenV > 0 ? 6 : -6), road - 34, { align: lenV > 0 ? 'left' : 'right', color: c.cv, weight: 700, size: 13 });
+    }
+    if (o.a !== undefined && Math.abs(o.a) > 1e-6) {
+      var lenA = o.a * o.aScale;
+      arrow(ctx, cx, road - 56, cx + lenA, c.ca, 3.2, 9);
+      text(ctx, 'a', cx + lenA + (lenA > 0 ? 6 : -6), road - 52, { align: lenA > 0 ? 'left' : 'right', color: c.ca, weight: 700, size: 13 });
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* animation helper                                                    */
+  /* ------------------------------------------------------------------ */
+  var RATE = 1.25; // simulated seconds per real second
+  var allSims = [];
+  function Runner(sim) {
+    var last = null;
+    function frame(ts) {
+      if (!sim.running) { last = null; return; }
+      if (last === null) last = ts;
+      var dt = Math.min(0.1, (ts - last) / 1000); last = ts;
+      sim.advance(dt * RATE);
+      sim.draw();
+      if (sim.running) requestAnimationFrame(frame); else last = null;
+    }
+    return function () { requestAnimationFrame(frame); };
+  }
+  function slider(cls, label, min, max, step, val, unit, nosign) {
+    var id = 's' + Math.random().toString(36).slice(2, 8);
+    var d = el('div', 'sl ' + cls);
+    d.innerHTML = '<label for="' + id + '"><span>' + label + '</span><output></output></label><input id="' + id + '" type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + val + '">';
+    var inp = d.querySelector('input'), out = d.querySelector('output');
+    var upd = function () { out.textContent = (nosign ? fmt(+inp.value, 1) : sg(+inp.value, 1)) + ' ' + unit; };
+    inp.addEventListener('input', upd); upd();
+    return { el: d, input: inp, get: function () { return +inp.value; } };
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* SIM 1 — constant velocity                                           */
+  /* ------------------------------------------------------------------ */
+  function SimCV(root, lang) {
+    var L = T[lang], S = L.cv, self = this;
+    root.innerHTML = '';
+    var head = el('div', 'sh', '<h4>' + S.title + '</h4><span class="tag">' + S.tag + '</span>');
+    var hint = el('p', 'hint', S.hint);
+    var trk = el('canvas', 'track'); trk.setAttribute('aria-hidden', 'true');
+    var ctrl = el('div', 'ctrl');
+    var sv = slider('v', S.v, -10, 10, 1, 5, 'm/s'), sx = slider('x', S.x0, -40, 40, 5, -20, 'm');
+    ctrl.appendChild(sv.el); ctrl.appendChild(sx.el);
+    var btns = el('div', 'btns');
+    var bPlay = el('button', 'btn primary', L.play), bStep = el('button', 'btn', L.step), bReset = el('button', 'btn', L.reset), clock = el('span', 'clock');
+    [bPlay, bStep, bReset].forEach(function (b) { b.type = 'button'; btns.appendChild(b); }); bStep.dir = 'ltr'; btns.appendChild(clock);
+    var graphs = el('div', 'graphs');
+    var g1 = el('div', '', '<h5>' + S.xt + '</h5>'), c1 = el('canvas'), n1 = el('div', 'gnote');
+    var g2 = el('div', '', '<h5>' + S.vt + '</h5>'), c2 = el('canvas'), n2 = el('div', 'gnote');
+    g1.appendChild(n1); g1.appendChild(c1); g2.appendChild(n2); g2.appendChild(c2); graphs.appendChild(g1); graphs.appendChild(g2);
+    var data = el('div', 'data');
+    var tbl = el('div', 'tbl', '<table><thead><tr><th>t (s)</th><th>x (m)</th><th>' + S.col + '</th></tr></thead><tbody></tbody></table>');
+    var gen = el('div', 'gen');
+    data.appendChild(tbl); data.appendChild(gen);
+    [head, hint, trk, ctrl, btns, graphs, data].forEach(function (e) { root.appendChild(e); });
+    var tbody = tbl.querySelector('tbody');
+
+    var XR = 100;
+    this.running = false;
+    this.reset = function () {
+      self.running = false; self.t = 0; self.v = sv.get(); self.x0 = sx.get();
+      var T1 = 10;
+      if (self.v > 0) T1 = Math.min(10, (XR - self.x0) / self.v);
+      if (self.v < 0) T1 = Math.min(10, (-XR - self.x0) / self.v);
+      self.T = T1; self.rows = [];
+      var lo = Math.min(0, self.x0, self.x(T1)), hi = Math.max(0, self.x0, self.x(T1));
+      if (hi - lo < 20) { hi = Math.max(hi, lo + 20); }
+      var st = niceStep(hi - lo, 4);
+      self.ymin = Math.floor(lo / st) * st; self.ymax = Math.ceil(hi / st) * st; self.ystep = st;
+      if (self.ymax - hi < st * 0.25) self.ymax += st;
+      if (lo - self.ymin < st * 0.25 && lo < 0) self.ymin -= st;
+      tbody.innerHTML = ''; self.addRow(0);
+      bPlay.textContent = L.play; bStep.disabled = false;
+      self.draw();
+    };
+    this.x = function (t) { return self.x0 + self.v * t; };
+    this.addRow = function (s) {
+      var x = self.x(s), prev = self.rows.length ? self.rows[self.rows.length - 1] : null;
+      self.rows.push(x);
+      var tr = el('tr', '', '<td>' + s + '</td><td>' + fmt(x, 1) + '</td><td class="d">' + (prev === null ? '—' : sg(x - prev, 1)) + '</td>');
+      tbody.appendChild(tr);
+      tbl.scrollTop = tbl.scrollHeight;
+    };
+    this.advance = function (dt) {
+      var nt = Math.min(self.T, self.t + dt);
+      for (var s = Math.floor(self.t) + 1; s <= Math.floor(nt + 1e-9); s++) self.addRow(s);
+      self.t = nt;
+      if (self.t >= self.T - 1e-9) { self.running = false; bPlay.textContent = L.again; bStep.disabled = true; }
+    };
+    var run = Runner(this);
+    bPlay.addEventListener('click', function () {
+      if (self.running) { self.running = false; bPlay.textContent = L.resume; return; }
+      if (self.t >= self.T - 1e-9) self.reset();
+      pauseAll(self); self.running = true; bPlay.textContent = L.pause; run();
+    });
+    bStep.addEventListener('click', function () {
+      self.running = false;
+      var target = Math.min(self.T, Math.floor(self.t + 1e-9) + 1);
+      self.advance(target - self.t); if (self.t < self.T - 1e-9) bPlay.textContent = self.t > 0 ? L.resume : L.play; self.draw();
+    });
+    bReset.addEventListener('click', function () { self.reset(); });
+    sv.input.addEventListener('input', function () { self.reset(); });
+    sx.input.addEventListener('input', function () { self.reset(); });
+
+    this.draw = function () {
+      var c = C(), t = self.t, v = self.v, x0 = self.x0;
+      clock.textContent = 't = ' + fmt(t, 1) + ' s   x = ' + fmt(self.x(t), 1) + ' m';
+      track(trk, { xmin: -XR, xmax: XR, x: self.x(t), dir: v < 0 ? -1 : 1, strobe: self.rows, v: v, vScale: 6 });
+      plot(c1, { tmax: 10, tstep: w2(c1) < 340 ? 2 : 1, ymin: self.ymin, ymax: self.ymax, ystep: self.ystep, ylab: 'x (m)', color: c.cx, f: self.x, tNow: t,
+        tri: v !== 0 ? { t1: 2, t2: 4, dt: 'Δt = 2 s', dy: 'Δx = ' + sg(2 * v, 1) + ' m' } : null });
+      plot(c2, { tmax: 10, tstep: w2(c2) < 340 ? 2 : 1, ymin: -12, ymax: 12, ystep: 4, ylab: 'v (m/s)', color: c.cv, f: function () { return v; }, tNow: t, area: true });
+      n1.innerHTML = '<span>' + L.slope + ':</span> <span class="m">v = Δx / Δt = ' + sg(v, 1) + ' m/s</span>';
+      n2.innerHTML = '<span>' + L.area + ':</span> <span class="m">Δx = v·t = ' + par(v, 1) + '·' + fmt(t, 1) + ' = ' + sg(v * t, 1) + ' m</span>';
+      // generalisation panel
+      var n = self.rows.length - 1, html = '';
+      if (v === 0 && n >= 2) html += '<div class="obs">' + S.rest + '</div>';
+      else if (n >= 3) html += '<div class="obs">' + S.obs(sg(self.rows[n] - self.rows[n - 1], 1)) + '</div>';
+      else html += '<div class="obs">' + S.wait + '</div>';
+      html += '<div><b>' + S.model + '</b></div>';
+      html += '<div class="eq">v = Δx / Δt = ' + sg(v, 1) + ' m / 1 s = ' + sg(v, 1) + ' m/s</div>';
+      html += '<div class="eq">x = x₀ + v·t = ' + fmt(x0, 1) + ' + ' + par(v, 1) + '·t</div>';
+      html += '<div class="eq">t = ' + fmt(t, 1) + ' s → x = ' + fmt(x0, 1) + ' + ' + par(v, 1) + '·' + fmt(t, 1) + ' = ' + fmt(self.x(t), 1) + ' m</div>';
+      gen.innerHTML = html;
+    };
+    this.pause = function () { if (self.running) { self.running = false; bPlay.textContent = L.resume; } };
+    this.reset();
+    allSims.push(this);
+  }
+  function w2(cv) { return cv.getBoundingClientRect().width; }
+
+  /* ------------------------------------------------------------------ */
+  /* SIM 2 — acceleration                                                */
+  /* ------------------------------------------------------------------ */
+  function SimACC(root, lang) {
+    var L = T[lang], S = L.acc, self = this;
+    root.innerHTML = '';
+    var head = el('div', 'sh', '<h4>' + S.title + '</h4><span class="tag">' + S.tag + '</span>');
+    var hint = el('p', 'hint', S.hint);
+    var trk = el('canvas', 'track'); trk.style.height = '170px'; trk.setAttribute('aria-hidden', 'true');
+    var ctrl = el('div', 'ctrl');
+    var sv = slider('v', S.v0, -10, 10, 1, 2, 'm/s'), sa = slider('a', S.a, -4, 4, 0.5, 3, 'm/s²');
+    ctrl.appendChild(sv.el); ctrl.appendChild(sa.el);
+    var btns = el('div', 'btns');
+    var bPlay = el('button', 'btn primary', L.play), bStep = el('button', 'btn', L.step), bReset = el('button', 'btn', L.reset), status = el('span', 'status'), clock = el('span', 'clock');
+    [bPlay, bStep, bReset].forEach(function (b) { b.type = 'button'; btns.appendChild(b); }); bStep.dir = 'ltr'; btns.appendChild(status); btns.appendChild(clock);
+    var graphs = el('div', 'graphs');
+    var g1 = el('div', '', '<h5>' + S.vt + '</h5>'), c1 = el('canvas'), n1 = el('div', 'gnote');
+    var g2 = el('div', '', '<h5>' + S.at + '</h5>'), c2 = el('canvas'), n2 = el('div', 'gnote');
+    g1.appendChild(n1); g1.appendChild(c1); g2.appendChild(n2); g2.appendChild(c2); graphs.appendChild(g1); graphs.appendChild(g2);
+    var data = el('div', 'data acc');
+    var tbl = el('div', 'tbl', '<table><thead><tr><th>t (s)</th><th>v (m/s)</th><th>' + S.col + '</th></tr></thead><tbody></tbody></table>');
+    var gen = el('div', 'gen');
+    data.appendChild(tbl); data.appendChild(gen);
+    [head, hint, trk, ctrl, btns, graphs, data].forEach(function (e) { root.appendChild(e); });
+    var tbody = tbl.querySelector('tbody');
+    var TT = 8;
+    this.running = false;
+    this.v = function (t) { return self.v0 + self.a * t; };
+    this.x = function (t) { return self.v0 * t + 0.5 * self.a * t * t; };
+    this.reset = function () {
+      self.running = false; self.t = 0; self.v0 = sv.get(); self.a = sa.get(); self.T = TT;
+      var lo = 0, hi = 0;
+      for (var i = 0; i <= 80; i++) { var xx = self.x(TT * i / 80); lo = Math.min(lo, xx); hi = Math.max(hi, xx); }
+      if (hi - lo < 20) { var mid = (hi + lo) / 2; lo = mid - 10; hi = mid + 10; }
+      var padd = (hi - lo) * 0.08; self.xmin = lo - padd; self.xmax = hi + padd;
+      var vlo = Math.min(0, self.v(0), self.v(TT)), vhi = Math.max(0, self.v(0), self.v(TT));
+      var vs = niceStep(Math.max(8, vhi - vlo), 4);
+      self.vmin = Math.min(-vs, Math.floor(vlo / vs) * vs); self.vmax = Math.max(vs, Math.ceil(vhi / vs) * vs);
+      if (self.vmax - self.vmin < 3 * vs) { if (vhi > -vlo) self.vmax += vs; else self.vmin -= vs; }
+      self.vstep = vs;
+      self.strobe = []; self.vrows = [];
+      tbody.innerHTML = ''; self.addRow(0);
+      bPlay.textContent = L.play; bStep.disabled = false;
+      self.draw();
+    };
+    this.addRow = function (s) {
+      var v = self.v(s), prev = self.vrows.length ? self.vrows[self.vrows.length - 1] : null;
+      self.vrows.push(v); self.strobe.push(self.x(s));
+      tbody.appendChild(el('tr', '', '<td>' + s + '</td><td>' + fmt(v, 1) + '</td><td class="d">' + (prev === null ? '—' : sg(v - prev, 1)) + '</td>'));
+      tbl.scrollTop = tbl.scrollHeight;
+    };
+    this.advance = function (dt) {
+      var nt = Math.min(self.T, self.t + dt);
+      for (var s = Math.floor(self.t) + 1; s <= Math.floor(nt + 1e-9); s++) self.addRow(s);
+      self.t = nt;
+      if (self.t >= self.T - 1e-9) { self.running = false; bPlay.textContent = L.again; bStep.disabled = true; }
+    };
+    var run = Runner(this);
+    bPlay.addEventListener('click', function () {
+      if (self.running) { self.running = false; bPlay.textContent = L.resume; return; }
+      if (self.t >= self.T - 1e-9) self.reset();
+      pauseAll(self); self.running = true; bPlay.textContent = L.pause; run();
+    });
+    bStep.addEventListener('click', function () {
+      self.running = false;
+      var target = Math.min(self.T, Math.floor(self.t + 1e-9) + 1);
+      self.advance(target - self.t); if (self.t < self.T - 1e-9) bPlay.textContent = self.t > 0 ? L.resume : L.play; self.draw();
+    });
+    bReset.addEventListener('click', function () { self.reset(); });
+    sv.input.addEventListener('input', function () { self.reset(); });
+    sa.input.addEventListener('input', function () { self.reset(); });
+
+    this.state = function (t) {
+      var v = self.v(t), a = self.a, eps = 1e-6;
+      if (Math.abs(a) < eps) return Math.abs(v) < eps ? 'rest' : 'flat';
+      if (Math.abs(v) < 0.05) return 'stop';
+      return (v > 0) === (a > 0) ? 'up' : 'down';
+    };
+    this.draw = function () {
+      var c = C(), t = self.t, v = self.v(t), a = self.a;
+      clock.textContent = 't = ' + fmt(t, 1) + ' s   v = ' + fmt(v, 1) + ' m/s';
+      var st = self.state(t);
+      status.className = 'status ' + (st === 'up' ? 'up' : st === 'down' ? 'down' : 'flat');
+      status.innerHTML = S.st[st];
+      var tw = w2(trk) || 600;
+      var vScale = Math.min(6, 0.4 * tw / Math.max(10, Math.abs(self.v(0)), Math.abs(self.v(TT))));
+      track(trk, { xmin: self.xmin, xmax: self.xmax, x: self.x(t), dir: Math.abs(v) < 1e-6 ? (a < 0 ? -1 : 1) : (v < 0 ? -1 : 1), strobe: self.strobe, dotColor: c.ca, v: v, vScale: vScale, a: a, aScale: 14 });
+      var narrow = w2(c1) < 340;
+      plot(c1, { tmax: TT, tstep: narrow ? 2 : 1, ymin: self.vmin, ymax: self.vmax, ystep: self.vstep, ylab: 'v (m/s)', color: c.cv, f: self.v, tNow: t,
+        tri: a !== 0 ? { t1: 1, t2: 4, dt: 'Δt = 3 s', dy: 'Δv = ' + sg(3 * a, 1) } : null });
+      plot(c2, { tmax: TT, tstep: narrow ? 2 : 1, ymin: -5, ymax: 5, ystep: narrow ? 2.5 : 1, ylab: 'a (m/s²)', color: c.ca, f: function () { return a; }, tNow: t, area: true });
+      n1.innerHTML = '<span>' + L.slope + ':</span> <span class="m">a = Δv / Δt = ' + sg(a, 1) + ' m/s²</span>';
+      n2.innerHTML = '<span>' + L.area + ':</span> <span class="m">Δv = a·t = ' + par(a, 1) + '·' + fmt(t, 1) + ' = ' + sg(a * t, 1) + ' m/s</span>';
+      var n = self.vrows.length - 1, html = '';
+      if (a === 0 && n >= 2) html += '<div class="obs">' + S.zero + '</div>';
+      else if (n >= 3) html += '<div class="obs">' + S.obs(sg(self.vrows[n] - self.vrows[n - 1], 1)) + '</div>';
+      else html += '<div class="obs">' + S.wait + '</div>';
+      html += '<div><b>' + S.model + '</b></div>';
+      html += '<div class="eq">a = Δv / Δt = ' + sg(a, 1) + ' m/s ÷ 1 s = ' + sg(a, 1) + ' m/s²</div>';
+      html += '<div class="eq">v = v₀ + a·t = ' + fmt(self.v0, 1) + ' + ' + par(a, 1) + '·t</div>';
+      html += '<div class="eq">t = ' + fmt(t, 1) + ' s → v = ' + fmt(self.v0, 1) + ' + ' + par(a, 1) + '·' + fmt(t, 1) + ' = ' + fmt(v, 1) + ' m/s</div>';
+      gen.innerHTML = html;
+    };
+    this.pause = function () { if (self.running) { self.running = false; bPlay.textContent = L.resume; } };
+    this.reset();
+    allSims.push(this);
+  }
+  function pauseAll(except) { allSims.forEach(function (s) { if (s !== except && s.pause) s.pause(); }); }
+
+  /* ------------------------------------------------------------------ */
+  /* Δv widget                                                           */
+  /* ------------------------------------------------------------------ */
+  function DV(root, lang) {
+    var S = T[lang].dv;
+    root.innerHTML = '<h4>' + S.title + '</h4>';
+    var ctrl = el('div', 'ctrl');
+    var si = slider('v', S.vi, -20, 20, 1, 10, 'm/s'), ss = slider('v', S.vs, -20, 20, 1, -10, 'm/s'), sd = slider('a', S.dt, 1, 10, 1, 4, 's', true);
+    sd.el.querySelector('output').classList.add('m');
+    [si, ss, sd].forEach(function (s) { ctrl.appendChild(s.el); });
+    var cv = el('canvas'), out = el('div', 'out'), warn = el('div', 'warnline');
+    root.appendChild(ctrl); root.appendChild(cv); root.appendChild(out); root.appendChild(warn);
+    function draw() {
+      var vi = si.get(), vs = ss.get(), dt = sd.get(), dv = vs - vi, a = dv / dt, c = C();
+      var P = prep(cv);
+      if (P) {
+        var ctx = P.ctx, w = P.w, h = P.h, pad = 30;
+        var X = function (v) { return pad + (v + 42) / 84 * (w - 2 * pad); };
+        // axis
+        ctx.strokeStyle = c.line; ctx.lineWidth = 1;
+        for (var v = -40; v <= 40; v += 10) { ctx.beginPath(); ctx.moveTo(X(v), 8); ctx.lineTo(X(v), h - 22); ctx.stroke(); text(ctx, fmt(v, 0), X(v), h - 6, { align: 'center', color: v === 0 ? c.ink : c.muted, weight: v === 0 ? 700 : 500 }); }
+        ctx.strokeStyle = c.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(0), 8); ctx.lineTo(X(0), h - 22); ctx.stroke();
+        var rows = [[X(0), X(vi), c.cv, 'v_ilk', 30], [X(0), X(vs), c.cv, 'v_son', 66], [X(vi), X(vs), c.ca, 'Δv', 104]];
+        rows.forEach(function (r) {
+          if (Math.abs(r[1] - r[0]) < 1) { ctx.fillStyle = r[2]; ctx.beginPath(); ctx.arc(r[0], r[4], 4, 0, 7); ctx.fill(); }
+          else arrow(ctx, r[0], r[4], r[1], r[2], 4, 10);
+          text(ctx, r[3], r[1] + (r[1] >= r[0] ? 8 : -8), r[4] + 4, { align: r[1] >= r[0] ? 'left' : 'right', color: r[2], weight: 700, size: 12.5, halo: true });
+        });
+        ctx.setLineDash([3, 3]); ctx.strokeStyle = c.muted; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(X(vi), 30); ctx.lineTo(X(vi), 104); ctx.moveTo(X(vs), 66); ctx.lineTo(X(vs), 104); ctx.stroke(); ctx.setLineDash([]);
+      }
+      out.innerHTML = 'Δv = v<sub>son</sub> − v<sub>ilk</sub> = ' + par(vs, 0) + ' − ' + par(vi, 0) + ' = <b style="color:var(--ca)">' + sg(dv, 0) + ' m/s</b><br>a = Δv / Δt = ' + sg(dv, 0) + ' / ' + dt + ' = <b style="color:var(--ca)">' + sg(a, 2) + ' m/s²</b>';
+      warn.textContent = (vi * vs < 0) ? S.turn : '';
+    }
+    [si, ss, sd].forEach(function (s) { s.input.addEventListener('input', draw); });
+    root._draw = draw; draw();
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* km/h ↔ m/s                                                          */
+  /* ------------------------------------------------------------------ */
+  function KMH(root, lang) {
+    var S = T[lang].kmh;
+    root.innerHTML = '<h4>' + S.title + '</h4>';
+    var s = slider('v', S.l, 0, 144, 3.6, 72, 'km/h');
+    s.el.querySelector('output').textContent = '';
+    var out = el('div', 'out');
+    root.appendChild(s.el); root.appendChild(out);
+    function upd() { var k = s.get(); s.el.querySelector('output').textContent = fmt(k, 1) + ' km/h'; out.innerHTML = fmt(k, 1) + ' km/h ÷ 3,6 = <b style="color:var(--cv)">' + fmt(k / 3.6, 1) + ' m/s</b> &nbsp;·&nbsp; ' + fmt(k / 3.6, 1) + ' m/s × 3,6 = ' + fmt(k, 1) + ' km/h'; }
+    s.input.addEventListener('input', upd); upd();
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* static figures                                                      */
+  /* ------------------------------------------------------------------ */
+  var FIGS = {
+    walk: function (cv) {
+      var P = prep(cv); if (!P) return;
+      var ctx = P.ctx, w = P.w, h = P.h, c = C(), pad = 28;
+      var X = function (x) { return pad + (x + 2) / 12 * (w - 2 * pad); };
+      var ax = h - 26;
+      ctx.strokeStyle = c.muted; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(pad - 10, ax); ctx.lineTo(w - pad + 10, ax); ctx.stroke();
+      for (var x = -2; x <= 10; x++) { ctx.beginPath(); ctx.moveTo(X(x), ax - (x === 0 ? 7 : 4)); ctx.lineTo(X(x), ax + (x === 0 ? 7 : 4)); ctx.strokeStyle = x === 0 ? c.ink : c.muted; ctx.lineWidth = x === 0 ? 2 : 1; ctx.stroke(); if (x % 2 === 0 || x === 3) text(ctx, fmt(x, 0), X(x), ax + 18, { align: 'center', color: x === 0 || x === 3 ? c.ink : c.muted, weight: x === 0 || x === 3 ? 700 : 500 }); }
+      text(ctx, 'x (m)', w - 4, ax - 8, { align: 'right', size: 10.5 });
+      arrow(ctx, X(0), 22, X(8), c.ink, 3, 9); text(ctx, '+8 m', (X(0) + X(8)) / 2, 15, { align: 'center', color: c.ink, weight: 600, size: 12 });
+      arrow(ctx, X(8), 50, X(3), c.ink, 3, 9); text(ctx, '−5 m', (X(8) + X(3)) / 2, 43, { align: 'center', color: c.ink, weight: 600, size: 12 });
+      arrow(ctx, X(0), 82, X(3), c.cx, 4, 10); text(ctx, 'Δx = +3 m', X(3) + 10, 86, { align: 'left', color: c.cx, weight: 700, size: 12.5 });
+      ctx.setLineDash([3, 3]); ctx.strokeStyle = c.muted; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(X(8), 22); ctx.lineTo(X(8), 50); ctx.moveTo(X(3), 50); ctx.lineTo(X(3), ax); ctx.moveTo(X(0), 22); ctx.lineTo(X(0), ax); ctx.stroke(); ctx.setLineDash([]);
+    },
+    xt4: function (cv) {
+      var c = C();
+      plot(cv, { tmax: 8, tstep: 1, ymin: -20, ymax: 40, ystep: 10, ylab: 'x (m)', color: c.cx,
+        segs: [[0, 0, 8, 40]],
+        labels: [{ t: 8, y: 40, dx: 7, dy: 5, align: 'left', s: 'A', color: c.cx, size: 13 }] });
+      var P = cv.getContext('2d'), r = cv.getBoundingClientRect();
+      if (r.width < 4) return;
+      // extra lines drawn over the same axes
+      var m = { l: 44, r: 34, t: 24, b: 24 }, w = r.width, h = r.height;
+      var X = function (t) { return m.l + t / 8 * (w - m.l - m.r); }, Y = function (y) { return m.t + (40 - y) / 60 * (h - m.t - m.b); };
+      var lines = [[0, 0, 8, 16, c.cv, 'B: v = +2 m/s', 0], [0, 20, 8, 20, c.muted, 'C: v = 0', 0], [0, 30, 8, -10, c.ca, 'D: v = −5 m/s', 0]];
+      P.lineWidth = 2.6; P.lineCap = 'round';
+      lines.forEach(function (L) { P.strokeStyle = L[4]; P.beginPath(); P.moveTo(X(L[0]), Y(L[1])); P.lineTo(X(L[2]), Y(L[3])); P.stroke(); });
+      text(P, 'B', X(8) + 7, Y(16) + 5, { align: 'left', color: c.cv, weight: 700, size: 13, halo: true });
+      text(P, 'C', X(8) + 7, Y(20) + 5, { align: 'left', color: c.muted, weight: 700, size: 13, halo: true });
+      text(P, 'D', X(8) + 7, Y(-10) + 5, { align: 'left', color: c.ca, weight: 700, size: 13, halo: true });
+    },
+    vtarea: function (cv) {
+      var c = C();
+      plot(cv, { tmax: 9, tstep: 1, ymin: -6, ymax: 8, ystep: 2, ylab: 'v (m/s)', color: c.cv, area: true,
+        segs: [[0, 6, 4, 6], [4, -3, 8, -3]],
+        labels: [{ t: 2, y: 3, dy: 4, s: '+24 m', color: c.ink, size: 13 }, { t: 6, y: -1.5, dy: 4, s: '−12 m', color: c.ink, size: 13 }] });
+      var P = cv.getContext('2d'), r = cv.getBoundingClientRect(); if (r.width < 4) return;
+      var m = { l: 44, r: 34, t: 24, b: 24 }, w = r.width, h = r.height;
+      var X = function (t) { return m.l + t / 9 * (w - m.l - m.r); }, Y = function (y) { return m.t + (8 - y) / 14 * (h - m.t - m.b); };
+      P.setLineDash([3, 3]); P.strokeStyle = c.cv; P.lineWidth = 1.5; P.beginPath(); P.moveTo(X(4), Y(6)); P.lineTo(X(4), Y(-3)); P.stroke(); P.setLineDash([]);
+    },
+    vtslope: function (cv) {
+      var c = C();
+      plot(cv, { tmax: 5, tstep: 1, ymin: 0, ymax: 20, ystep: 4, ylab: 'v (m/s)', color: c.cv, segs: [[0, 4, 4, 16]],
+        tri: { t1: 0, t2: 4, dt: 'Δt = 4 s', dy: 'Δv = 12 m/s' }, dots: [[0, 4], [4, 16]],
+        labels: [{ t: 0.15, y: 18, dy: 0, align: 'left', s: 'a = 12 / 4 = 3 m/s²', color: c.ca }] });
+    },
+    atarea: function (cv) {
+      var c = C();
+      plot(cv, { tmax: 5, tstep: 1, ymin: 0, ymax: 4, ystep: 1, ylab: 'a (m/s²)', color: c.ca, segs: [[0, 3, 4, 3]], area: true,
+        labels: [{ t: 2, y: 1.5, dy: 4, s: 'Δv = 3·4 = 12 m/s', color: c.ink, size: 12.5 }] });
+    }
+  };
+
+  /* ------------------------------------------------------------------ */
+  /* quiz                                                                */
+  /* ------------------------------------------------------------------ */
+  var G = {
+    q2: { tmax: 6, tstep: 1, ymin: 0, ymax: 50, ystep: 10, ylab: 'x (m)', k: 'cx', segs: [[0, 10, 5, 40]], dots: [[0, 10], [5, 40]] },
+    q3: { tmax: 7, tstep: 1, ymin: -6, ymax: 2, ystep: 2, ylab: 'v (m/s)', k: 'cv', segs: [[0, -4, 6, -4]], area: true },
+    q6: { tmax: 6, tstep: 1, ymin: 0, ymax: 30, ystep: 10, ylab: 'x (m)', k: 'cx', segs: [[0, 20, 6, 20]] },
+    q12: { tmax: 6, tstep: 1, ymin: 0, ymax: 3, ystep: 1, ylab: 'a (m/s²)', k: 'ca', segs: [[0, 2, 5, 2]], area: true }
+  };
+  var QUIZ = {
+    tr: [
+      { c: 'FİZ.10.1.1', q: 'Düz bir yolda giden bir araç her 2 saniyede 30 m yer değiştiriyor. Bu hareket için hangisi doğrudur?', o: ['Hızı 15 m/s olan sabit hızlı hareket', 'Hızı 60 m/s olan sabit hızlı hareket', 'İvmesi 15 m/s² olan hızlanan hareket', 'Hızı her saniye azalan hareket'], a: 0, e: 'Eşit zamanlarda eşit yer değiştirme → sabit hız. v = Δx/Δt = 30 / 2 = 15 m/s; ivme sıfırdır.' },
+      { c: 'FİZ.10.1.1', g: 'q2', q: 'Konum–zaman grafiği verilen cismin hızı kaç m/s’dir?', o: ['8', '6', '2', '10'], a: 1, e: 'Eğim = Δx/Δt = (40 − 10) / (5 − 0) = 30 / 5 = 6 m/s. Hız, konumun kendisinden değil konumdaki değişimden bulunur.' },
+      { c: 'FİZ.10.1.1', g: 'q3', q: 'Hız–zaman grafiği verilen cismin 0–6 s arasındaki yer değiştirmesi kaç m’dir?', o: ['+24', '−24', '−4', '0'], a: 1, e: 'Alan = v·Δt = (−4)·6 = −24 m. Alan zaman ekseninin altında olduğu için yer değiştirme (−) yöndedir; alınan yol ise 24 m’dir.' },
+      { c: 'FİZ.10.1.1', q: 'Ali evinin önünden (x = 0) doğuya 300 m yürüyor, sonra aynı yoldan 100 m geri dönüyor. Doğu (+) ise alınan yol ve yer değiştirme nedir?', o: ['Yol 400 m, Δx = +200 m', 'Yol 200 m, Δx = +400 m', 'Yol 400 m, Δx = +400 m', 'Yol 200 m, Δx = −100 m'], a: 0, e: 'Alınan yol, izlenen yolun toplam uzunluğudur: 300 + 100 = 400 m. Yer değiştirme = son konum − ilk konum = 200 − 0 = +200 m.' },
+      { c: 'FİZ.10.1.1', q: '72 km/h kaç m/s’dir?', o: ['7,2', '20', '259,2', '36'], a: 1, e: 'km/h’ten m/s’ye geçmek için 3,6’ya bölünür: 72 ÷ 3,6 = 20 m/s.' },
+      { c: 'FİZ.10.1.1', g: 'q6', q: 'Konum–zaman grafiği verilen cisim için hangisi doğrudur?', o: ['20 m/s hızla gidiyor', 'Durgundur (v = 0)', 'Sabit ivmeyle hızlanıyor', '20 m yer değiştirmiştir'], a: 1, e: 'Konum zamanla değişmiyor, grafiğin eğimi sıfır → hız sıfır. Cisim 20 m konumunda duruyor.' },
+      { c: 'FİZ.10.1.1', q: 'A aracı x = 0’dan +10 m/s ile, B aracı aynı anda x = 120 m’den −5 m/s ile hareket ediyor. Kaçıncı saniyede karşılaşırlar?', o: ['6', '8', '12', '24'], a: 1, e: 'x_A = 10t ve x_B = 120 − 5t. Karşılaşmada konumlar eşit: 10t = 120 − 5t → 15t = 120 → t = 8 s (x = 80 m’de).' },
+      { c: 'FİZ.10.1.2', q: 'Bir araç 4 s içinde hızını düzgün olarak 6 m/s’den 18 m/s’ye çıkarıyor. İvmesi kaç m/s²’dir?', o: ['3', '4,5', '12', '1,5'], a: 0, e: 'a = Δv/Δt = (18 − 6) / 4 = 12 / 4 = 3 m/s². Hız her saniye 3 m/s artıyor.' },
+      { c: 'FİZ.10.1.2', q: '+10 m/s hızla giden bir araç 4 s sonra ters yönde −10 m/s hızla gidiyor. Ortalama ivmesi kaç m/s²’dir?', o: ['0', '−5', '+5', '−2,5'], a: 1, e: 'Δv = v_son − v_ilk = (−10) − (+10) = −20 m/s, a = −20 / 4 = −5 m/s². Sürat aynı (10 m/s) kalsa da yön değiştiği için hız değişti; ivme sıfır değildir.' },
+      { c: 'FİZ.10.1.2', q: 'Bir cismin hızı v = −8 m/s, ivmesi a = −2 m/s². Hangisi doğrudur?', o: ['Yavaşlıyor, çünkü ivme negatif', 'Hızlanıyor, çünkü v ve a aynı yönde', 'Sabit hızla gidiyor', 'Hemen duracak'], a: 1, e: 'İvmenin işareti tek başına karar vermez. v ve a ikisi de (−) → aynı yönde → cisim (−) yönde hızlanıyor.' },
+      { c: 'FİZ.10.1.2', q: 'Bir aracın hızı t = 0, 1, 2, 3 s’de sırasıyla 20, 16, 12, 8 m/s ölçülüyor. Örüntü sürerse ivme ve t = 5 s’deki hız nedir?', o: ['a = −4 m/s², v = 0', 'a = +4 m/s², v = 0', 'a = −4 m/s², v = 4 m/s', 'a = −8 m/s², v = −20 m/s'], a: 0, e: 'Her saniye Δv = −4 m/s → a = −4 m/s² (sabit). v = v₀ + a·t = 20 + (−4)·5 = 0: araç 5. saniyede durur.' },
+      { c: 'FİZ.10.1.2', g: 'q12', q: 'İvme–zaman grafiği verilen cismin t = 0’daki hızı 3 m/s’dir. t = 5 s’deki hızı kaç m/s’dir?', o: ['10', '13', '2', '7'], a: 1, e: 'a–t grafiğinin altındaki alan hız değişimidir: Δv = 2·5 = 10 m/s. v = 3 + 10 = 13 m/s.' }
+    ],
+    ar: [
+      { c: 'FİZ.10.1.1', q: 'سيارة على طريق مستقيم تُزاح 30 m كل 2 s. أيّ العبارات صحيحة؟', o: ['حركة بسرعة ثابتة مقدارها 15 m/s', 'حركة بسرعة ثابتة مقدارها 60 m/s', 'حركة متسارعة بتسارع 15 m/s²', 'حركة تتناقص سرعتها كل ثانية'], a: 0, e: 'إزاحات متساوية في أزمنة متساوية ← سرعة ثابتة. v = Δx/Δt = 30 ÷ 2 = 15 m/s، والتسارع صفر.' },
+      { c: 'FİZ.10.1.1', g: 'q2', q: 'ما سرعة الجسم الذي يمثّله منحنى الموضع–الزمن (konum–zaman) التالي بوحدة m/s؟', o: ['8', '6', '2', '10'], a: 1, e: 'الميل = Δx/Δt = (40 − 10) ÷ (5 − 0) = 30 ÷ 5 = 6 m/s. السرعة تُحسب من تغيّر الموضع لا من الموضع نفسه.' },
+      { c: 'FİZ.10.1.1', g: 'q3', q: 'ما إزاحة الجسم بين 0 و 6 s حسب منحنى السرعة–الزمن (hız–zaman)؟ (بالمتر)', o: ['+24', '−24', '−4', '0'], a: 1, e: 'المساحة = v·Δt = (−4)·6 = −24 m. المساحة تحت محور الزمن، فالإزاحة بالاتجاه السالب؛ أما المسافة المقطوعة (alınan yol) فهي 24 m.' },
+      { c: 'FİZ.10.1.1', q: 'يمشي علي من أمام بيته (x = 0) نحو الشرق 300 m ثم يرجع على الطريق نفسه 100 m. إذا كان الشرق (+) فما المسافة المقطوعة والإزاحة؟', o: ['المسافة 400 m، Δx = +200 m', 'المسافة 200 m، Δx = +400 m', 'المسافة 400 m، Δx = +400 m', 'المسافة 200 m، Δx = −100 m'], a: 0, e: 'المسافة المقطوعة = طول المسار كله: 300 + 100 = 400 m. الإزاحة = الموضع النهائي − الابتدائي = 200 − 0 = +200 m.' },
+      { c: 'FİZ.10.1.1', q: 'كم تساوي 72 km/h بوحدة m/s؟', o: ['7,2', '20', '259,2', '36'], a: 1, e: 'للتحويل من km/h إلى m/s نقسم على 3,6: 72 ÷ 3,6 = 20 m/s.' },
+      { c: 'FİZ.10.1.1', g: 'q6', q: 'ماذا يمكن القول عن الجسم الذي يمثّله منحنى الموضع–الزمن التالي؟', o: ['يتحرك بسرعة 20 m/s', 'ساكن (v = 0)', 'يتسارع بتسارع ثابت', 'أُزيح 20 m'], a: 1, e: 'الموضع لا يتغير مع الزمن، والميل صفر ← السرعة صفر. الجسم واقف عند الموضع 20 m.' },
+      { c: 'FİZ.10.1.1', q: 'تنطلق السيارة A من x = 0 بسرعة +10 m/s، وفي اللحظة نفسها تنطلق B من x = 120 m بسرعة −5 m/s. بعد كم ثانية تلتقيان؟', o: ['6', '8', '12', '24'], a: 1, e: 'x_A = 10t و x_B = 120 − 5t. عند الالتقاء يتساوى الموضعان: 10t = 120 − 5t ← 15t = 120 ← t = 8 s (عند x = 80 m).' },
+      { c: 'FİZ.10.1.2', q: 'سيارة تزيد سرعتها بانتظام من 6 m/s إلى 18 m/s خلال 4 s. كم تسارعها بوحدة m/s²؟', o: ['3', '4,5', '12', '1,5'], a: 0, e: 'a = Δv/Δt = (18 − 6) ÷ 4 = 12 ÷ 4 = 3 m/s². أي أن السرعة تزيد 3 m/s كل ثانية.' },
+      { c: 'FİZ.10.1.2', q: 'سيارة سرعتها +10 m/s، وبعد 4 s أصبحت تسير بالاتجاه المعاكس بسرعة −10 m/s. كم متوسط تسارعها بوحدة m/s²؟', o: ['0', '−5', '+5', '−2,5'], a: 1, e: 'Δv = v_son − v_ilk = (−10) − (+10) = −20 m/s، و a = −20 ÷ 4 = −5 m/s². مقدار السرعة بقي 10 m/s لكن الاتجاه تغيّر، فالسرعة تغيّرت والتسارع ليس صفرًا.' },
+      { c: 'FİZ.10.1.2', q: 'جسم سرعته v = −8 m/s وتسارعه a = −2 m/s². أيّ العبارات صحيحة؟', o: ['تتناقص سرعته لأن التسارع سالب', 'تتزايد سرعته لأن v و a بالاتجاه نفسه', 'يتحرك بسرعة ثابتة', 'سيتوقف فورًا'], a: 1, e: 'إشارة التسارع وحدها لا تكفي. v و a كلاهما (−) ← بالاتجاه نفسه ← الجسم يتسارع (hızlanıyor) بالاتجاه السالب.' },
+      { c: 'FİZ.10.1.2', q: 'قيست سرعة سيارة عند t = 0, 1, 2, 3 s فكانت 20, 16, 12, 8 m/s. إذا استمر النمط، فما التسارع والسرعة عند t = 5 s؟', o: ['a = −4 m/s²، v = 0', 'a = +4 m/s²، v = 0', 'a = −4 m/s²، v = 4 m/s', 'a = −8 m/s²، v = −20 m/s'], a: 0, e: 'في كل ثانية Δv = −4 m/s ← a = −4 m/s² (ثابت). v = v₀ + a·t = 20 + (−4)·5 = 0: السيارة تتوقف عند الثانية 5.' },
+      { c: 'FİZ.10.1.2', g: 'q12', q: 'سرعة جسم عند t = 0 هي 3 m/s، ومنحنى التسارع–الزمن له كما في الشكل. كم سرعته عند t = 5 s بوحدة m/s؟', o: ['10', '13', '2', '7'], a: 1, e: 'المساحة تحت منحنى a–t تساوي تغيّر السرعة: Δv = 2·5 = 10 m/s، إذن v = 3 + 10 = 13 m/s.' }
+    ]
+  };
+
+  var MATH_RUN = /[0-9A-Za-z_\u00C0-\u024FΔ₀-₉+\-−=·×÷\/,.()²%|→ ]+/g;
+  function protect(str) {
+    return str.replace(MATH_RUN, function (run) {
+      if (!/[0-9Δ=]/.test(run)) return run;
+      var lead = run.match(/^\s*/)[0], trail = run.match(/\s*$/)[0], core = run.trim(), head = '', tail = '';
+      while (core && '.,:'.indexOf(core.charAt(core.length - 1)) >= 0) { tail = core.charAt(core.length - 1) + tail; core = core.slice(0, -1); }
+      if (core.charAt(0) === '(' && core.indexOf(')') < 0) { head = '('; core = core.slice(1); }
+      if (core.charAt(core.length - 1) === ')' && core.indexOf('(') < 0) { tail = ')' + tail; core = core.slice(0, -1); }
+      if (!core || !/[0-9Δ=]/.test(core)) return run;
+      return lead + head + '<bdi dir="ltr">' + core + '</bdi>' + tail + trail;
+    });
+  }
+  var quizCanvases = [];
+  function Quiz(root, lang) {
+    var L = T[lang].quiz, Q = QUIZ[lang], P = lang === 'ar' ? protect : function (x) { return x; };
+    root.innerHTML = '';
+    var correct = 0, answered = 0;
+    var score = el('div', 'score');
+    var sTxt = el('span'); var sBtn = el('button', '', L.reset); sBtn.type = 'button';
+    score.appendChild(sTxt); score.appendChild(sBtn);
+    function upd() { sTxt.innerHTML = L.score + ': <bdi dir="ltr">' + correct + ' / ' + Q.length + '</bdi>' + (answered < Q.length ? ' · ' + L.done + ': <bdi dir="ltr">' + answered + '</bdi>' : ''); }
+    Q.forEach(function (q, i) {
+      var card = el('div', 'qcard');
+      card.appendChild(el('div', 'qh', '<span class="qn">' + (i + 1) + '</span><span class="qt">' + P(q.q) + '</span><span class="qc">' + q.c + '</span>'));
+      if (q.g) { var cv = el('canvas'); card.appendChild(cv); quizCanvases.push([cv, q.g]); }
+      var opts = el('div', 'opts'), why = el('div', 'why'); why.hidden = true;
+      q.o.forEach(function (o, k) {
+        var b = el('button', '', '<b dir="ltr">' + 'ABCD'[k] + ')</b><span>' + P(o) + '</span>'); b.type = 'button';
+        b.addEventListener('click', function () {
+          var bs = opts.querySelectorAll('button');
+          bs.forEach(function (x) { x.disabled = true; });
+          bs[q.a].classList.add('ok');
+          if (k !== q.a) b.classList.add('no'); else correct++;
+          answered++;
+          why.innerHTML = (k === q.a ? '<b class="ok">' + L.ok + '</b> ' : '<b class="no">' + L.no + '</b> ' + L.right + '<bdi dir="ltr">' + 'ABCD'[q.a] + '</bdi>. ') + P(q.e);
+          why.hidden = false; upd();
+        });
+        opts.appendChild(b);
+      });
+      card.appendChild(opts); card.appendChild(why);
+      root.appendChild(card);
+    });
+    root.appendChild(score);
+    sBtn.addEventListener('click', function () { Quiz(root, lang); drawAll(); });
+    upd();
+  }
+  function drawQuizGraphs() {
+    quizCanvases.forEach(function (p) {
+      var g = G[p[1]], c = C();
+      plot(p[0], { tmax: g.tmax, tstep: g.tstep, ymin: g.ymin, ymax: g.ymax, ystep: g.ystep, ylab: g.ylab, color: c[g.k], segs: g.segs, area: g.area, dots: g.dots });
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* hero strobe strip                                                   */
+  /* ------------------------------------------------------------------ */
+  function hero(root) {
+    var make = function (xs, color, label) {
+      var s = '<svg viewBox="0 0 560 44" role="img" aria-label="' + label + '"><line x1="8" y1="22" x2="552" y2="22" stroke="var(--line)" stroke-width="2"/>';
+      var lastL = -99;
+      xs.forEach(function (x, i) {
+        var lbl = (x - lastL >= 14) ? '<text x="' + x + '" y="42" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--muted)">' + i + '</text>' : '';
+        if (lbl) lastL = x;
+        s += '<g class="d" style="animation-delay:' + (i * 0.11).toFixed(2) + 's"><circle cx="' + x + '" cy="22" r="6.5" fill="' + color + '"/>' + lbl + '</g>';
+      });
+      return s + '</svg>';
+    };
+    var a = [], b = [];
+    for (var i = 0; i <= 9; i++) { a.push(24 + i * 56); b.push(24 + i * i * 6.4); }
+    var rows = root.querySelectorAll('.row svg-slot');
+    if (rows[0]) rows[0].outerHTML = make(a, 'var(--cv)', 'v');
+    rows = root.querySelectorAll('.row svg-slot');
+    if (rows[0]) rows[0].outerHTML = make(b, 'var(--ca)', 'a');
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* boot                                                                */
+  /* ------------------------------------------------------------------ */
+  function drawAll() {
+    colCache = null;
+    document.querySelectorAll('.lang:not([hidden]) [data-fig]').forEach(function (f) { var cv = f.querySelector('canvas'); if (cv && FIGS[f.dataset.fig]) FIGS[f.dataset.fig](cv); });
+    allSims.forEach(function (s) { s.draw(); });
+    document.querySelectorAll('[data-mini="dv"]').forEach(function (r) { if (r._draw) r._draw(); });
+    drawQuizGraphs();
+  }
+  function init() {
+    document.querySelectorAll('.lang').forEach(function (L) {
+      var lang = L.id;
+      L.querySelectorAll('[data-sim="cv"]').forEach(function (r) { new SimCV(r, lang); });
+      L.querySelectorAll('[data-sim="acc"]').forEach(function (r) { new SimACC(r, lang); });
+      L.querySelectorAll('[data-mini="dv"]').forEach(function (r) { DV(r, lang); });
+      L.querySelectorAll('[data-mini="kmh"]').forEach(function (r) { KMH(r, lang); });
+      L.querySelectorAll('[data-quiz]').forEach(function (r) { Quiz(r, lang); });
+      L.querySelectorAll('.strobe').forEach(hero);
+    });
+    // language switch + hash routing (#ar, #tr, #ar-s1 …)
+    var langs = document.querySelectorAll('.lang'), navs = document.querySelectorAll('.secnav'), btns = document.querySelectorAll('.switch button');
+    function show(lang, target) {
+      pauseAll(null);
+      langs.forEach(function (e) { e.hidden = e.id !== lang; });
+      navs.forEach(function (e) { e.hidden = e.dataset.lang !== lang; });
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
+      document.documentElement.lang = lang;
+      document.title = lang === 'ar' ? 'السرعة الثابتة والتسارع · فيزياء 10' : 'Sabit Hız ve İvme · 10. Sınıf Fizik';
+      try { localStorage.setItem('fizik10-lang', lang); } catch (e) {}
+      requestAnimationFrame(function () {
+        drawAll();
+        if (target) { var t = document.getElementById(target); if (t) t.scrollIntoView({ block: 'start' }); }
+      });
+    }
+    function fromHash() {
+      var h = location.hash.replace(/^#/, ''), m = h.match(/^(tr|ar)(?:-[a-z0-9-]+)?$/);
+      if (m) { show(m[1], h.indexOf('-') > 0 ? h : null); return true; }
+      return false;
+    }
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () { var l = b.dataset.lang; if (location.hash === '#' + l) show(l); else location.hash = l; window.scrollTo(0, 0); });
+    });
+    window.addEventListener('hashchange', fromHash);
+    if (!fromHash()) { var l = 'ar'; try { l = localStorage.getItem('fizik10-lang') || 'ar'; } catch (e) {} show(l); }
+    // redraw on resize / theme change
+    var rt = null;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(drawAll, 120); });
+    if (window.matchMedia) { var mq = window.matchMedia('(prefers-color-scheme: dark)'); (mq.addEventListener ? mq.addEventListener('change', drawAll) : mq.addListener(drawAll)); }
+    new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) pauseAll(null); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+
+</script>
+
+</body>
+</html>

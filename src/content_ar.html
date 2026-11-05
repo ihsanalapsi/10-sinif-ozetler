@@ -1,0 +1,242 @@
+<section class="hero" id="ar-top">
+  <div class="eyebrow">فيزياء الصف العاشر <span class="tr">10. Sınıf Fizik</span> · الوحدة 1: القوة والحركة <span class="tr">Kuvvet ve Hareket</span> · ملخص تفاعلي</div>
+  <h1>السرعة الثابتة والتسارع</h1>
+  <p class="lede">هل تقطع السيارة مسافات متساوية في أزمنة متساوية، أم مسافة أكبر في كل ثانية؟ في هذه الصفحة ستلاحظين أولًا، ثم تكتبين البيانات في جدول ومنحنى، ثم تكتشفين النمط وتعمّمينه. هذا بالضبط هو <strong>الاستدلال الاستقرائي</strong> (<span class="tr">tümevarımsal akıl yürütme</span>) المطلوب في الهدفين.</p>
+  <div class="strobe">
+    <div class="row"><div class="lab">حركة بسرعة ثابتة<small><span class="tr">Sabit hızlı hareket</span> · المسافة نفسها كل 1 s</small></div><svg-slot></svg-slot></div>
+    <div class="row"><div class="lab">حركة بتسارع ثابت (تتزايد سرعتها)<small><span class="tr">Sabit ivmeli hareket</span> · المسافة تكبر كل ثانية</small></div><svg-slot></svg-slot></div>
+    <div class="cap">النقاط هي موضع سيارة متحركة كل 1 ثانية (صورة ستروبوسكوب)، والأرقام تحتها هي الثواني.</div>
+  </div>
+  <div class="outcomes">
+    <div class="oc"><span class="code">FİZ.10.1.1</span><span class="name">الاستدلال الاستقرائي حول الحركة الأفقية بسرعة ثابتة</span>
+      <span class="tr" style="font-weight:500">Yatay doğrultuda sabit hızlı hareket ile ilgili tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>يُجري ملاحظات حول الموضع والإزاحة والسرعة والزمن.</li><li>يستخرج من منحنيات الحركة النموذج الرياضي للسرعة والمسافة والإزاحة.</li><li>يعمّم هذه النماذج الرياضية.</li></ol></div>
+    <div class="oc acc"><span class="code">FİZ.10.1.2</span><span class="name">الاستدلال الاستقرائي حول العلاقة بين التسارع وتغيّر السرعة</span>
+      <span class="tr" style="font-weight:500">İvme ve hız değişimi arasındaki ilişkiye yönelik tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>يكتشف العلاقة بين التسارع وتغيّر السرعة.</li><li>يعمّم هذه العلاقة.</li></ol></div>
+  </div>
+  <div class="howto"><strong>كيف تدرسين من هذه الصفحة؟</strong> في كل قسم شغّلي المختبر أولًا وانظري إلى الجدول، ثم اقرئي الشرح. في الأمثلة المحلولة حاولي الحل بنفسك قبل الضغط على «اعرض الحل». المصطلح التركي مكتوب بالأخضر بجانب كل فكرة لأنه ما سيأتي في الامتحان. الألوان ثابتة في كل الصفحة: <span class="qx">الموضع x</span>، <span class="qv">السرعة v</span>، <span class="qa">التسارع a</span>.</div>
+</section>
+
+<!-- ======================= 1 ======================= -->
+<section class="section" id="ar-s1">
+  <div class="sec-head"><span class="num">1</span><span class="code">FİZ.10.1.1</span><h2>الحركة الأفقية بسرعة ثابتة <span class="tr">Sabit hızlı hareket</span></h2></div>
+
+  <h3><span class="n">1.1</span>المفاهيم التي تصف الحركة</h3>
+  <p>لكي نحدد مكان جسم نختار أولًا <strong>نقطة مرجعية</strong> (<span class="tr">referans noktası</span>)، أي نقطة الصفر. البعد الموجّه للجسم عن هذه النقطة هو <span class="qx">الموضع x</span> (<span class="tr">konum</span>). على طريق أفقي نعتبر يمين النقطة المرجعية (+) ويسارها (−).</p>
+  <ul>
+    <li><strong>الإزاحة Δx</strong> (<span class="tr">yer değiştirme</span>): الفرق بين الموضع النهائي والموضع الابتدائي: <span class="m">Δx = x<sub>son</sub> − x<sub>ilk</sub></span>. لها اتجاه (متجهة <span class="tr">vektörel</span>)، وتعتمد فقط على نقطتي البداية والنهاية.</li>
+    <li><strong>المسافة المقطوعة</strong> (<span class="tr">alınan yol</span>): الطول الكلي للمسار الذي سلكه الجسم. ليس لها اتجاه (قياسية <span class="tr">skaler</span>) وهي موجبة دائمًا.</li>
+    <li><strong>السرعة المتجهة v</strong> (<span class="tr">hız</span>): الإزاحة في وحدة الزمن، <span class="m">v = Δx / Δt</span>. متجهة.</li>
+    <li><strong>السرعة القياسية</strong> (<span class="tr">sürat</span>): المسافة المقطوعة في وحدة الزمن، <span class="m">sürat = yol / Δt</span>. قياسية.</li>
+  </ul>
+  <div class="fig" data-fig="walk"><canvas style="height:150px"></canvas>
+    <div class="cap"><b>الشكل 1.</b> طالبة تمشي من النقطة 0 إلى +8 m، ثم ترجع 5 m وتقف عند +3 m. المسافة المقطوعة <span class="ltr">= 8 + 5 = <b>13 m</b></span>، والإزاحة <span class="ltr">Δx = 3 − 0 = <b class="qx">+3 m</b></span>. إذا لم يتغير اتجاه الحركة يكون الاثنان متساويين.</div></div>
+  <div class="tw"><table class="t">
+    <tr><th>كميات قياسية <span class="tr">skaler</span> (عدد + وحدة)</th><th>كميات متجهة <span class="tr">vektörel</span> (عدد + وحدة + اتجاه)</th></tr>
+    <tr><td>الزمن، المسافة المقطوعة، السرعة القياسية <span class="tr">sürat</span></td><td>الموضع، الإزاحة، السرعة <span class="tr">hız</span>، التسارع <span class="tr">ivme</span></td></tr>
+  </table></div>
+
+  <h3><span class="n">1.2</span>من الملاحظة إلى التعميم: الاستقراء</h3>
+  <p><strong>الاستدلال الاستقرائي</strong> (<span class="tr">tümevarımsal akıl yürütme</span>) يعني الوصول إلى قاعدة عامة انطلاقًا من ملاحظات مفردة. في الفيزياء نسير بهذا الترتيب:</p>
+  <ol class="steps">
+    <li><span><strong>الملاحظة</strong> (<span class="tr">gözlem</span>): قيسي موضع الجسم في أزمنة محددة.</span></li>
+    <li><span><strong>الجدول</strong> (<span class="tr">tablo</span>): سجّلي t و x، وΔx في كل فترة.</span></li>
+    <li><span><strong>المنحنى</strong> (<span class="tr">grafik</span>): ارسمي منحنيي x–t و v–t.</span></li>
+    <li><span><strong>النمط</strong> (<span class="tr">örüntü</span>): مثل «Δx متساوية في كل ثانية».</span></li>
+    <li><span><strong>التعميم</strong> (<span class="tr">genelleme</span>): حوّلي النمط إلى علاقة: <span class="m">x = x₀ + v·t</span>.</span></li>
+  </ol>
+  <div class="sim" data-sim="cv"></div>
+  <div class="box think"><span class="t">جرّبي في المختبر وفكّري</span>
+    <ul>
+      <li>اجعلي السرعة +5 m/s: هل المسافة بين النقاط متساوية كل ثانية؟ ماذا يقول عمود Δx في الجدول؟</li>
+      <li>اجعلي السرعة −5 m/s: كيف تغيّر منحنى x–t؟ هل المساحة في منحنى v–t فوق محور الزمن أم تحته؟</li>
+      <li>غيّري موضع البداية: هل يتغير ميل منحنى x–t؟ (لا يتغير؛ الميل يعتمد على السرعة فقط.)</li>
+      <li>اجعلي السرعة 0: أيّ منحنى يصبح خطًا أفقيًا؟</li>
+    </ul></div>
+
+  <h3><span class="n">1.3</span>منحنى الموضع–الزمن <span class="tr">Konum–zaman grafiği</span></h3>
+  <div class="fig" data-fig="xt4"><canvas style="height:260px"></canvas>
+    <div class="cap"><b>الشكل 2.</b> منحنيات x–t لأربعة أجسام. كلها خطوط مستقيمة، إذن كلها بسرعة ثابتة. الميل (<span class="tr">eğim</span>) يعطي السرعة: <b class="qx">A</b> ‎+5 m/s، <b class="qv">B</b> ‎+2 m/s، <b>C</b> 0 (ساكن)، <b class="qa">D</b> ‎−5 m/s.</div></div>
+  <ul>
+    <li>منحنى x–t للحركة بسرعة ثابتة <strong>خط مستقيم مائل</strong>.</li>
+    <li><strong>الميل = السرعة</strong> (<span class="tr">eğim = hız</span>): <span class="m">v = Δx / Δt</span>. كلما كان الخط أشد انحدارًا كانت السرعة أكبر (A أسرع من B).</li>
+    <li>خط صاعد: حركة بالاتجاه (+). خط نازل (D): حركة بالاتجاه (−).</li>
+    <li>خط أفقي (C): الموضع لا يتغير، الجسم <strong>ساكن</strong> (<span class="tr">durgun</span>).</li>
+    <li>نقطة تقاطع خطين هي اللحظة التي يكون فيها الجسمان <strong>في الموضع نفسه</strong> (يلتقيان، <span class="tr">karşılaşma</span>).</li>
+  </ul>
+
+  <h3><span class="n">1.4</span>منحنى السرعة–الزمن <span class="tr">Hız–zaman grafiği</span></h3>
+  <div class="fig" data-fig="vtarea"><canvas style="height:240px"></canvas>
+    <div class="cap"><b>الشكل 3.</b> جسم يسير 4 s بسرعة +6 m/s ثم 4 s بسرعة −3 m/s. الإزاحة الكلية <span class="ltr">= 24 + (−12) = <b class="qx">+12 m</b></span>، والمسافة المقطوعة <span class="ltr">= 24 + 12 = <b>36 m</b></span>.</div></div>
+  <ul>
+    <li>منحنى v–t للحركة بسرعة ثابتة <strong>خط موازٍ لمحور الزمن</strong>.</li>
+    <li><strong>المساحة تحت المنحنى = الإزاحة</strong> (<span class="tr">alan = yer değiştirme</span>): <span class="m">Δx = v·Δt</span> (مساحة مستطيل).</li>
+    <li>المساحة فوق المحور إزاحة (+)، وتحته إزاحة (−). للمسافة المقطوعة نجمع مقادير المساحات.</li>
+  </ul>
+
+  <h3><span class="n">1.5</span>النموذج الرياضي (التعميم) <span class="tr">Matematiksel model</span></h3>
+  <div class="eqrow">
+    <div class="eqn"><span class="qv">v</span> = Δ<span class="qx">x</span> / Δt<small>السرعة = الإزاحة ÷ الزمن</small></div>
+    <div class="eqn"><span class="qx">x</span> = x₀ + <span class="qv">v</span>·t<small>الموضع في أي لحظة</small></div>
+    <div class="eqn">sürat = yol / Δt<small>المسافة = السرعة القياسية × الزمن</small></div>
+  </div>
+  <p>في الحركة بسرعة ثابتة لا يتغير مقدار السرعة ولا اتجاهها، ولذلك <span class="qa">التسارع صفر</span>. وبما أن الاتجاه لا يتغير، فالمسافة المقطوعة تساوي مقدار الإزاحة، والسرعة القياسية تساوي مقدار السرعة المتجهة.</p>
+  <div class="mini" data-mini="kmh"></div>
+  <p style="font-size:15px;color:var(--muted)">لماذا 3,6؟ لأن 1 km/h = 1000 m ÷ 3600 s = 1/3,6 m/s. للتحويل من km/h إلى m/s نقسم على 3,6، ومن m/s إلى km/h نضرب في 3,6.</p>
+  <div class="box turk"><span class="t">بالتركي — جمل جاهزة للامتحان</span>
+    <p>• Sabit hızlı harekette cisim eşit zaman aralıklarında eşit yer değiştirme yapar. • Konum–zaman grafiğinin eğimi hızı verir. • Hız–zaman grafiğinin altındaki alan yer değiştirmeyi verir. • x = x₀ + v·t • Sabit hızlı harekette ivme sıfırdır.</p></div>
+
+  <h3><span class="n">1.6</span>أمثلة محلولة <span class="tr">Çözümlü örnekler</span></h3>
+  <details class="ex"><summary><span class="k">Ö1</span><span>جسم على طريق مستقيم كان عند 20 m في الثانية 5، وعند 60 m في الثانية 15. كم سرعته؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>Δx = 60 − 20 = 40 m</li><li>Δt = 15 − 5 = 10 s</li><li>v = Δx / Δt = 40 ÷ 10</li></ol><div class="res"><span class="ltr m">v = <span class="qv">+4 m/s</span></span></div></div></details>
+  <details class="ex"><summary><span class="k">Ö2</span><span>منحنى السرعة–الزمن لسيارة خط أفقي عند 15 m/s. كم إزاحتها بين 0 و 4 s؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>الإزاحة = المساحة تحت المنحنى.</li><li>المساحة = v·Δt = 15 · 4</li></ol><div class="res"><span class="ltr m">Δx = <span class="qx">60 m</span></span></div></div></details>
+  <details class="ex"><summary><span class="k">Ö3</span><span>سيارة تسير بسرعة ثابتة 108 km/h. كم مترًا تقطع في دقيقتين؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>v = 108 ÷ 3,6 = 30 m/s</li><li>t = 2 min = 120 s</li><li>المسافة = v·t = 30 · 120</li></ol><div class="res"><span class="m">3600 m</span> (أي 3,6 km)</div></div></details>
+  <details class="ex"><summary><span class="k">Ö4</span><span>تنطلق السيارة A من x = 0 بسرعة +10 m/s، وفي اللحظة نفسها تنطلق B من x = 120 m بسرعة −5 m/s. متى وأين تلتقيان؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>علاقتا الموضع: <span class="ltr">x<sub>A</sub> = 0 + 10t</span> و <span class="ltr">x<sub>B</sub> = 120 − 5t</span></li><li>عند الالتقاء يتساوى الموضعان: <span class="ltr">10t = 120 − 5t → 15t = 120</span></li><li><span class="ltr">t = 8 s, x = 10 · 8 = 80 m</span></li></ol><div class="res">تلتقيان بعد 8 ثوانٍ عند x = 80 m (نقطة تقاطع منحنيي x–t).</div></div></details>
+
+  <div class="box warn"><span class="t">أخطاء شائعة <span class="tr">Sık yapılan hatalar</span></span>
+    <ul>
+      <li><strong>السرعة المتجهة <span class="tr">hız</span> ≠ السرعة القياسية <span class="tr">sürat</span>.</strong> الأولى لها اتجاه والثانية لا.</li>
+      <li><strong>الإزاحة ≠ المسافة المقطوعة.</strong> إذا كان هناك رجوع تكون المسافة أكبر من الإزاحة.</li>
+      <li>في منحنى x–t السرعة يعطيها <strong>الميل</strong>، وفي منحنى v–t الإزاحة تعطيها <strong>المساحة</strong>. لا تخلطي بينهما.</li>
+      <li>ارتفاع الخط في منحنى x–t لا يعني أن الجسم أسرع؛ يعني أن موضعه أكبر. السرعة يحددها الميل.</li>
+      <li>وحّدي الوحدات قبل الحساب: لا نستخدم km/h مع الثانية معًا.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">باختصار · القسم 1 <span class="tr">Kısaca</span></span>
+    <ul>
+      <li>في الحركة بسرعة ثابتة يُزاح الجسم مسافات متساوية في أزمنة متساوية، والتسارع صفر.</li>
+      <li>منحنى x–t خط مائل وميله السرعة. منحنى v–t خط أفقي والمساحة تحته الإزاحة.</li>
+      <li>التعميم: <span class="m">v = Δx / Δt</span> و <span class="m">x = x₀ + v·t</span>.</li>
+      <li>إذا لم يتغير الاتجاه: المسافة = |Δx| و sürat = |v|.</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 2 ======================= -->
+<section class="section" id="ar-s2">
+  <div class="sec-head acc"><span class="num">2</span><span class="code">FİZ.10.1.2</span><h2>التسارع وتغيّر السرعة <span class="tr">İvme ve hız değişimi</span></h2></div>
+
+  <h3><span class="n">2.1</span>تغيّر السرعة Δv <span class="tr">Hız değişimi</span></h3>
+  <p>إذا تغيّرت سرعة جسم نحسب التغيّر بطرح السرعة الابتدائية من النهائية: <span class="m">Δv = v<sub>son</sub> − v<sub>ilk</sub></span>. وبما أن السرعة متجهة <strong>يجب أخذ الإشارات (الاتجاهات) في الحساب</strong>. الجسم الذي يعكس اتجاهه قد يبقى مقدار سرعته نفسه، لكن سرعته المتجهة تكون قد تغيّرت.</p>
+  <div class="tw"><table class="t">
+    <tr><th class="n">v<sub>ilk</sub></th><th class="n">v<sub>son</sub></th><th class="n">Δv</th><th>ماذا حدث؟</th></tr>
+    <tr><td class="n">+10</td><td class="n">+30</td><td class="n hla">+20</td><td>زادت سرعته بالاتجاه (+)</td></tr>
+    <tr><td class="n">+30</td><td class="n">+10</td><td class="n hla">−20</td><td>نقصت سرعته بالاتجاه (+)</td></tr>
+    <tr><td class="n">+10</td><td class="n">−10</td><td class="n hla">−20</td><td>عكس اتجاهه: المقدار نفسه لكن السرعة تغيّرت 20 m/s</td></tr>
+  </table></div>
+  <div class="mini" data-mini="dv"></div>
+
+  <h3><span class="n">2.2</span>التسارع: تغيّر السرعة في وحدة الزمن <span class="tr">İvme</span></h3>
+  <p>لا يكفي أن نعرف أن السرعة تغيّرت؛ المهم أيضًا <em>في كم من الوقت</em>. دراجة تصل من 0 إلى 10 m/s في 5 s تختلف كثيرًا عن سيارة سباق تصل إليها في 1 s. هذا الفرق نعبّر عنه بـ <span class="qa">التسارع a</span> (<span class="tr">ivme</span>):</p>
+  <div class="eqn"><span class="qa">a</span> = Δ<span class="qv">v</span> / Δt = (v<sub>son</sub> − v<sub>ilk</sub>) / Δt<small>الوحدة: (m/s) ÷ s = m/s² · كمية متجهة · اتجاهها دائمًا اتجاه Δv</small></div>
+  <p><strong>مثال على الاستقراء.</strong> نقيس سرعة سيارة كل ثانية ونسجلها في جدول:</p>
+  <div class="tw"><table class="t">
+    <tr><th>t (s)</th><td class="n">0</td><td class="n">1</td><td class="n">2</td><td class="n">3</td><td class="n">4</td></tr>
+    <tr><th>v (m/s)</th><td class="n">2</td><td class="n">5</td><td class="n">8</td><td class="n">11</td><td class="n">14</td></tr>
+    <tr><th>Δv / 1 s</th><td class="n">—</td><td class="n hla">+3</td><td class="n hla">+3</td><td class="n hla">+3</td><td class="n hla">+3</td></tr>
+  </table></div>
+  <p><strong>النمط:</strong> السرعة تزيد بالمقدار نفسه كل ثانية، 3 m/s. <strong>التعميم:</strong> هذه الزيادة الثابتة هي التسارع: a = 3 m/s². أي أن قول «تسارعه 3 m/s²» يعني «سرعته تتغير 3 m/s في كل ثانية». وإذا كان التسارع ثابتًا تتغير السرعة بانتظام:</p>
+  <div class="eqn"><span class="qv">v</span> = v₀ + <span class="qa">a</span>·t<small>إعادة ترتيب العلاقة a = Δv/Δt (حيث v₀ السرعة الابتدائية)</small></div>
+
+  <h3><span class="n">2.3</span>مختبر التسارع</h3>
+  <div class="sim" data-sim="acc"></div>
+  <div class="box think"><span class="t">جرّبي في المختبر وفكّري</span>
+    <ul>
+      <li>اجعلي v₀ = +2 و a = +3. هل عمود Δv في الجدول ثابت؟ كم ميل منحنى v–t؟</li>
+      <li>اجعلي v₀ = +8 و a = −2. ماذا تفعل السيارة في الثانية 4؟ وفي أي اتجاه تتحرك بعدها؟ ماذا تقول لافتة الحالة؟</li>
+      <li>اجعلي v₀ = −6 و a = −2. التسارع سالب، فهل السيارة تتباطأ أم تتسارع؟</li>
+      <li>قارني المساحة الملونة في منحنى a–t بالفرق بين السرعة الأخيرة والأولى في الجدول.</li>
+    </ul></div>
+
+  <h3><span class="n">2.4</span>هل تزيد السرعة أم تنقص؟ <span class="tr">Hızlanma / yavaşlama</span></h3>
+  <p>لا نحكم من إشارة التسارع وحدها؛ <strong>نقارن اتجاه السرعة باتجاه التسارع</strong>.</p>
+  <div class="signs">
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">تزيد السرعة <span class="tr">hızlanır</span></div><small class="m">v (+), a (+)</small></div>
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">تزيد السرعة <span class="tr">hızlanır</span></div><small class="m">v (−), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">تنقص السرعة <span class="tr">yavaşlar</span></div><small class="m">v (+), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">تنقص السرعة <span class="tr">yavaşlar</span></div><small class="m">v (−), a (+)</small></div>
+  </div>
+  <p><strong>القاعدة:</strong> إذا كان v و a بالاتجاه نفسه (الإشارة نفسها) تزيد سرعة الجسم، وإذا كانا متعاكسين تنقص. وإذا كان a = 0 فالسرعة ثابتة. الجسم الذي تتناقص سرعته يتوقف لحظة (v = 0)، وإذا استمر التسارع يبدأ بالتسارع في الاتجاه المعاكس.</p>
+
+  <h3><span class="n">2.5</span>التسارع وتغيّر السرعة في المنحنيات</h3>
+  <div class="figs2">
+    <div class="fig" data-fig="vtslope"><canvas style="height:220px"></canvas><div class="cap"><b>الشكل 4.</b> <b>ميل</b> منحنى v–t يعطي <b>التسارع</b>: a = Δv/Δt. منحنى v–t مستقيم ← تسارع ثابت.</div></div>
+    <div class="fig" data-fig="atarea"><canvas style="height:220px"></canvas><div class="cap"><b>الشكل 5.</b> <b>المساحة</b> تحت منحنى a–t تعطي <b>تغيّر السرعة</b>: Δv = a·Δt.</div></div>
+  </div>
+  <ul>
+    <li>في الحركة بتسارع ثابت: منحنى v–t خط مائل، ومنحنى a–t خط موازٍ لمحور الزمن.</li>
+    <li>إذا صعد منحنى v–t فإن a (+)، وإذا نزل فإن a (−)، وإذا كان أفقيًا فإن a = 0.</li>
+    <li>المساحة تحت منحنى v–t تبقى الإزاحة (يتوسع هذا في الهدف التالي FİZ.10.1.3).</li>
+  </ul>
+  <div class="box turk"><span class="t">بالتركي — جمل جاهزة للامتحان</span>
+    <p>• İvme, birim zamandaki hız değişimidir: a = Δv / Δt, birimi m/s². • İvmenin yönü hız değişiminin yönüdür. • Hız ve ivme aynı yönlü ise cisim hızlanır, zıt yönlü ise yavaşlar. • Hız–zaman grafiğinin eğimi ivmeyi verir. • İvme–zaman grafiğinin altındaki alan hız değişimini verir. • v = v₀ + a·t</p></div>
+
+  <h3><span class="n">2.6</span>أمثلة محلولة <span class="tr">Çözümlü örnekler</span></h3>
+  <details class="ex"><summary><span class="k">Ö5</span><span>دراجة نارية تبدأ من السكون وتزيد سرعتها بانتظام لتصل إلى 20 m/s خلال 4 s. كم تسارعها؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><span class="ltr">v<sub>ilk</sub> = 0, v<sub>son</sub> = 20 m/s, Δt = 4 s</span></li><li>Δv = 20 − 0 = 20 m/s</li><li>a = 20 ÷ 4</li></ol><div class="res"><span class="ltr m">a = <span class="qa">5 m/s²</span></span>: تزيد السرعة 5 m/s كل ثانية.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö6</span><span>شاحنة سرعتها 30 m/s تضغط على المكابح فتصبح سرعتها 10 m/s خلال 5 s. كم تسارعها؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>Δv = 10 − 30 = −20 m/s</li><li>a = −20 ÷ 5 = −4 m/s²</li><li>v (+) و a (−): متعاكسان ← تنقص السرعة.</li></ol><div class="res"><span class="ltr m">a = <span class="qa">−4 m/s²</span></span>، حركة متباطئة بانتظام (<span class="tr">düzgün yavaşlayan</span>).</div></div></details>
+  <details class="ex"><summary><span class="k">Ö7</span><span>سيارة تسير غربًا بسرعة 15 m/s وتصل خلال 3 s إلى 30 m/s بالاتجاه نفسه. إذا كان الغرب (−) فكم التسارع؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><span class="ltr">v<sub>ilk</sub> = −15 m/s, v<sub>son</sub> = −30 m/s</span></li><li>Δv = (−30) − (−15) = −15 m/s</li><li>a = −15 ÷ 3 = −5 m/s²</li></ol><div class="res"><span class="ltr m">a = <span class="qa">−5 m/s²</span></span> (نحو الغرب). التسارع سالب لكن السيارة <strong>تزيد سرعتها</strong> لأن v و a بالاتجاه نفسه.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö8</span><span>سيارة فيها v₀ = +12 m/s و a = −3 m/s². بعد كم ثانية تتوقف؟ وكم سرعتها في الثانية 6؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li><span class="ltr">v = v₀ + a·t → 0 = 12 + (−3)·t → t = 4 s</span></li><li><span class="ltr">t = 6 s: v = 12 + (−3)·6 = −6 m/s</span></li></ol><div class="res">تتوقف في الثانية 4؛ وفي الثانية 6 تسير بالاتجاه المعاكس بسرعة <span class="qv m">−6 m/s</span> (وأصبحت سرعتها تزيد).</div></div></details>
+  <details class="ex"><summary><span class="k">Ö9</span><span>منحنى a–t يبين a = 2 m/s² بين 0 و 5 s. إذا كانت السرعة الابتدائية 3 m/s فكم السرعة عند 5 s؟</span><span class="open">اعرض الحل</span></summary>
+    <div class="sol"><ol><li>المساحة = Δv = 2 · 5 = 10 m/s</li><li>v = v₀ + Δv = 3 + 10</li></ol><div class="res"><span class="ltr m">v = <span class="qv">13 m/s</span></span></div></div></details>
+
+  <div class="box warn"><span class="t">أخطاء شائعة <span class="tr">Sık yapılan hatalar</span></span>
+    <ul>
+      <li><strong>«إذا كانت السرعة كبيرة فالتسارع كبير»: خطأ.</strong> طائرة تسير بسرعة ثابتة 900 km/h تسارعها صفر.</li>
+      <li><strong>«التسارع السالب يعني تباطؤًا»: ليس دائمًا.</strong> الجسم الذي تزيد سرعته بالاتجاه (−) تسارعه (−) أيضًا. قارني v مع a.</li>
+      <li><strong>«إذا كان v = 0 فإن a = 0»: خطأ.</strong> الجسم الذي يعكس اتجاهه يقف لحظة لكن تسارعه ليس صفرًا.</li>
+      <li>لا تنسي الإشارات عند حساب Δv: الانتقال من +10 إلى −10 يعطي Δv = −20 m/s وليس صفرًا.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">باختصار · القسم 2 <span class="tr">Kısaca</span></span>
+    <ul>
+      <li>تغيّر السرعة <span class="ltr m">Δv = v<sub>son</sub> − v<sub>ilk</sub></span> (متجه). التسارع هو تغيّر السرعة في وحدة الزمن: a = Δv/Δt بوحدة m/s².</li>
+      <li>اتجاه التسارع هو اتجاه Δv. في التسارع الثابت تتغير السرعة بمقدار a كل ثانية: v = v₀ + a·t.</li>
+      <li>v و a بالاتجاه نفسه ← تزيد السرعة؛ متعاكسان ← تنقص؛ a = 0 ← سرعة ثابتة.</li>
+      <li>ميل منحنى v–t هو التسارع، والمساحة تحت منحنى a–t هي تغيّر السرعة.</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 3 ======================= -->
+<section class="section" id="ar-s3">
+  <div class="sec-head q"><span class="num">3</span><span class="code">TEKRAR</span><h2>اختبري نفسك <span class="tr">Kendini sına</span></h2></div>
+  <p>اضغطي على خيار؛ يظهر الجواب وشرحه فورًا. النتيجة في الأسفل.</p>
+  <div class="quiz" data-quiz></div>
+</section>
+
+<!-- ======================= 4 ======================= -->
+<section class="section" id="ar-s4">
+  <div class="sec-head g"><span class="num">4</span><span class="code">ÖZET KART</span><h2>بطاقة القوانين والمصطلحات</h2></div>
+  <div class="fcard">
+    <div><h4>حركة بسرعة ثابتة (a = 0)</h4><div class="eqn">v = Δx / Δt</div><div class="eqn">x = x₀ + v·t</div></div>
+    <div><h4>المنحنيات</h4><div class="eqn">x–t eğimi = v</div><div class="eqn">v–t alanı = Δx</div></div>
+    <div><h4>تغيّر السرعة والتسارع</h4><div class="eqn">Δv = v<sub>son</sub> − v<sub>ilk</sub></div><div class="eqn">a = Δv / Δt</div></div>
+    <div><h4>تسارع ثابت</h4><div class="eqn">v = v₀ + a·t</div><div class="eqn">v–t eğimi = a · a–t alanı = Δv</div></div>
+  </div>
+  <h3>قاموس المصطلحات تركي ↔ عربي</h3>
+  <div class="tw"><table class="gl">
+    <tr><th>Terim (تركي)</th><th>المعنى</th><th>الشرح</th></tr>
+    <tr><td class="term">Referans noktası</td><td>النقطة المرجعية</td><td>نقطة الصفر التي يُقاس منها الموضع.</td></tr>
+    <tr><td class="term">Konum (x)</td><td>الموضع</td><td>البعد الموجّه للجسم عن النقطة المرجعية.</td></tr>
+    <tr><td class="term">Yer değiştirme (Δx)</td><td>الإزاحة</td><td>الموضع النهائي − الموضع الابتدائي؛ متجهة.</td></tr>
+    <tr><td class="term">Alınan yol</td><td>المسافة المقطوعة</td><td>طول المسار كله؛ قياسية.</td></tr>
+    <tr><td class="term">Hız (v)</td><td>السرعة المتجهة</td><td>الإزاحة في وحدة الزمن؛ m/s.</td></tr>
+    <tr><td class="term">Sürat</td><td>السرعة القياسية</td><td>المسافة المقطوعة في وحدة الزمن؛ m/s.</td></tr>
+    <tr><td class="term">Sabit hızlı hareket</td><td>حركة بسرعة ثابتة</td><td>إزاحات متساوية في أزمنة متساوية؛ التسارع صفر.</td></tr>
+    <tr><td class="term">Skaler / vektörel</td><td>قياسية / متجهة</td><td>بلا اتجاه / لها اتجاه.</td></tr>
+    <tr><td class="term">Eğim</td><td>الميل</td><td>نسبة التغير العمودي إلى الأفقي في المنحنى.</td></tr>
+    <tr><td class="term">Alan</td><td>المساحة</td><td>المساحة بين المنحنى ومحور الزمن.</td></tr>
+    <tr><td class="term">Hız değişimi (Δv)</td><td>تغيّر السرعة</td><td>السرعة النهائية − الابتدائية؛ متجه.</td></tr>
+    <tr><td class="term">İvme (a)</td><td>التسارع</td><td>تغيّر السرعة في وحدة الزمن؛ m/s².</td></tr>
+    <tr><td class="term">Hızlanan hareket</td><td>حركة متسارعة (تزيد سرعتها)</td><td>v و a بالاتجاه نفسه.</td></tr>
+    <tr><td class="term">Yavaşlayan hareket</td><td>حركة متباطئة (تنقص سرعتها)</td><td>v و a متعاكسان.</td></tr>
+    <tr><td class="term">Durgun</td><td>ساكن</td><td>v = 0 ولا يتغير موضعه.</td></tr>
+    <tr><td class="term">Tümevarımsal akıl yürütme</td><td>الاستدلال الاستقرائي</td><td>الوصول من الملاحظات والبيانات إلى قاعدة عامة.</td></tr>
+    <tr><td class="term">Gözlem · Örüntü · Genelleme</td><td>ملاحظة · نمط · تعميم</td><td>مراحل الاستقراء.</td></tr>
+  </table></div>
+</section>
+<footer class="foot">فيزياء الصف العاشر · نموذج المعارف <span class="tr">Türkiye Yüzyılı Maarif Modeli</span> · ملخص للهدفين FİZ.10.1.1 و FİZ.10.1.2. المختبرات في الصفحة نماذج مبسطة لتكتشفي العلاقات بنفسك.</footer>

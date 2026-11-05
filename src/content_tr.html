@@ -1,0 +1,240 @@
+<section class="hero" id="tr-top">
+  <div class="eyebrow">10. Sınıf Fizik · 1. Tema: Kuvvet ve Hareket · Kolay anlatım</div>
+  <h1>Sabit Hız ve İvme</h1>
+  <p class="lede">Bir araba her saniye aynı yolu mu gidiyor, yoksa her saniye biraz daha fazla mı? Bu sayfada bunu birlikte bulacağız. Önce bakacağız, sonra not alacağız, sonra kuralı kendimiz çıkaracağız.</p>
+  <div class="strobe">
+    <div class="row"><div class="lab">Sabit hızlı hareket<small>her saniye aynı aralık</small></div><svg-slot></svg-slot></div>
+    <div class="row"><div class="lab">Hızlanan hareket<small>aralık her saniye büyüyor</small></div><svg-slot></svg-slot></div>
+    <div class="cap">Her nokta, arabanın 1 saniyede bir çekilmiş fotoğrafı gibi. Altındaki sayı kaçıncı saniye olduğunu gösterir.</div>
+  </div>
+  <div class="outcomes">
+    <div class="oc"><span class="code">FİZ.10.1.1</span><span class="name">Yatay doğrultuda sabit hızlı hareket ile ilgili tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>Sabit hızla giden bir cismin konumunu, yer değiştirmesini, hızını ve zamanı gözlemler.</li><li>Grafiklerden hız, sürat, yer değiştirme ve yol için formülü bulur.</li><li>Bu formülleri genelleştirir.</li></ol>
+      <span class="sub-easy"><b>Yani:</b> “Aynı hızla giden bir şeyi izle, not al, kuralı bul.”</span></div>
+    <div class="oc acc"><span class="code">FİZ.10.1.2</span><span class="name">İvme ve hız değişimi arasındaki ilişkiye yönelik tümevarımsal akıl yürütebilme</span>
+      <ol type="a"><li>İvme ile hız değişimi arasındaki ilişkiyi keşfeder.</li><li>Bu ilişkiyi genelleştirir.</li></ol>
+      <span class="sub-easy"><b>Yani:</b> “Hız değişiyorsa, ne kadar çabuk değiştiğini bul.”</span></div>
+  </div>
+  <div class="howto"><strong>Nasıl çalışmalı?</strong> Her bölümde önce “laboratuvar”daki arabayı çalıştır, sonra okumaya geç. Mavi <b>Basitçe</b> kutuları konuyu en kısa haliyle anlatır. Çözümlü örneklerde önce kendin dene, sonra “Çözümü göster”e bas. Renkler hep aynı: <span class="qx">konum x</span>, <span class="qv">hız v</span>, <span class="qa">ivme a</span>.</div>
+</section>
+
+<!-- ======================= 1 ======================= -->
+<section class="section" id="tr-s1">
+  <div class="sec-head"><span class="num">1</span><span class="code">FİZ.10.1.1</span><h2>Sabit hızlı hareket</h2></div>
+
+  <h3><span class="n">1.1</span>Önce kelimeleri tanıyalım</h3>
+  <p>“Araba nerede?” diye sorsam, “okulun kapısından 30 metre sağda” dersin. Burada okulun kapısı <strong>referans noktası</strong>dır, yani ölçmeye başladığımız yer (0 noktası). Arabanın bu noktaya göre yeri de <span class="qx">konum (x)</span>dur. Sağ taraf (+), sol taraf (−) olur.</p>
+  <div class="tw"><table class="t stack">
+    <tr><th>Kelime</th><th>Ne demek?</th><th>Günlük hayattan</th></tr>
+    <tr><td><strong>Yer değiştirme (Δx)</strong></td><td>Nereden başladın, nerede bittin? Aradaki fark: <span class="m">Δx = x<sub>son</sub> − x<sub>ilk</sub></span>. Yönü vardır.</td><td>Evden bakkala gidip geri döndün: yer değiştirmen <b>0</b>.</td></tr>
+    <tr><td><strong>Alınan yol</strong></td><td>Toplam kaç metre yürüdün? Yönü yoktur, hep pozitiftir.</td><td>Bakkal 200 m uzaktaysa gidiş-dönüş yolun <b>400 m</b>.</td></tr>
+    <tr><td><strong>Sürat</strong></td><td>Ne kadar hızlı? (Yön yok.)</td><td>Arabanın göstergesindeki sayı: “60 km/h”.</td></tr>
+    <tr><td><strong>Hız (v)</strong></td><td>Ne kadar hızlı ve <b>hangi yöne</b>?</td><td>“Doğuya doğru 60 km/h”.</td></tr>
+  </table></div>
+  <div class="fig" data-fig="walk"><canvas style="height:150px"></canvas>
+    <div class="cap"><b>Şekil 1.</b> Bir öğrenci 0’dan +8 m’ye yürüyor, sonra 5 m geri dönüp +3 m’de duruyor. Toplam yürüdüğü yol = 8 + 5 = <b>13 m</b>. Ama başladığı yere göre sadece <b class="qx">3 m</b> ileride: yer değiştirmesi <b class="qx">+3 m</b>.</div></div>
+  <div class="box easy"><span class="t">Basitçe</span><p><b>Yol</b> = ne kadar yürüdüğün. <b>Yer değiştirme</b> = başladığın yerden ne kadar uzaklaştığın. Hiç geri dönmezsen ikisi aynı olur. <b>Skaler</b> = sadece sayı (zaman, yol, sürat). <b>Vektörel</b> = sayı + yön (konum, yer değiştirme, hız, ivme).</p></div>
+
+  <h3><span class="n">1.2</span>Bak, yaz, kuralı bul (tümevarım)</h3>
+  <p><strong>Tümevarımsal akıl yürütme</strong> zor bir isim ama yaptığımız şey basit: birkaç örneğe bakıp ortak kuralı bulmak. Bir dedektif gibi düşün:</p>
+  <ol class="steps">
+    <li><span><strong>Bak (gözlem):</strong> arabanın her saniye nerede olduğunu gör.</span></li>
+    <li><span><strong>Yaz (tablo):</strong> zamanı (t) ve konumu (x) bir tabloya yaz.</span></li>
+    <li><span><strong>Çiz (grafik):</strong> bu sayıları bir grafiğe koy.</span></li>
+    <li><span><strong>Fark et (örüntü):</strong> “Her saniye hep 5 metre gidiyor!”</span></li>
+    <li><span><strong>Kuralı yaz (genelleme):</strong> <span class="m">x = x₀ + v·t</span>.</span></li>
+  </ol>
+  <div class="sim" data-sim="cv"></div>
+  <div class="box think"><span class="t">Dene ve düşün</span>
+    <ul>
+      <li>Hızı +5 yap ve başlat. Noktalar arası mesafe hep aynı mı? Tablodaki Δx sütununa bak.</li>
+      <li>Hızı −5 yap. Araba hangi yöne gitti? Grafik nasıl değişti?</li>
+      <li>Başlangıç yerini değiştir. Çizginin dikliği değişti mi? (Değişmez! Diklik sadece hıza bağlı.)</li>
+      <li>Hızı 0 yap. Hangi grafik düz yatay çizgi oldu?</li>
+    </ul></div>
+  <div class="box easy"><span class="t">Basitçe</span><p>Hız sabitleyici açık bir otobüs düşün: <b>her saniye aynı mesafeyi</b> gider. İşte buna <b>sabit hızlı hareket</b> denir. Hızı hiç değişmediği için <span class="qa">ivmesi sıfırdır</span>.</p></div>
+
+  <h3><span class="n">1.3</span>Konum–zaman (x–t) grafiği</h3>
+  <div class="fig" data-fig="xt4"><canvas style="height:260px"></canvas>
+    <div class="cap"><b>Şekil 2.</b> Dört arabanın x–t grafiği. Hepsi düz çizgi, yani hepsi sabit hızla gidiyor. Çizgi ne kadar dikse araba o kadar hızlı: <b class="qx">A</b> +5 m/s, <b class="qv">B</b> +2 m/s, <b>C</b> 0 (duruyor), <b class="qa">D</b> −5 m/s.</div></div>
+  <ul>
+    <li>Sabit hızda x–t grafiği <strong>düz, eğik bir çizgidir</strong>.</li>
+    <li><strong>Çizginin eğimi (dikliği) = hız.</strong> Hesabı: <span class="m">v = Δx / Δt</span> (“kaç metre gitti ÷ kaç saniyede”).</li>
+    <li>Daha dik çizgi = daha hızlı. A, B’den hızlıdır.</li>
+    <li>Yukarı çıkan çizgi: (+) yöne gidiyor. Aşağı inen (D): (−) yöne gidiyor.</li>
+    <li>Yatay çizgi (C): yeri hiç değişmiyor, araba <strong>duruyor</strong>.</li>
+    <li>İki çizgi kesişiyorsa, o anda iki araba <strong>aynı yerde</strong>dir (karşılaşırlar).</li>
+  </ul>
+
+  <h3><span class="n">1.4</span>Hız–zaman (v–t) grafiği</h3>
+  <div class="fig" data-fig="vtarea"><canvas style="height:240px"></canvas>
+    <div class="cap"><b>Şekil 3.</b> Araba 4 s boyunca +6 m/s ile ileri, sonra 4 s boyunca −3 m/s ile geri gidiyor. Yer değiştirme = 24 − 12 = <b class="qx">+12 m</b>. Toplam yol = 24 + 12 = <b>36 m</b>.</div></div>
+  <ul>
+    <li>Sabit hızda v–t grafiği <strong>yatay düz bir çizgidir</strong> (hız değişmiyor ki).</li>
+    <li><strong>Çizginin altındaki alan = yer değiştirme.</strong> Bu bir dikdörtgen: alan = en × boy = <span class="m">v × t</span>.</li>
+    <li>Alan eksenin üstündeyse (+), altındaysa (−) yöne gitmiştir. Toplam yol için hepsini pozitif alıp toplarız.</li>
+  </ul>
+  <div class="box easy"><span class="t">Basitçe</span><p>İki sihirli cümle: <b>x–t grafiğinde eğime bak → hızı bulursun.</b> <b>v–t grafiğinde alana bak → yer değiştirmeyi bulursun.</b></p></div>
+
+  <h3><span class="n">1.5</span>Kural (formül)</h3>
+  <div class="eqrow">
+    <div class="eqn"><span class="qv">v</span> = Δ<span class="qx">x</span> / Δt<small>hız = gidilen yer ÷ geçen süre</small></div>
+    <div class="eqn"><span class="qx">x</span> = x₀ + <span class="qv">v</span>·t<small>şimdiki yer = başlangıç + hız × süre</small></div>
+    <div class="eqn">sürat = yol / Δt<small>yol = sürat × süre</small></div>
+  </div>
+  <p><b>Örnek:</b> Araba −20 m’den başladı, hızı +5 m/s. 6 saniye sonra nerede? x = −20 + 5·6 = <b>10 m</b>.</p>
+  <p><b>Birim çevirme:</b> km/h’i m/s’ye çevirmek için <b>3,6’ya böl</b>. Tersi için 3,6 ile çarp. Kaydırıcıyla dene:</p>
+  <div class="mini" data-mini="kmh"></div>
+  <p class="muted" style="font-size:14.5px">Neden 3,6? Çünkü 1 saatte 3600 saniye, 1 km’de 1000 metre var: 3600 ÷ 1000 = 3,6.</p>
+
+  <h3><span class="n">1.6</span>Çözümlü örnekler</h3>
+  <details class="ex"><summary><span class="k">Ö1</span><span>Bir araba 5. saniyede 20 m’de, 15. saniyede 60 m’de. Hızı kaç m/s?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Kaç metre gitti? Δx = 60 − 20 = 40 m</li><li>Kaç saniyede? Δt = 15 − 5 = 10 s</li><li>Hız = 40 ÷ 10</li></ol><div class="res">v = <span class="qv">+4 m/s</span></div></div></details>
+  <details class="ex"><summary><span class="k">Ö2</span><span>v–t grafiği 15 m/s’de yatay. 0–4 s arasında araba kaç metre yer değiştirdi?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Yer değiştirme = altta kalan dikdörtgenin alanı.</li><li>Alan = 15 × 4</li></ol><div class="res">Δx = <span class="qx">60 m</span></div></div></details>
+  <details class="ex"><summary><span class="k">Ö3</span><span>108 km/h sabit hızla giden araba 2 dakikada kaç metre gider?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Önce m/s’ye çevir: 108 ÷ 3,6 = 30 m/s</li><li>2 dakika = 120 saniye</li><li>Yol = 30 × 120</li></ol><div class="res">3600 m (3,6 km)</div></div></details>
+  <details class="ex"><summary><span class="k">Ö4</span><span>A arabası 0’dan +10 m/s ile, B arabası aynı anda 120 m’den −5 m/s ile yola çıkıyor (birbirlerine doğru). Ne zaman, nerede karşılaşırlar?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>A’nın yeri: x = 10t. B’nin yeri: x = 120 − 5t</li><li>Karşılaşınca aynı yerdeler: 10t = 120 − 5t → 15t = 120</li><li>t = 8 s, yer: 10 × 8 = 80 m</li></ol><div class="res">8. saniyede, 80 m’de karşılaşırlar.</div></div></details>
+
+  <div class="box warn"><span class="t">Dikkat! Sık yapılan hatalar</span>
+    <ul>
+      <li><b>Hız ve sürat aynı şey değil.</b> Hızın yönü var, süratin yok.</li>
+      <li><b>Yol ve yer değiştirme aynı şey değil.</b> Geri dönersen yol daha büyük olur.</li>
+      <li>x–t grafiğinde <b>eğim</b>, v–t grafiğinde <b>alan</b> kullanılır. Karıştırma!</li>
+      <li>x–t grafiğinde çizginin <b>yukarıda</b> olması hızlı demek değil, <b>uzakta</b> demek. Hızı <b>diklik</b> söyler.</li>
+      <li>Hesaptan önce birimleri aynı yap: km/h ile saniyeyi birlikte kullanma.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">Kısaca · Bölüm 1</span>
+    <ul>
+      <li>Sabit hızda araba her saniye aynı mesafeyi gider; ivmesi sıfırdır.</li>
+      <li>x–t grafiği eğik düz çizgi → eğimi hız. v–t grafiği yatay çizgi → alanı yer değiştirme.</li>
+      <li>Formüller: <span class="m">v = Δx / Δt</span> ve <span class="m">x = x₀ + v·t</span>.</li>
+      <li>Geri dönüş yoksa: yol = yer değiştirme, sürat = hız (büyüklük olarak).</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 2 ======================= -->
+<section class="section" id="tr-s2">
+  <div class="sec-head acc"><span class="num">2</span><span class="code">FİZ.10.1.2</span><h2>İvme ve hız değişimi</h2></div>
+
+  <h3><span class="n">2.1</span>Hız ne kadar değişti? (Δv)</h3>
+  <p>Hız değişimini bulmak kolay: <b>son hızdan ilk hızı çıkar.</b> <span class="m">Δv = v<sub>son</sub> − v<sub>ilk</sub></span>. Tek dikkat edeceğin şey <b>işaretler</b>, çünkü hızın yönü var.</p>
+  <div class="tw"><table class="t">
+    <tr><th class="n">ilk hız</th><th class="n">son hız</th><th class="n">Δv</th><th>Ne oldu?</th></tr>
+    <tr><td class="n">+10</td><td class="n">+30</td><td class="n hla">+20</td><td>İleri giderken hızlandı.</td></tr>
+    <tr><td class="n">+30</td><td class="n">+10</td><td class="n hla">−20</td><td>İleri giderken yavaşladı.</td></tr>
+    <tr><td class="n">+10</td><td class="n">−10</td><td class="n hla">−20</td><td>Geri döndü! Sürat aynı (10) ama hız 20 m/s değişti.</td></tr>
+  </table></div>
+  <p>Kaydırıcılarla kendin dene. Özellikle bir hızı (+), diğerini (−) yap:</p>
+  <div class="mini" data-mini="dv"></div>
+
+  <h3><span class="n">2.2</span>İvme nedir?</h3>
+  <p>Bisikletle 0’dan 10 m/s’ye çıkmak 5 saniye sürsün. Bir yarış arabası aynı şeyi 1 saniyede yapsın. İkisinin de hızı 10 m/s değişti, ama yarış arabası <b>çok daha çabuk</b> değiştirdi. İşte <span class="qa">ivme (a)</span> bu “çabukluğu” ölçer:</p>
+  <div class="eqn"><span class="qa">a</span> = Δ<span class="qv">v</span> / Δt<small>ivme = hız değişimi ÷ geçen süre · birimi m/s² · yönü vardır</small></div>
+  <div class="box easy"><span class="t">Basitçe</span><p><b>İvme = her saniye hız ne kadar değişiyor?</b> “İvme 3 m/s²” demek, “hız her saniye 3 m/s artıyor” demek. Gaza bastığında da, frene bastığında da ivme vardır. Hız hiç değişmiyorsa ivme sıfırdır.</p></div>
+  <p><b>Kuralı kendimiz bulalım.</b> Bir arabanın hızını her saniye ölçtük:</p>
+  <div class="tw"><table class="t">
+    <tr><th>t (s)</th><td class="n">0</td><td class="n">1</td><td class="n">2</td><td class="n">3</td><td class="n">4</td></tr>
+    <tr><th>v (m/s)</th><td class="n">2</td><td class="n">5</td><td class="n">8</td><td class="n">11</td><td class="n">14</td></tr>
+    <tr><th>her saniye artış</th><td class="n">—</td><td class="n hla">+3</td><td class="n hla">+3</td><td class="n hla">+3</td><td class="n hla">+3</td></tr>
+  </table></div>
+  <p><b>Fark ettin mi?</b> Hız her saniye hep 3 artıyor. Bu sabit artış ivmedir: <b>a = 3 m/s²</b>. O zaman hızı her an bulabiliriz: başlangıç hızına, her saniye için 3 ekle:</p>
+  <div class="eqn"><span class="qv">v</span> = v₀ + <span class="qa">a</span>·t<small>şimdiki hız = ilk hız + ivme × süre</small></div>
+  <p>Örnek: 4. saniyede v = 2 + 3·4 = <b>14 m/s</b>. Tablodaki sayıyla aynı!</p>
+
+  <h3><span class="n">2.3</span>İvme laboratuvarı</h3>
+  <div class="sim" data-sim="acc"></div>
+  <div class="box think"><span class="t">Dene ve düşün</span>
+    <ul>
+      <li>İlk hız +2, ivme +3 yap. Tablodaki Δv hep aynı mı?</li>
+      <li>İlk hız +8, ivme −2 yap. Araba 4. saniyede ne yapıyor? Sonra hangi yöne gidiyor?</li>
+      <li>İlk hız −6, ivme −2 yap. İvme eksi ama araba yavaşlıyor mu, hızlanıyor mu? (İpucu: okların yönüne bak.)</li>
+    </ul></div>
+
+  <h3><span class="n">2.4</span>Hızlanıyor mu, yavaşlıyor mu? (Ok kuralı)</h3>
+  <p>Sadece ivmenin işaretine bakıp karar verme! <b>Hız okuna ve ivme okuna birlikte bak.</b></p>
+  <div class="signs">
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">Aynı yön → Hızlanır</div><small class="m">v (+), a (+)</small></div>
+    <div class="sg up"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">Aynı yön → Hızlanır</div><small class="m">v (−), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1 l"></i></div><div class="res">Zıt yön → Yavaşlar</div><small class="m">v (+), a (−)</small></div>
+    <div class="sg down"><div class="ar"><span class="qv">v</span><i class="arw v w2 l"></i></div><div class="ar"><span class="qa">a</span><i class="arw a w1"></i></div><div class="res">Zıt yön → Yavaşlar</div><small class="m">v (−), a (+)</small></div>
+  </div>
+  <div class="box easy"><span class="t">Basitçe</span><p>İvme oku arabayı <b>ittiği yöne</b> götürmeye çalışır. Ok, arabanın gittiği yöndeyse arabayı iter → <b>hızlanır</b>. Ok ters yöndeyse fren gibi çalışır → <b>yavaşlar</b>. Yavaşlayan araba bir an durur; ok hâlâ ters yöndeyse geri gitmeye başlar.</p></div>
+
+  <h3><span class="n">2.5</span>Grafiklerde ivme</h3>
+  <div class="figs2">
+    <div class="fig" data-fig="vtslope"><canvas style="height:220px"></canvas><div class="cap"><b>Şekil 4.</b> v–t grafiğinin <b>eğimi = ivme</b>. 4 saniyede hız 4’ten 16’ya çıktı: a = 12 ÷ 4 = 3 m/s².</div></div>
+    <div class="fig" data-fig="atarea"><canvas style="height:220px"></canvas><div class="cap"><b>Şekil 5.</b> a–t grafiğinin <b>altındaki alan = hız değişimi</b>: Δv = 3 × 4 = 12 m/s.</div></div>
+  </div>
+  <ul>
+    <li>v–t grafiği yukarı çıkıyorsa a (+), aşağı iniyorsa a (−), yataysa a = 0.</li>
+    <li>Sabit ivmede v–t grafiği eğik düz çizgi, a–t grafiği yatay düz çizgidir.</li>
+  </ul>
+  <div class="box easy"><span class="t">Basitçe</span><p>Bölüm 1’deki sihirli cümleler burada da çalışır, sadece bir basamak yukarıda: <b>v–t grafiğinde eğim → ivme.</b> <b>a–t grafiğinde alan → hız değişimi.</b></p></div>
+
+  <h3><span class="n">2.6</span>Çözümlü örnekler</h3>
+  <details class="ex"><summary><span class="k">Ö5</span><span>Duran bir motosiklet 4 saniyede 20 m/s hıza çıkıyor. İvmesi kaç?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Hız ne kadar değişti? 20 − 0 = 20 m/s</li><li>Kaç saniyede? 4 s</li><li>a = 20 ÷ 4</li></ol><div class="res">a = <span class="qa">5 m/s²</span>: hız her saniye 5 m/s artıyor.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö6</span><span>30 m/s ile giden kamyon frene basıyor ve 5 saniyede 10 m/s’ye iniyor. İvmesi kaç?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Δv = 10 − 30 = −20 m/s</li><li>a = −20 ÷ 5 = −4 m/s²</li><li>Hız (+), ivme (−): zıt yön → yavaşlıyor.</li></ol><div class="res">a = <span class="qa">−4 m/s²</span>, yavaşlayan hareket.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö7</span><span>Batıya (−) 15 m/s ile giden araba, 3 saniyede yine batıya 30 m/s’ye çıkıyor. İvmesi?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>ilk hız = −15, son hız = −30</li><li>Δv = (−30) − (−15) = −15 m/s</li><li>a = −15 ÷ 3 = −5 m/s²</li></ol><div class="res">a = <span class="qa">−5 m/s²</span>. İvme eksi ama araba <b>hızlanıyor</b>: hız da ivme de batıya, yani aynı yönde.</div></div></details>
+  <details class="ex"><summary><span class="k">Ö8</span><span>İlk hızı +12 m/s, ivmesi −3 m/s² olan araba kaçıncı saniyede durur? 6. saniyede hızı ne olur?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Her saniye hız 3 azalıyor: 12 → 9 → 6 → 3 → 0. Yani 4. saniyede durur.</li><li>Formülle: v = 12 + (−3)·6 = −6 m/s</li></ol><div class="res">4. saniyede durur; 6. saniyede <span class="qv">−6 m/s</span> ile geri gider (artık geri yönde hızlanıyor).</div></div></details>
+  <details class="ex"><summary><span class="k">Ö9</span><span>a–t grafiğinde 0–5 s arası a = 2 m/s². İlk hız 3 m/s. 5. saniyede hız kaç?</span><span class="open">Çözümü göster</span></summary>
+    <div class="sol"><ol><li>Alan = hız değişimi = 2 × 5 = 10 m/s</li><li>Yeni hız = 3 + 10</li></ol><div class="res">v = <span class="qv">13 m/s</span></div></div></details>
+
+  <div class="box warn"><span class="t">Dikkat! Sık yapılan hatalar</span>
+    <ul>
+      <li><b>“Hızlı giden şeyin ivmesi büyüktür”: yanlış.</b> 900 km/h sabit hızla uçan uçağın ivmesi sıfırdır, çünkü hızı değişmiyor.</li>
+      <li><b>“İvme eksi ise yavaşlar”: her zaman değil.</b> Okları karşılaştır: aynı yöndelerse hızlanır.</li>
+      <li><b>“Durduysa ivmesi sıfırdır”: yanlış.</b> Geri dönen araba bir an durur ama ivmesi devam eder.</li>
+      <li>Δv’de işaretleri unutma: +10’dan −10’a geçişte Δv = −20 m/s, sıfır değil.</li>
+    </ul></div>
+  <div class="box sum"><span class="t">Kısaca · Bölüm 2</span>
+    <ul>
+      <li>Hız değişimi: Δv = son hız − ilk hız (işaretlere dikkat).</li>
+      <li>İvme: her saniyedeki hız değişimi, a = Δv / Δt, birimi m/s².</li>
+      <li>Sabit ivmede hız her saniye a kadar değişir: v = v₀ + a·t.</li>
+      <li>Hız ve ivme aynı yöndeyse hızlanır, zıt yöndeyse yavaşlar, ivme sıfırsa hız sabit.</li>
+      <li>v–t grafiğinin eğimi ivme, a–t grafiğinin alanı hız değişimidir.</li>
+    </ul></div>
+</section>
+
+<!-- ======================= 3 ======================= -->
+<section class="section" id="tr-s3">
+  <div class="sec-head q"><span class="num">3</span><span class="code">TEKRAR</span><h2>Kendini sına</h2></div>
+  <p>Bir şıkka dokun, cevap ve açıklama hemen çıkar. Puanın en altta.</p>
+  <div class="quiz" data-quiz></div>
+</section>
+
+<!-- ======================= 4 ======================= -->
+<section class="section" id="tr-s4">
+  <div class="sec-head g"><span class="num">4</span><span class="code">ÖZET KART</span><h2>Formüller ve kelimeler</h2></div>
+  <div class="fcard">
+    <div><h4>Sabit hız (ivme = 0)</h4><div class="eqn">v = Δx / Δt</div><div class="eqn">x = x₀ + v·t</div></div>
+    <div><h4>Grafikler</h4><div class="eqn">x–t eğimi = v</div><div class="eqn">v–t alanı = Δx</div></div>
+    <div><h4>Hız değişimi ve ivme</h4><div class="eqn">Δv = v<sub>son</sub> − v<sub>ilk</sub></div><div class="eqn">a = Δv / Δt</div></div>
+    <div><h4>Sabit ivme</h4><div class="eqn">v = v₀ + a·t</div><div class="eqn">v–t eğimi = a · a–t alanı = Δv</div></div>
+  </div>
+  <h3>Kelimeler</h3>
+  <div class="tw"><table class="gl">
+    <tr><th>Kelime</th><th>Kısaca anlamı</th></tr>
+    <tr><td class="term">Referans noktası</td><td>Ölçmeye başladığımız yer (0 noktası).</td></tr>
+    <tr><td class="term">Konum (x)</td><td>Bir şeyin referans noktasına göre yeri.</td></tr>
+    <tr><td class="term">Yer değiştirme (Δx)</td><td>Son yer − ilk yer. Yönü var.</td></tr>
+    <tr><td class="term">Alınan yol</td><td>Toplam kaç metre gidildiği. Yönü yok.</td></tr>
+    <tr><td class="term">Hız (v)</td><td>Ne kadar hızlı ve hangi yöne. Birimi m/s.</td></tr>
+    <tr><td class="term">Sürat</td><td>Sadece ne kadar hızlı (yön yok). Birimi m/s.</td></tr>
+    <tr><td class="term">Skaler / vektörel</td><td>Sadece sayı / sayı + yön.</td></tr>
+    <tr><td class="term">Sabit hızlı hareket</td><td>Her saniye aynı mesafe; ivme sıfır.</td></tr>
+    <tr><td class="term">Eğim</td><td>Grafikteki çizginin dikliği.</td></tr>
+    <tr><td class="term">Hız değişimi (Δv)</td><td>Son hız − ilk hız.</td></tr>
+    <tr><td class="term">İvme (a)</td><td>Her saniye hızın ne kadar değiştiği. Birimi m/s².</td></tr>
+    <tr><td class="term">Hızlanan hareket</td><td>Hız ve ivme aynı yönde.</td></tr>
+    <tr><td class="term">Yavaşlayan hareket</td><td>Hız ve ivme zıt yönde.</td></tr>
+    <tr><td class="term">Tümevarımsal akıl yürütme</td><td>Örneklere bakıp genel kuralı bulmak.</td></tr>
+  </table></div>
+</section>
+<footer class="foot">10. Sınıf Fizik · Maarif Modeli · FİZ.10.1.1 ve FİZ.10.1.2 için kolay anlatımlı çalışma özeti. Laboratuvarlar, kuralları kendin keşfetmen için yapılmış basit modellerdir.</footer>
